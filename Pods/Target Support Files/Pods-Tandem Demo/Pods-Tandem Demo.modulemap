@@ -1,0 +1,6 @@
+framework module Pods_Tandem_Demo {
+  umbrella header "Pods-Tandem Demo-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,13 @@
+//
+//  AddItem.swift
+//  Tandem Demo
+//
+//  Created by Jaroslav Stupinskyi on 08.07.18.
+//  Copyright © 2018 Jaroslav Stupinskyi. All rights reserved.
+//
+
+import UIKit
+
+protocol AddItem {
+    func userAddedNewItem(title: String, image: UIImage, text: String, userLogin: String, userImage: UIImage)
+}
