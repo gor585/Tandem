@@ -7,10 +7,22 @@
 //
 
 import UIKit
+import CoreLocation
 
-class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
+    
+    let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
+    
+    let APP_ID = "59a54878a35a9d6c822d56aac3cfd0a6"
+    
+    let locationManager = CLLocationManager()
+    
+    let weatherDataModel = WeatherDataModel()
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var weatherIconImg: UIImageView!
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var cityChangeButton: UIButton!
     
     var eventArray = [Event]()
     
@@ -24,6 +36,11 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         
         eventArray.append(planetaKino)
         eventArray.append(kinopalace)
@@ -52,4 +69,6 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return 60
     }
 
+    @IBAction func cityChangeButtonPressed(_ sender: Any) {
+    }
 }

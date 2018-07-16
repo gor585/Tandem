@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
 extension ToDoViewController {
     
@@ -19,12 +20,24 @@ extension ToDoViewController {
             let title = snapshotValue["Title"]!
             let text = snapshotValue["Text"]!
             let date = snapshotValue["Date"]!
+            let userImgURLString = snapshotValue["UserImageURL"]!
             
-            let item = Item(title: title, image: UIImage(named: "tandem"), text: text, userLogin: user, userImage: UIImage(named: "tandem"))
+            var userImage = UIImage(named: "tandem")
+            
+            let userImgURL = URL(string: userImgURLString)
+            do {
+                let imageData = try Data.init(contentsOf: userImgURL!)
+                userImage = UIImage(data: imageData)!
+            } catch {
+                print("Error retrieving data from \(userImgURL!)")
+            }
+                
+            let item = Item(title: title, image: userImage, text: text, userLogin: user, userImage: userImage, userImgURL: userImgURLString)
             item.date = date
             
             self.itemArray.append(item)
             self.tableView.reloadData()
+            
         }
     }
 }

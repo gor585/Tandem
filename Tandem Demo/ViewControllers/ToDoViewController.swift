@@ -25,11 +25,9 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.separatorStyle = .none
         
-        SVProgressHUD.show()
         DispatchQueue.global(qos: .userInteractive).async {
             self.retrieveItems()
-            print("RETRIEVED !!!!!!!!")
-            SVProgressHUD.dismiss()
+            print("RETRIEVED DATA !!!!!!!!")
         }
     }
     
@@ -46,25 +44,28 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.dateLabel.text = itemArray[indexPath.row].date
         
         if cell.userLoginLabel.text == Auth.auth().currentUser?.email as String! {
-            cell.itemView.backgroundColor = UIColor.flatWhite()
+            cell.userLoginLabel.textColor = UIColor(hexString: "008080")
         } else {
-            cell.itemView.backgroundColor = UIColor.flatSand()
+            cell.userLoginLabel.textColor = UIColor(hexString: "800000")
         }
         
-        cell.itemView.layer.cornerRadius = 25
+        cell.itemView.layer.cornerRadius = 15
         cell.itemView.layer.borderWidth = 1
         
-        if itemArray[indexPath.row].done == true {
-            cell.itemView.layer.borderColor = UIColor.flatForestGreen().cgColor
-        } else {
-            cell.itemView.layer.borderColor = UIColor.flatWatermelon().cgColor
-        }
+        cell.userImage.layer.cornerRadius = cell.userImage.frame.height / 2
         
+        if itemArray[indexPath.row].done == true {
+            cell.itemView.layer.borderColor = UIColor(hexString: "008080").cgColor
+            cell.titleLabel.textColor = UIColor(hexString: "008080")
+        } else {
+            cell.itemView.layer.borderColor = UIColor(hexString: "800000").cgColor
+            cell.titleLabel.textColor = UIColor(hexString: "800000")
+        }
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
+        return 80
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -83,8 +84,8 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.tableView.reloadData()
         }
         
-        done.backgroundColor = UIColor.flatForestGreen()
-        delete.backgroundColor = UIColor.flatWatermelon()
+        done.backgroundColor = UIColor(hexString: "008080")
+        delete.backgroundColor = UIColor(hexString: "800000")
         
         return [delete, done]
     }

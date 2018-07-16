@@ -8,9 +8,12 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 import SVProgressHUD
 
 class WelcomeViewController: UIViewController {
+    
+    var userEmail = ""
     
     @IBOutlet weak var loginLabel: UILabel!
     @IBOutlet weak var logInTextField: UITextField!
@@ -42,6 +45,7 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.hideKeyboardWhenTappedAround()
     }
 
     @IBAction func logInButtonPressed(_ sender: Any) {
@@ -152,6 +156,38 @@ class WelcomeViewController: UIViewController {
                     print("Error occured: \(error!)")
                 } else {
                     print("Registration of \(user!) is successfull")
+                }
+            }
+            
+            userEmail = loginRegisterTextField.text!
+            let delimeter = ".com"
+            let separatedEmail = userEmail.components(separatedBy: delimeter)
+            let userName = separatedEmail[0]
+            
+            var data = NSData()
+            data = UIImageJPEGRepresentation(userImageView.image!, 0.6)! as NSData
+            
+            let metadata = StorageMetadata()
+            let imageStorage = Storage.storage().reference().child("images/user_profiles")
+            imageStorage.child("\(loginRegisterTextField.text!).jpg").putData(data as Data, metadata: metadata) { (metadata, error) in
+                guard let metadata = metadata else {
+                    print("Error ocurred: \(error!)")
+                    return
+                }                
+                print("Uploaded profile image with metadata: \(metadata)")
+                print(metadata.downloadURL()!.absoluteString)
+                
+                let userImgDatabase = Database.database().reference().child("UserImg")
+                let userImgDictionary = ["\(userName)": "\(metadata.downloadURL()!.absoluteString)"]
+                print(userName)
+                
+                userImgDatabase.childByAutoId().setValue(userImgDictionary) {
+                    (error, reference) in
+                    if error != nil {
+                        print("Error: \(error!)")
+                    } else {
+                        print("User image url saved successfully")
+                    }
                 }
             }
             

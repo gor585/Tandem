@@ -18,13 +18,15 @@ class Item {
     
     var userLogin: String
     var userImage: UIImage?
+    var userImgURL: String
     
-    init(title: String? = "", image: UIImage? = UIImage(named: "camera"), text: String? = "", userLogin: String, userImage: UIImage? = UIImage(named: "camera")) {
+    init(title: String? = "", image: UIImage? = UIImage(named: "camera"), text: String? = "", userLogin: String, userImage: UIImage? = UIImage(named: "camera"), userImgURL: String = "") {
         self.title = title
         self.image = image
         self.text = text
         self.userLogin = userLogin
         self.userImage = userImage
+        self.userImgURL = userImgURL
         self.done = false
         
         date = dateString(dateToString: currentDate)

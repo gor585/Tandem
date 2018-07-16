@@ -34,7 +34,7 @@ extension WelcomeViewController {
         registrationStackView.isHidden = true
         loginRegisterLabel.isHidden = true
         loginRegisterTextField.isHidden = true
-        loginRegisterTextField.text = ""
+        //loginRegisterTextField.text = ""
         passwordRegisterLabel.isHidden = true
         passwordRegisterTextField.isHidden = true
         passwordRegisterTextField.text = ""

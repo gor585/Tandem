@@ -11,11 +11,12 @@ import Firebase
 
 extension ToDoViewController: AddItem {
     
-    func userAddedNewItem(title: String, image: UIImage, text: String, userLogin: String, userImage: UIImage) {
-        let newItem = Item(title: title, image: image, text: text, userLogin: userLogin, userImage: userImage)
+    func userAddedNewItem(title: String, image: UIImage, text: String, userLogin: String, userImage: UIImage, userImgURL: String) {
+        
+        let newItem = Item(title: title, image: image, text: text, userLogin: userLogin, userImage: userImage, userImgURL: userImgURL)
 //        itemArray.append(newItem)  ---> app is already retrieving data from Firebase via retrieveItems() and appending it to itemArray
         
-        let itemsDictionary = ["User": Auth.auth().currentUser?.email, "Title": newItem.title, "Text": newItem.text, "Date": newItem.date]
+        let itemsDictionary = ["User": Auth.auth().currentUser?.email, "UserImageURL": newItem.userImgURL, "Title": newItem.title, "Text": newItem.text, "Date": newItem.date]
         DispatchQueue.global(qos: .userInteractive).async {
             self.itemsDatabase.childByAutoId().setValue(itemsDictionary) {
                 (error, reference) in

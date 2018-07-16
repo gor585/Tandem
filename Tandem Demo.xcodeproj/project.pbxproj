@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		250829CC20F9FE1400590CB9 /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250829CB20F9FE1400590CB9 /* HideKeyboard.swift */; };
+		2510B2A820FB360D0091C1DC /* WeatherUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2510B2A720FB360D0091C1DC /* WeatherUpdate.swift */; };
 		251CE8BF20F754F1002D9845 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 251CE8BE20F754F1002D9845 /* GoogleService-Info.plist */; };
 		251CE8C120F78162002D9845 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CE8C020F78162002D9845 /* SettingsViewController.swift */; };
+		2526C9EE20FB3D7B00EBE943 /* WeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2526C9ED20FB3D7B00EBE943 /* WeatherDataModel.swift */; };
 		254A71E720F0ACD3002D405C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254A71E620F0ACD3002D405C /* AppDelegate.swift */; };
 		254A71E920F0ACD3002D405C /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254A71E820F0ACD3002D405C /* WelcomeViewController.swift */; };
 		254A71EC20F0ACD3002D405C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 254A71EA20F0ACD3002D405C /* Main.storyboard */; };
@@ -37,8 +40,11 @@
 
 /* Begin PBXFileReference section */
 		0DEC5D17CC68153172A9D09A /* Pods-Tandem Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tandem Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tandem Demo/Pods-Tandem Demo.release.xcconfig"; sourceTree = "<group>"; };
+		250829CB20F9FE1400590CB9 /* HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboard.swift; sourceTree = "<group>"; };
+		2510B2A720FB360D0091C1DC /* WeatherUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUpdate.swift; sourceTree = "<group>"; };
 		251CE8BE20F754F1002D9845 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		251CE8C020F78162002D9845 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		2526C9ED20FB3D7B00EBE943 /* WeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataModel.swift; sourceTree = "<group>"; };
 		254A71E320F0ACD3002D405C /* Tandem Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tandem Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		254A71E620F0ACD3002D405C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		254A71E820F0ACD3002D405C /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +86,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2510B2A920FB36380091C1DC /* EventVC Ext */ = {
+			isa = PBXGroup;
+			children = (
+				2510B2A720FB360D0091C1DC /* WeatherUpdate.swift */,
+			);
+			path = "EventVC Ext";
+			sourceTree = "<group>";
+		};
 		254A71DA20F0ACD3002D405C = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +152,7 @@
 			children = (
 				25BF18C520F2727D00393B77 /* ItemModel.swift */,
 				25E0528420F20F4F00E4206C /* EventModel.swift */,
+				2526C9ED20FB3D7B00EBE943 /* WeatherDataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -146,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				25BF18C720F272E200393B77 /* DateConverter.swift */,
+				250829CB20F9FE1400590CB9 /* HideKeyboard.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -171,6 +187,7 @@
 				25E1569C20F644FA00D638DC /* AddVC Ext */,
 				25E1569F20F6486000D638DC /* DetailsViewController.swift */,
 				25FC964020F12DEE0035D9BF /* EventsViewController.swift */,
+				2510B2A920FB36380091C1DC /* EventVC Ext */,
 				251CE8C020F78162002D9845 /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
@@ -356,6 +373,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				250829CC20F9FE1400590CB9 /* HideKeyboard.swift in Sources */,
 				25E1569B20F6449C00D638DC /* AddImagePicker.swift in Sources */,
 				25BF18D220F294A300393B77 /* AddItem.swift in Sources */,
 				251CE8C120F78162002D9845 /* SettingsViewController.swift in Sources */,
@@ -374,6 +392,8 @@
 				25E156A020F6486000D638DC /* DetailsViewController.swift in Sources */,
 				255EFC4320F89C7F006E9766 /* Segues.swift in Sources */,
 				25E1569020F618FD00D638DC /* LogInMode.swift in Sources */,
+				2510B2A820FB360D0091C1DC /* WeatherUpdate.swift in Sources */,
+				2526C9EE20FB3D7B00EBE943 /* WeatherDataModel.swift in Sources */,
 				25E1569720F621DA00D638DC /* ImagePicker.swift in Sources */,
 				254A71E720F0ACD3002D405C /* AppDelegate.swift in Sources */,
 				25BF18D020F275EA00393B77 /* ToDoCell.swift in Sources */,

@@ -9,6 +9,8 @@ target 'Tandem Demo' do
 pod 'Firebase'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
+pod 'Firebase/Storage'
+pod 'Firebase/Core'
 pod 'Alamofire'
 pod 'SwiftyJSON'
 pod 'SVProgressHUD'
