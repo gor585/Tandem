@@ -20,7 +20,9 @@ extension ToDoViewController {
             let title = snapshotValue["Title"]!
             let text = snapshotValue["Text"]!
             let date = snapshotValue["Date"]!
+            let isDone = snapshotValue["IsDone"]!
             let userImgURLString = snapshotValue["UserImageURL"]!
+            let id = snapshotValue["ID"]!
             
             var userImage = UIImage(named: "tandem")
             
@@ -31,9 +33,16 @@ extension ToDoViewController {
             } catch {
                 print("Error retrieving data from \(userImgURL!)")
             }
-                
+            
             let item = Item(title: title, image: userImage, text: text, userLogin: user, userImage: userImage, userImgURL: userImgURLString)
             item.date = date
+            item.id = id
+            
+            if isDone == "true" {
+                item.done = true
+            } else {
+                item.done = false
+            }
             
             self.itemArray.append(item)
             self.tableView.reloadData()

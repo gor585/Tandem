@@ -17,6 +17,9 @@ extension ToDoViewController {
         }
         if segue.identifier == "toDetails" {
             let detailsVC = segue.destination as! DetailsViewController
+            detailsVC.cell = itemArray[(tableView.indexPathForSelectedRow?.row)!]
+            detailsVC.selectedItem = tableView.indexPathForSelectedRow?.row
+            detailsVC.delegate = self
         }
     }
 }

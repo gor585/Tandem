@@ -24,16 +24,37 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var EditTextView: UITextView!
     @IBOutlet weak var confirmButton: UIButton!
     
+    var delegate: EditItem?
+    var cell: Item?
+    var selectedItem: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        detailsTitleLabel.text = cell?.title
+        detailsTextView.text = cell?.text
+        
+        editTitleTextField.text = cell?.title
+        EditTextView.text = cell?.text
+        
+        detailsModeBegin()
     }
     
     @IBAction func editButtonPressed(_ sender: Any) {
-        
+        detailsModeEnded()
     }
     
     @IBAction func deleteButtonPressed(_ sender: Any) {
+        let alert = UIAlertController(title: "Delete item", message: "Are you shure you want to delete this item?", preferredStyle: .alert)
+        let actionDelete = UIAlertAction(title: "Delete", style: .destructive, handler: { (actionDelete) in
+            self.delegate?.userDeletedItem(atIndex: self.selectedItem!)
+            self.navigationController?.popViewController(animated: true)
+        })
+        let actionCancel = UIAlertAction(title: "Cancel", style: .default) { (actionCancel) in }
         
+        alert.addAction(actionCancel)
+        alert.addAction(actionDelete)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func changeImageButtonPressed(_ sender: Any) {
@@ -41,7 +62,27 @@ class DetailsViewController: UIViewController {
     }
     
     @IBAction func confirmButtonPressed(_ sender: Any) {
+        let alert = UIAlertController(title: "Apply changes", message: "Are you shure you want to apply changes to this item?", preferredStyle: .alert)
+        let actionOk = UIAlertAction(title: "Ok", style: .default, handler: { (actionOk) in
+            
+            self.cell?.title = self.editTitleTextField.text
+            self.cell?.image = self.editImageView.image
+            self.cell?.text = self.EditTextView.text
+            
+            self.detailsTitleLabel.text = self.editTitleTextField.text
+            self.detailsImageView.image = self.editImageView.image
+            self.detailsTextView.text = self.EditTextView.text
+            
+            self.delegate?.userEditedItem(atIndex: self.selectedItem!, title: self.editTitleTextField.text!, image: self.editImageView.image!, text: self.EditTextView.text!)
+            
+            self.navigationController?.popViewController(animated: true)
+            self.detailsModeBegin()
+        })
+        let actionCancel = UIAlertAction(title: "Cancel", style: .default) { (actionCancel) in }
         
+        alert.addAction(actionCancel)
+        alert.addAction(actionOk)
+        present(alert, animated: true, completion: nil)
     }
     
 }

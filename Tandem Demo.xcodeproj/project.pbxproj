@@ -33,6 +33,10 @@
 		25E1569720F621DA00D638DC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1569620F621DA00D638DC /* ImagePicker.swift */; };
 		25E1569B20F6449C00D638DC /* AddImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1569A20F6449C00D638DC /* AddImagePicker.swift */; };
 		25E156A020F6486000D638DC /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1569F20F6486000D638DC /* DetailsViewController.swift */; };
+		25E573E820FDC6310058F007 /* DetailsMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E573E720FDC6310058F007 /* DetailsMode.swift */; };
+		25E573EA20FDC6450058F007 /* EditMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E573E920FDC6450058F007 /* EditMode.swift */; };
+		25E573ED20FE2A960058F007 /* EditItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E573EC20FE2A960058F007 /* EditItem.swift */; };
+		25E573EF20FE2C7A0058F007 /* EditAndDeleteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E573EE20FE2C7A0058F007 /* EditAndDeleteItem.swift */; };
 		25FC964120F12DEE0035D9BF /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FC964020F12DEE0035D9BF /* EventsViewController.swift */; };
 		25FC964320F12FD50035D9BF /* EventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FC964220F12FD50035D9BF /* EventsCell.swift */; };
 		BD9ACE3F5C3452407179018B /* Pods_Tandem_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB82E272A33F0B83EF6F9F8 /* Pods_Tandem_Demo.framework */; };
@@ -68,6 +72,10 @@
 		25E1569620F621DA00D638DC /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		25E1569A20F6449C00D638DC /* AddImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImagePicker.swift; sourceTree = "<group>"; };
 		25E1569F20F6486000D638DC /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		25E573E720FDC6310058F007 /* DetailsMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsMode.swift; sourceTree = "<group>"; };
+		25E573E920FDC6450058F007 /* EditMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMode.swift; sourceTree = "<group>"; };
+		25E573EC20FE2A960058F007 /* EditItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItem.swift; sourceTree = "<group>"; };
+		25E573EE20FE2C7A0058F007 /* EditAndDeleteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAndDeleteItem.swift; sourceTree = "<group>"; };
 		25FC964020F12DEE0035D9BF /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		25FC964220F12FD50035D9BF /* EventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCell.swift; sourceTree = "<group>"; };
 		3DB82E272A33F0B83EF6F9F8 /* Pods_Tandem_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tandem_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +143,7 @@
 				255EFC3D20F89716006E9766 /* AddNewItem.swift */,
 				255EFC4020F89776006E9766 /* RetrieveItem.swift */,
 				255EFC4220F89C7F006E9766 /* Segues.swift */,
+				25E573EE20FE2C7A0058F007 /* EditAndDeleteItem.swift */,
 			);
 			path = "ToDoVC Ext";
 			sourceTree = "<group>";
@@ -143,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				25BF18D120F294A300393B77 /* AddItem.swift */,
+				25E573EC20FE2A960058F007 /* EditItem.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -186,6 +196,7 @@
 				25BF18D320F2960800393B77 /* AddItemViewController.swift */,
 				25E1569C20F644FA00D638DC /* AddVC Ext */,
 				25E1569F20F6486000D638DC /* DetailsViewController.swift */,
+				25E573EB20FE297C0058F007 /* DetailsVC Ext */,
 				25FC964020F12DEE0035D9BF /* EventsViewController.swift */,
 				2510B2A920FB36380091C1DC /* EventVC Ext */,
 				251CE8C020F78162002D9845 /* SettingsViewController.swift */,
@@ -210,6 +221,15 @@
 				25E1569A20F6449C00D638DC /* AddImagePicker.swift */,
 			);
 			path = "AddVC Ext";
+			sourceTree = "<group>";
+		};
+		25E573EB20FE297C0058F007 /* DetailsVC Ext */ = {
+			isa = PBXGroup;
+			children = (
+				25E573E720FDC6310058F007 /* DetailsMode.swift */,
+				25E573E920FDC6450058F007 /* EditMode.swift */,
+			);
+			path = "DetailsVC Ext";
 			sourceTree = "<group>";
 		};
 		41176500E8E59466086DD5CC /* Pods */ = {
@@ -373,19 +393,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25E573ED20FE2A960058F007 /* EditItem.swift in Sources */,
 				250829CC20F9FE1400590CB9 /* HideKeyboard.swift in Sources */,
+				25E573E820FDC6310058F007 /* DetailsMode.swift in Sources */,
 				25E1569B20F6449C00D638DC /* AddImagePicker.swift in Sources */,
 				25BF18D220F294A300393B77 /* AddItem.swift in Sources */,
 				251CE8C120F78162002D9845 /* SettingsViewController.swift in Sources */,
 				254A71E920F0ACD3002D405C /* WelcomeViewController.swift in Sources */,
 				25FC964120F12DEE0035D9BF /* EventsViewController.swift in Sources */,
 				25E1569420F619EC00D638DC /* UserImageSelectionMode.swift in Sources */,
+				25E573EF20FE2C7A0058F007 /* EditAndDeleteItem.swift in Sources */,
 				25B1163F20F0F530009D0A28 /* ToDoViewController.swift in Sources */,
 				25FC964320F12FD50035D9BF /* EventsCell.swift in Sources */,
 				25BF18D420F2960800393B77 /* AddItemViewController.swift in Sources */,
 				255EFC4120F89776006E9766 /* RetrieveItem.swift in Sources */,
 				25BF18C820F272E200393B77 /* DateConverter.swift in Sources */,
 				255EFC3E20F89716006E9766 /* AddNewItem.swift in Sources */,
+				25E573EA20FDC6450058F007 /* EditMode.swift in Sources */,
 				25E1569220F6193400D638DC /* RegisterMode.swift in Sources */,
 				25E0528520F20F4F00E4206C /* EventModel.swift in Sources */,
 				25BF18C620F2727D00393B77 /* ItemModel.swift in Sources */,

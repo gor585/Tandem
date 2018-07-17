@@ -15,6 +15,7 @@ class Item {
     var text: String?
     var image: UIImage?
     var done: Bool
+    var id: String
     
     var userLogin: String
     var userImage: UIImage?
@@ -28,6 +29,7 @@ class Item {
         self.userImage = userImage
         self.userImgURL = userImgURL
         self.done = false
+        self.id = ""
         
         date = dateString(dateToString: currentDate)
     }

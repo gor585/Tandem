@@ -13,8 +13,6 @@ import SVProgressHUD
 
 class WelcomeViewController: UIViewController {
     
-    var userEmail = ""
-    
     @IBOutlet weak var loginLabel: UILabel!
     @IBOutlet weak var logInTextField: UITextField!
     @IBOutlet weak var passwordLabel: UILabel!
@@ -41,6 +39,8 @@ class WelcomeViewController: UIViewController {
     
     @IBOutlet weak var loginStackView: UIStackView!
     @IBOutlet weak var registrationStackView: UIStackView!
+    
+    var userEmail = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -165,7 +165,7 @@ class WelcomeViewController: UIViewController {
             let userName = separatedEmail[0]
             
             var data = NSData()
-            data = UIImageJPEGRepresentation(userImageView.image!, 0.6)! as NSData
+            data = UIImageJPEGRepresentation(userImageView.image!, 0.01)! as NSData
             
             let metadata = StorageMetadata()
             let imageStorage = Storage.storage().reference().child("images/user_profiles")
