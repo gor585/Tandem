@@ -27,7 +27,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var eventArray = [Event]()
     
     let planetaKino = Event(title: "Planeta Kino", image: UIImage(named: "planetaKino")!, url: "https://planetakino.ua/lvov2/showtimes/#imax_4dx_relux_cinetech_vr_2d_3d_one-day")
-    let kinopalace = Event(title: "Kinopalace",image: UIImage(named: "kinopalace")!, url: "http://kinopalace.lviv.ua/schedule/")
+    let kinopalace = Event(title: "Kinopalace",image: UIImage(named: "kinopalace-logo")!, url: "http://kinopalace.lviv.ua/schedule/")
     let lesya = Event(title: "Teatr Lesi",image: UIImage(named: "teatr-lesi")!, url: "http://teatrlesi.lviv.ua/events/")
     let kurbas = Event(title: "Teatr Kurbasa",image: UIImage(named: "kurbas-1")!, url: "http://www.kurbas.lviv.ua/afisha/")
     let philarmony = Event(title: "Philarmony",image: UIImage(named: "philarmony")!, url: "https://philharmonia.lviv.ua/events/")
@@ -47,6 +47,8 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         eventArray.append(lesya)
         eventArray.append(kurbas)
         eventArray.append(philarmony)
+        
+        cityChangeButton.layer.cornerRadius = 15
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,16 +59,18 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell") as! EventCell
         cell.eventImage?.image = eventArray[indexPath.row].image
         cell.eventTitleLabel.text = eventArray[indexPath.row].title
+        cell.eventItemView.layer.cornerRadius = 15
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let url = URL(string: eventArray[indexPath.row].url!) else { return }
         UIApplication.shared.open(url as URL)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 80
     }
 
     @IBAction func cityChangeButtonPressed(_ sender: Any) {

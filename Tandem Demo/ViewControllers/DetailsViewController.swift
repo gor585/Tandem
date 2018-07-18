@@ -31,6 +31,9 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        editTitleTextField.delegate = self
+        EditTextView.delegate = self 
+        
         detailsTitleLabel.text = cell?.title
         detailsTextView.text = cell?.text
         
@@ -38,6 +41,7 @@ class DetailsViewController: UIViewController {
         EditTextView.text = cell?.text
         
         detailsModeBegin()
+        self.hideKeyboardWhenTappedAround()
     }
     
     @IBAction func editButtonPressed(_ sender: Any) {
@@ -78,7 +82,9 @@ class DetailsViewController: UIViewController {
             self.navigationController?.popViewController(animated: true)
             self.detailsModeBegin()
         })
-        let actionCancel = UIAlertAction(title: "Cancel", style: .default) { (actionCancel) in }
+        let actionCancel = UIAlertAction(title: "Cancel", style: .default) { (actionCancel) in
+            self.detailsModeBegin()
+        }
         
         alert.addAction(actionCancel)
         alert.addAction(actionOk)

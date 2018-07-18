@@ -21,6 +21,11 @@ class AddItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        titleTextField.delegate = self
+        textTextField.delegate = self
+        
+        self.hideKeyboardWhenTappedAround()
+        
         addImageButton.layer.borderColor = UIColor.white.cgColor
         addImageButton.layer.borderWidth = 1
     }
@@ -28,14 +33,13 @@ class AddItemViewController: UIViewController {
     func getUserImgURL(completion: @escaping (String) -> ()) {
         let userEmailReference = Database.database().reference().child("UserImg")
         let userEmail = Auth.auth().currentUser!.email!
-        let delimeter = ".com"
+        let delimeter = "."
         let token = userEmail.components(separatedBy: delimeter)
         let userName = token[0]
         var url = ""
         
         userEmailReference.observe(.childAdded) { (snapshot) in
             let snapshotValue = snapshot.value as! Dictionary<String, String>
-            
             for (key, value) in snapshotValue {
                 if key == userName {
                     url = value
@@ -48,7 +52,6 @@ class AddItemViewController: UIViewController {
     @IBAction func submitButtonPressed(_ sender: Any) {
         
         var userImage = UIImage()
-        
         getUserImgURL { (url) in
             let userImgURL = URL(string: url)
             

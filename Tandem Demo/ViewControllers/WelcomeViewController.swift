@@ -45,6 +45,12 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        logInTextField.delegate = self
+        passwordTextField.delegate = self
+        loginRegisterTextField.delegate = self
+        passwordRegisterTextField.delegate = self
+        verifyPasswordTextField.delegate = self
+        
         self.hideKeyboardWhenTappedAround()
     }
 
@@ -160,7 +166,7 @@ class WelcomeViewController: UIViewController {
             }
             
             userEmail = loginRegisterTextField.text!
-            let delimeter = ".com"
+            let delimeter = "."
             let separatedEmail = userEmail.components(separatedBy: delimeter)
             let userName = separatedEmail[0]
             
@@ -197,6 +203,11 @@ class WelcomeViewController: UIViewController {
             userImageSelectionEnded()
             registerModeEnded()
         }
+    }
+    
+    func textFieldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
     
     @IBAction func unwindToWelcomeVC(segue: UIStoryboardSegue) {}
