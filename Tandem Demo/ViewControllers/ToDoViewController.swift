@@ -14,10 +14,13 @@ import ChameleonFramework
 class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var filterDoneButton: UISegmentedControl!
     
     var itemArray = [Item]()
+    var allRetrievedItemsArray = [Item]()
     var selectedCell: Item?
     let itemsDatabase = Database.database().reference().child("Items")
+    let cache = NSCache<NSString, UIImage>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +28,9 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         
         tableView.separatorStyle = .none
-        
-        DispatchQueue.global(qos: .userInteractive).async {
-            self.retrieveItems()
-            print("RETRIEVED DATA !!!!!!!!")
-        }
+
+        self.retrieveItems()
+        print("RETRIEVED DATA !!!!!!!!")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -67,8 +68,6 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         selectedCell = itemArray[indexPath.row]
-        
-        //itemArray.sort { $0.date > $1.date }
         
         return cell
     }
@@ -112,5 +111,15 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         delete.backgroundColor = UIColor(hexString: "800000")
         
         return [delete, done]
+    }
+    
+    @IBAction func filterDoneButtonPressed(_ sender: UISegmentedControl) {
+        if filterDoneButton.selectedSegmentIndex == 1 {
+            itemArray = itemArray.filter {$0.done == false}
+            tableView.reloadData()
+        } else if filterDoneButton.selectedSegmentIndex == 0 {
+            itemArray = allRetrievedItemsArray
+            tableView.reloadData()
+        }
     }
 }

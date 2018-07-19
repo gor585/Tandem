@@ -24,6 +24,8 @@ extension WelcomeViewController {
         chooseImageButton.isEnabled = true
         chooseImageButton.layer.borderWidth = 1
         chooseImageButton.layer.borderColor = UIColor.white.cgColor
+        chooseImageButton.layer.cornerRadius = chooseImageButton.frame.width / 2
+        userImageView.layer.cornerRadius = userImageView.frame.width / 2
         
         nextRegisterButton.isHidden = true
         nextRegisterButton.isEnabled = false

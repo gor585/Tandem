@@ -25,14 +25,18 @@ extension ToDoViewController {
             let id = snapshotValue["ID"]!
             
             var userImage = UIImage(named: "tandem")
-            
             let userImgURL = URL(string: userImgURLString)
-            do {
-                let imageData = try Data.init(contentsOf: userImgURL!)
-                userImage = UIImage(data: imageData)!
-            } catch {
-                print("Error retrieving data from \(userImgURL!)")
+            
+            if self.cache.object(forKey: user as NSString) == nil {
+                do {
+                    let imageData = try Data.init(contentsOf: userImgURL!)
+                    self.cache.setObject(UIImage(data: imageData)!, forKey: user as NSString)
+                } catch {
+                    print("Error retrieving data from \(userImgURL!)")
+                }
             }
+            
+            userImage = self.cache.object(forKey: user as NSString)
             
             let item = Item(title: title, image: userImage, text: text, userLogin: user, userImage: userImage, userImgURL: userImgURLString)
             item.date = date
@@ -45,8 +49,10 @@ extension ToDoViewController {
             }
             
             self.itemArray.append(item)
-            self.tableView.reloadData()
+            print("Item \(item.title!) appended to array!")
+            self.allRetrievedItemsArray = self.itemArray
             
+            self.tableView.reloadData()
         }
     }
 }

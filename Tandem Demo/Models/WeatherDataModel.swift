@@ -55,6 +55,5 @@ class WeatherDataModel {
         default :
             return "dunno"
         }
-        
     }
 }
