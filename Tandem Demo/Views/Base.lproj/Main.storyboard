@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -432,7 +433,7 @@
                                     <constraint firstAttribute="width" constant="120" id="dvo-gL-96T"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="Done"/>
+                                    <segment title="All"/>
                                     <segment title="Undone"/>
                                 </segments>
                                 <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -440,11 +441,47 @@
                                     <action selector="filterDoneButtonPressed:" destination="Mp8-wE-tk0" eventType="valueChanged" id="G6S-CY-GnV"/>
                                 </connections>
                             </segmentedControl>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Bir-pU-am4" userLabel="UserFilterStackView">
+                                <rect key="frame" x="195" y="64" width="180" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gr0-01-dpq">
+                                        <rect key="frame" x="0.0" y="0.0" width="180" height="40"/>
+                                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="AllUsers">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="allUsersFilterButtonPressed:" destination="Mp8-wE-tk0" eventType="touchUpInside" id="SmJ-Ih-xfi"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3b-Xo-h15">
+                                        <rect key="frame" x="0.0" y="40" width="180" height="40"/>
+                                        <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="ECY-cQ-tXq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="CurrentUser">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="currentUserFilterButtonPressed:" destination="Mp8-wE-tk0" eventType="touchUpInside" id="mGd-dq-Wht"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="aqJ-DV-lBs"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="h6W-u2-Rak" firstAttribute="bottom" secondItem="Hg4-dg-p2J" secondAttribute="bottom" id="6gK-Zg-9bY"/>
+                            <constraint firstItem="Bir-pU-am4" firstAttribute="top" secondItem="Hg4-dg-p2J" secondAttribute="top" id="UnI-ja-sI9"/>
                             <constraint firstItem="h6W-u2-Rak" firstAttribute="leading" secondItem="Hg4-dg-p2J" secondAttribute="leading" id="WuN-vu-9TW"/>
+                            <constraint firstItem="Hg4-dg-p2J" firstAttribute="trailing" secondItem="Bir-pU-am4" secondAttribute="trailing" id="Yrb-Xb-KNS"/>
                             <constraint firstItem="nNS-zu-Fhp" firstAttribute="centerX" secondItem="kEV-0d-07e" secondAttribute="centerX" id="hOP-jF-cue"/>
                             <constraint firstItem="h6W-u2-Rak" firstAttribute="trailing" secondItem="Hg4-dg-p2J" secondAttribute="trailing" id="o0d-Fj-Np9"/>
                             <constraint firstItem="h6W-u2-Rak" firstAttribute="top" secondItem="nNS-zu-Fhp" secondAttribute="bottom" constant="10" id="pav-lg-UQP"/>
@@ -454,16 +491,26 @@
                         <viewLayoutGuide key="safeArea" id="Hg4-dg-p2J"/>
                     </view>
                     <navigationItem key="navigationItem" title="ToDo" id="KrK-eV-s5a">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="E63-pW-5Gc">
-                            <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="re0-HK-3KX" kind="show" identifier="addInfo" id="Z44-BB-ln4"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="E63-pW-5Gc">
+                                <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="re0-HK-3KX" kind="show" identifier="addInfo" id="Z44-BB-ln4"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="organize" id="EIE-Ap-Hrr">
+                                <connections>
+                                    <action selector="filterUsersButtonPressed:" destination="Mp8-wE-tk0" id="36g-yQ-yvH"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="allUsersFilterButton" destination="gr0-01-dpq" id="qd8-Zo-d2L"/>
+                        <outlet property="currentUserFilterButton" destination="W3b-Xo-h15" id="xGG-fc-G9w"/>
                         <outlet property="filterDoneButton" destination="nNS-zu-Fhp" id="JCJ-et-Zb4"/>
                         <outlet property="tableView" destination="h6W-u2-Rak" id="Oc9-0q-ll9"/>
+                        <outlet property="userFilterStackView" destination="Bir-pU-am4" id="iPw-hL-bX5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TdT-JE-uet" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -543,7 +590,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="167.5" height="60"/>
                                         <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="26"/>
-                                        <state key="normal" title="City">
+                                        <state key="normal">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -595,42 +642,90 @@
             <point key="canvasLocation" x="2775.1999999999998" y="551.87406296851577"/>
         </scene>
         <!--Settings-->
-        <scene sceneID="oFr-yy-6iB">
+        <scene sceneID="ydD-iu-gFO">
             <objects>
-                <viewController id="Rd9-C8-nBi" customClass="SettingsViewController" customModule="Tandem_Demo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="V1I-mk-9B1">
+                <tableViewController id="UQe-hG-qib" customClass="SettingsViewController" customModule="Tandem_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RuN-Af-yLR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
-                        <viewLayoutGuide key="safeArea" id="iI7-ZN-XIE"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Settings" id="Wau-vR-fUd">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="q1j-14-jlA">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Vy6-bC-9as">
-                                <rect key="frame" x="276" y="4" width="83" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                <state key="normal" title="Log Out">
-                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="logOutButtonPressed:" destination="Rd9-C8-nBi" eventType="touchUpInside" id="xGP-3q-eLb"/>
-                                    <segue destination="oHH-3s-ama" kind="unwind" unwindAction="unwindToWelcomeVCWithSegue:" id="z7T-wJ-7Kb"/>
-                                </connections>
-                            </button>
+                        <sections>
+                            <tableViewSection id="5ex-9q-jsU">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="lPN-f5-yaG">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lPN-f5-yaG" id="rhG-Ju-4C6">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Light Color Theme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Rl-32-9ki">
+                                                    <rect key="frame" x="16" y="2" width="274" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="TXL-1N-DGd"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                                    <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8cu-un-ags">
+                                                    <rect key="frame" x="310" y="6" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="9Rl-32-9ki" firstAttribute="leading" secondItem="rhG-Ju-4C6" secondAttribute="leading" constant="16" id="1dd-93-8gV"/>
+                                                <constraint firstItem="8cu-un-ags" firstAttribute="centerY" secondItem="rhG-Ju-4C6" secondAttribute="centerY" id="9V7-co-IzD"/>
+                                                <constraint firstAttribute="trailing" secondItem="8cu-un-ags" secondAttribute="trailing" constant="16" id="FyO-Ll-wd1"/>
+                                                <constraint firstItem="8cu-un-ags" firstAttribute="leading" secondItem="9Rl-32-9ki" secondAttribute="trailing" constant="20" id="OLd-Of-l5x"/>
+                                                <constraint firstItem="9Rl-32-9ki" firstAttribute="centerY" secondItem="rhG-Ju-4C6" secondAttribute="centerY" id="hA9-MW-Ws2"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="pXr-Mr-Hmn">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pXr-Mr-Hmn" id="Zqi-h1-juf">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="HAW-uT-F2o">
+                                        <rect key="frame" x="0.0" y="88" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HAW-uT-F2o" id="C9J-2G-mJL">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="UQe-hG-qib" id="J2E-an-6Ko"/>
+                            <outlet property="delegate" destination="UQe-hG-qib" id="6HU-Mw-igz"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="Rab-1X-GNB">
+                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="0df-vZ-uAJ">
+                            <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="oHH-3s-ama" kind="unwind" unwindAction="unwindToWelcomeVCWithSegue:" id="2Ur-NN-TJQ"/>
+                                <action selector="logOutButtonPressed:" destination="UQe-hG-qib" id="KBt-LM-dVg"/>
+                                <segue destination="vuZ-cf-FR3" kind="unwind" unwindAction="unwindToWelcomeVCWithSegue:" id="29k-JG-4MI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="logOutButton" destination="Vy6-bC-9as" id="mtq-Su-15U"/>
+                        <outlet property="logOutButton" destination="0df-vZ-uAJ" id="RWA-vn-heO"/>
+                        <outlet property="switchColorTheme" destination="8cu-un-ags" id="4N3-dr-19d"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="I7m-HA-Zxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="oHH-3s-ama" userLabel="Exit" sceneMemberID="exit"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7XA-0M-0WJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="vuZ-cf-FR3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1232.8" y="1001.649175412294"/>
+            <point key="canvasLocation" x="1285.5999999999999" y="1001.649175412294"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="mCV-jk-hqB">
@@ -719,26 +814,8 @@
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Qr-8X-lGT" userLabel="EditView">
                                 <rect key="frame" x="16" y="229" width="343" height="30"/>
-                                <subviews>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jn1-NX-1hk" userLabel="changeImageButton">
-                                        <rect key="frame" x="293" y="0.0" width="35" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="YrQ-Vo-I0a"/>
-                                            <constraint firstAttribute="width" constant="35" id="h73-MH-mYG"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
-                                        <state key="normal" backgroundImage="camera">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="changeImageButtonPressed:" destination="h0y-Tc-dtL" eventType="touchUpInside" id="KCu-8n-jWq"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Jn1-NX-1hk" firstAttribute="top" secondItem="6Qr-8X-lGT" secondAttribute="top" id="aFx-9d-3jo"/>
-                                    <constraint firstAttribute="trailing" secondItem="Jn1-NX-1hk" secondAttribute="trailing" constant="15" id="eaO-ct-WaE"/>
                                     <constraint firstAttribute="height" constant="30" id="tr5-iC-OHI"/>
                                 </constraints>
                             </view>
@@ -801,7 +878,6 @@
                     </view>
                     <connections>
                         <outlet property="EditTextView" destination="ZSA-De-cod" id="cPM-E2-Of7"/>
-                        <outlet property="changeImageButton" destination="Jn1-NX-1hk" id="idh-xX-OX2"/>
                         <outlet property="confirmButton" destination="w3g-ma-bmd" id="3EW-Qs-Kk6"/>
                         <outlet property="deleteButton" destination="Q87-2f-300" id="z5R-XC-Fcw"/>
                         <outlet property="detailsImageView" destination="vKW-CA-I4a" id="82r-fJ-VRn"/>
@@ -881,7 +957,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Rd9-C8-nBi" kind="relationship" relationship="rootViewController" id="Ex5-JX-nSs"/>
+                        <segue destination="UQe-hG-qib" kind="relationship" relationship="rootViewController" id="jKC-4V-9jH"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fWO-1B-xod" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -931,26 +1007,8 @@
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WFG-ZQ-vWe">
                                 <rect key="frame" x="16" y="227" width="343" height="30"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Td-OF-FVL">
-                                        <rect key="frame" x="293" y="0.0" width="35" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="bSl-tG-U9E"/>
-                                            <constraint firstAttribute="width" constant="35" id="gL0-Z1-KHX"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
-                                        <state key="normal" backgroundImage="camera">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="addImageButtonPressed:" destination="re0-HK-3KX" eventType="touchUpInside" id="gO3-mO-ttV"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="6Td-OF-FVL" firstAttribute="top" secondItem="WFG-ZQ-vWe" secondAttribute="top" id="KMd-w7-fLT"/>
-                                    <constraint firstAttribute="trailing" secondItem="6Td-OF-FVL" secondAttribute="trailing" constant="15" id="fk8-Mu-xMh"/>
                                     <constraint firstAttribute="height" constant="30" id="yQp-VQ-2Ug"/>
                                 </constraints>
                             </view>
@@ -978,8 +1036,6 @@
                         <viewLayoutGuide key="safeArea" id="gz4-IA-l6l"/>
                     </view>
                     <connections>
-                        <outlet property="addImageButton" destination="6Td-OF-FVL" id="9Br-J9-IDa"/>
-                        <outlet property="photoImageView" destination="lbq-Ty-Amh" id="kfA-ai-435"/>
                         <outlet property="textTextField" destination="Jj7-TK-gB8" id="8Bu-bU-Zya"/>
                         <outlet property="titleTextField" destination="Cld-uG-vXm" id="Wtf-p0-0fl"/>
                     </connections>
@@ -990,7 +1046,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="camera" width="1600" height="1600"/>
         <image name="tandem" width="490" height="175"/>
     </resources>
 </document>

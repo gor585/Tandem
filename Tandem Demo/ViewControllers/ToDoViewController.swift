@@ -15,23 +15,36 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var filterDoneButton: UISegmentedControl!
+    @IBOutlet weak var currentUserFilterButton: UIButton!
+    @IBOutlet weak var allUsersFilterButton: UIButton!
+    @IBOutlet weak var otherUsersButton: UIButton!
+    @IBOutlet weak var userFilterStackView: UIStackView!
     
     var itemArray = [Item]()
     var allRetrievedItemsArray = [Item]()
+    var usersArray = [String]()
+    var currentUserItems = [Item]()
+    var specifiedUserItemsDictionary = [String: [Item]]()
     var selectedCell: Item?
     let itemsDatabase = Database.database().reference().child("Items")
     let cache = NSCache<NSString, UIImage>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userFilterUnabled()
+        
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.separatorStyle = .none
-
-        self.retrieveItems()
-        print("RETRIEVED DATA !!!!!!!!")
+        retrieveItems()
+        print("RETRIEVED DATA Sync !!!!!!!!")
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        tableView.reloadData()
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemArray.count
@@ -44,12 +57,6 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.titleLabel.text = itemArray[indexPath.row].title
         cell.userLoginLabel.text = itemArray[indexPath.row].userLogin
         cell.dateLabel.text = itemArray[indexPath.row].date
-        
-//        if cell.userLoginLabel.text == Auth.auth().currentUser?.email as String! {
-//            cell.userLoginLabel.textColor = UIColor(hexString: "008080")
-//        } else {
-//            cell.userLoginLabel.textColor = UIColor(hexString: "800000")
-//        }
         
         cell.itemView.layer.cornerRadius = 15
         cell.itemView.layer.borderWidth = 1
@@ -68,6 +75,16 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         selectedCell = itemArray[indexPath.row]
+        
+        for item in itemArray {
+            if usersArray.contains(item.userLogin) == false && item.userLogin != Auth.auth().currentUser?.email {
+                usersArray.append(item.userLogin)
+                stackFilterAppendUsers()
+                print("\(item.userLogin)")
+            }
+        }
+        
+        
         
         return cell
     }
@@ -113,6 +130,8 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         return [delete, done]
     }
     
+    //MARK - Filter done items
+    
     @IBAction func filterDoneButtonPressed(_ sender: UISegmentedControl) {
         if filterDoneButton.selectedSegmentIndex == 1 {
             itemArray = itemArray.filter {$0.done == false}
@@ -122,4 +141,23 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
             tableView.reloadData()
         }
     }
+    
+    @IBAction func filterUsersButtonPressed(_ sender: Any) {
+        currentUserFilterButton.isHidden == true ? userFilterEnabled() : userFilterUnabled()
+    }
+    
+    @IBAction func currentUserFilterButtonPressed(_ sender: Any) {
+        userFilterUnabled()
+        //currentUserItems = itemArray.filter {$0.userLogin == Auth.auth().currentUser?.email}
+        itemArray = currentUserItems
+        tableView.reloadData()
+    }
+    
+    @IBAction func allUsersFilterButtonPressed(_ sender: Any) {
+        userFilterUnabled()
+        itemArray = allRetrievedItemsArray
+        tableView.reloadData()
+    }
+    
+    
 }

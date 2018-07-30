@@ -20,7 +20,6 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var editTitleTextField: UITextField!
     @IBOutlet weak var editImageView: UIImageView!
     @IBOutlet weak var editView: UIView!
-    @IBOutlet weak var changeImageButton: UIButton!
     @IBOutlet weak var EditTextView: UITextView!
     @IBOutlet weak var confirmButton: UIButton!
     
@@ -61,13 +60,9 @@ class DetailsViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func changeImageButtonPressed(_ sender: Any) {
-        
-    }
-    
     @IBAction func confirmButtonPressed(_ sender: Any) {
         let alert = UIAlertController(title: "Apply changes", message: "Are you shure you want to apply changes to this item?", preferredStyle: .alert)
-        let actionOk = UIAlertAction(title: "Ok", style: .default, handler: { (actionOk) in
+        let actionApply = UIAlertAction(title: "Apply", style: .default, handler: { (actionOk) in
             
             self.cell?.title = self.editTitleTextField.text
             self.cell?.image = self.editImageView.image
@@ -87,7 +82,7 @@ class DetailsViewController: UIViewController {
         }
         
         alert.addAction(actionCancel)
-        alert.addAction(actionOk)
+        alert.addAction(actionApply)
         present(alert, animated: true, completion: nil)
     }
     

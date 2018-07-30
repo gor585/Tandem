@@ -11,8 +11,8 @@ import Firebase
 
 extension ToDoViewController: AddItem {
     
-    func userAddedNewItem(title: String, image: UIImage, text: String, userLogin: String, userImage: UIImage, userImgURL: String) {
-        let newItem = Item(title: title, image: image, text: text, userLogin: userLogin, userImage: userImage, userImgURL: userImgURL)
+    func userAddedNewItem(title: String, text: String, userLogin: String, userImage: UIImage, userImgURL: String) {
+        let newItem = Item(title: title, text: text, userLogin: userLogin, userImage: userImage, userImgURL: userImgURL)
         
         var isDone = "false"
         

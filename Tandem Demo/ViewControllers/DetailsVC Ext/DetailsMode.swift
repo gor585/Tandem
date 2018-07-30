@@ -24,8 +24,6 @@ extension DetailsViewController {
         editImageView.isHidden = true
         editView.isHidden = true
         EditTextView.isHidden = true
-        changeImageButton.isHidden = true
-        changeImageButton.isEnabled = false
         confirmButton.isHidden = true
         confirmButton.isEnabled = false
     }
@@ -44,8 +42,6 @@ extension DetailsViewController {
         editImageView.isHidden = false
         editView.isHidden = false
         EditTextView.isHidden = false
-        changeImageButton.isHidden = false
-        changeImageButton.isEnabled = true
         confirmButton.isHidden = false
         confirmButton.isEnabled = true
     }

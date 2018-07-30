@@ -9,5 +9,5 @@
 import UIKit
 
 protocol AddItem {
-    func userAddedNewItem(title: String, image: UIImage, text: String, userLogin: String, userImage: UIImage, userImgURL: String)
+    func userAddedNewItem(title: String, text: String, userLogin: String, userImage: UIImage, userImgURL: String)
 }

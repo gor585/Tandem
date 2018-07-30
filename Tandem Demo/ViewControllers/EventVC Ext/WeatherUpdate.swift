@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import Alamofire
 import SwiftyJSON
+import SVProgressHUD
 
 extension EventsViewController {
     
@@ -71,6 +72,12 @@ extension EventsViewController {
     //MARK: - UI Updates
     
     func updateUIWithWeatherData() {
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        activityIndicator.center = cityChangeButton.center
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
+        cityChangeButton.addSubview(activityIndicator)
+        
         if (Double(weatherDataModel.temperature) + 273.15) > 273.15 {
             temperatureLabel.text = "+\(weatherDataModel.temperature)°"
         } else if (Double(weatherDataModel.temperature) + 273.15) == 273.15 {
@@ -80,6 +87,8 @@ extension EventsViewController {
         }
         weatherIconImg.image = UIImage(named: weatherDataModel.weatherIconName)
         cityChangeButton.setTitle(weatherDataModel.city, for: .normal)
+        activityIndicator.isHidden = true
+        activityIndicator.stopAnimating()
     }
     
     //MARK: - Change City Delegate Methods

@@ -8,13 +8,12 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class AddItemViewController: UIViewController {
     
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var textTextField: UITextView!
-    @IBOutlet weak var addImageButton: UIButton!
     
     var delegate: AddItem?
 
@@ -25,9 +24,6 @@ class AddItemViewController: UIViewController {
         textTextField.delegate = self
         
         self.hideKeyboardWhenTappedAround()
-        
-        addImageButton.layer.borderColor = UIColor.white.cgColor
-        addImageButton.layer.borderWidth = 1
     }
     
     func getUserImgURL(completion: @escaping (String) -> ()) {
@@ -50,7 +46,7 @@ class AddItemViewController: UIViewController {
     }
     
     @IBAction func submitButtonPressed(_ sender: Any) {
-        
+        SVProgressHUD.show()
         var userImage = UIImage()
         getUserImgURL { (url) in
             let userImgURL = URL(string: url)
@@ -62,13 +58,9 @@ class AddItemViewController: UIViewController {
                 print("Error retrieving data from \(url)")
             }
             
-            self.delegate?.userAddedNewItem(title: self.titleTextField.text!, image: self.photoImageView.image!, text: self.textTextField.text!, userLogin: (Auth.auth().currentUser?.email)!, userImage: userImage, userImgURL: url)
+            self.delegate?.userAddedNewItem(title: self.titleTextField.text!, text: self.textTextField.text!, userLogin: (Auth.auth().currentUser?.email)!, userImage: userImage, userImgURL: url)
             self.navigationController?.popViewController(animated: true)
+            SVProgressHUD.dismiss()
         }
     }
-    
-    @IBAction func addImageButtonPressed(_ sender: Any) {
-        chooseImage()
-    }
-    
 }

@@ -9,10 +9,12 @@
 import UIKit
 import Firebase
 import FirebaseStorage
+import SVProgressHUD
 
 extension ToDoViewController {
     
     func retrieveItems() {
+        SVProgressHUD.show()
         itemsDatabase.observe(.childAdded) { (snapshot) in
             let snapshotValue = snapshot.value as! Dictionary<String, String>
             
@@ -31,9 +33,12 @@ extension ToDoViewController {
                 do {
                     let imageData = try Data.init(contentsOf: userImgURL!)
                     self.cache.setObject(UIImage(data: imageData)!, forKey: user as NSString)
+                    print("Image of \(user) added to cache")
                 } catch {
                     print("Error retrieving data from \(userImgURL!)")
                 }
+            } else {
+                print("Cache alresdy contains \(user) image")
             }
             
             userImage = self.cache.object(forKey: user as NSString)
@@ -52,7 +57,10 @@ extension ToDoViewController {
             print("Item \(item.title!) appended to array!")
             self.allRetrievedItemsArray = self.itemArray
             
+            print("RETRIEVED DATA Async !!!!!!!!")
             self.tableView.reloadData()
+            SVProgressHUD.dismiss()
+            self.currentUserItems = self.itemArray.filter {$0.userLogin == Auth.auth().currentUser?.email}
         }
     }
 }
