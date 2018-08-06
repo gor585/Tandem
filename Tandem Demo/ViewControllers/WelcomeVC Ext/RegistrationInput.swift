@@ -11,14 +11,15 @@ import UIKit
 extension WelcomeViewController {
     
     func checkUserRegistrationInput() {
+        
         if loginRegisterTextField.text == "" {
-            let alert = UIAlertController(title: "Login is incorrect", message: "Please provide your correct e-mail adress", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Login field is empty", message: "Please provide your e-mail adress", preferredStyle: .alert)
             let actionOk = UIAlertAction(title: "Ok", style: .default, handler: { (actionOk) in })
             
             alert.addAction(actionOk)
             present(alert, animated: true, completion: nil)
             
-        } else if loginRegisterTextField.text?.contains("@") == false {
+        } else if loginRegisterTextField.text?.contains("@") == false || loginRegisterTextField.text?.contains(".") == false || loginRegisterTextField.text?.contains("com") == false {
             let alert = UIAlertController(title: "Incorrect e-mail", message: "The e-mail adress is badly formatted", preferredStyle: .alert)
             let actionOk = UIAlertAction(title: "Ok", style: .default, handler: { (actionOk) in })
             

@@ -16,6 +16,7 @@
 		2526FDA52100D08600C58A7F /* LoginInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2526FDA42100D08600C58A7F /* LoginInput.swift */; };
 		2526FDA72100D18C00C58A7F /* CreateUser&UploadImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2526FDA62100D18C00C58A7F /* CreateUser&UploadImg.swift */; };
 		2532DEEB210C842400A6326B /* UserFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2532DEEA210C842400A6326B /* UserFilter.swift */; };
+		25340D892113244A004FCDC2 /* UsersDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25340D882113244A004FCDC2 /* UsersDatabase.swift */; };
 		254A71E720F0ACD3002D405C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254A71E620F0ACD3002D405C /* AppDelegate.swift */; };
 		254A71E920F0ACD3002D405C /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254A71E820F0ACD3002D405C /* WelcomeViewController.swift */; };
 		254A71EC20F0ACD3002D405C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 254A71EA20F0ACD3002D405C /* Main.storyboard */; };
@@ -58,6 +59,7 @@
 		2526FDA42100D08600C58A7F /* LoginInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInput.swift; sourceTree = "<group>"; };
 		2526FDA62100D18C00C58A7F /* CreateUser&UploadImg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateUser&UploadImg.swift"; sourceTree = "<group>"; };
 		2532DEEA210C842400A6326B /* UserFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFilter.swift; sourceTree = "<group>"; };
+		25340D882113244A004FCDC2 /* UsersDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDatabase.swift; sourceTree = "<group>"; };
 		254A71E320F0ACD3002D405C /* Tandem Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tandem Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		254A71E620F0ACD3002D405C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		254A71E820F0ACD3002D405C /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			children = (
 				25E1568F20F618FD00D638DC /* LogInMode.swift */,
 				2526FDA42100D08600C58A7F /* LoginInput.swift */,
+				25340D882113244A004FCDC2 /* UsersDatabase.swift */,
 				25E1569120F6193400D638DC /* RegisterMode.swift */,
 				2526FDA22100CFF000C58A7F /* RegistrationInput.swift */,
 				25E1569320F619EC00D638DC /* UserImageSelectionMode.swift */,
@@ -427,6 +430,7 @@
 				25FC964120F12DEE0035D9BF /* EventsViewController.swift in Sources */,
 				25E1569420F619EC00D638DC /* UserImageSelectionMode.swift in Sources */,
 				25E573EF20FE2C7A0058F007 /* EditAndDeleteItem.swift in Sources */,
+				25340D892113244A004FCDC2 /* UsersDatabase.swift in Sources */,
 				25B1163F20F0F530009D0A28 /* ToDoViewController.swift in Sources */,
 				25FC964320F12FD50035D9BF /* EventsCell.swift in Sources */,
 				25F6442120FF375100E7026D /* HideKeyboardReturn.swift in Sources */,

@@ -28,45 +28,56 @@ extension WelcomeViewController {
                 } else {
                     print("Registration of \(user!) is successfull")
                 }
-            }
-            
-            userEmail = loginRegisterTextField.text!
-            let delimeter = "."
-            let separatedEmail = userEmail.components(separatedBy: delimeter)
-            let userName = separatedEmail[0]
-            
-            var data = NSData()
-            data = UIImageJPEGRepresentation(userImageView.image!, 0.01)! as NSData
-            
-            let metadata = StorageMetadata()
-            let imageStorage = Storage.storage().reference().child("images/user_profiles")
-            imageStorage.child("\(loginRegisterTextField.text!).jpg").putData(data as Data, metadata: metadata) { (metadata, error) in
-                guard let metadata = metadata else {
-                    print("Error ocurred: \(error!)")
-                    return
-                }
-                print("Uploaded profile image with metadata: \(metadata)")
-                print(metadata.downloadURL()!.absoluteString)
                 
-                let userImgDatabase = Database.database().reference().child("UserImg")
-                let userImgDictionary = ["\(userName)": "\(metadata.downloadURL()!.absoluteString)"]
-                print(userName)
+                //----Formatting user email to avoid using "@", "." etc in keys
+                self.userEmail = self.loginRegisterTextField.text!
+                let delimeter = "."
+                let separatedEmail = self.userEmail.components(separatedBy: delimeter)
+                let userName = separatedEmail[0]
                 
-                userImgDatabase.childByAutoId().setValue(userImgDictionary) {
-                    (error, reference) in
-                    if error != nil {
-                        print("Error: \(error!)")
-                    } else {
-                        print("User image url saved successfully")
+                //----Appending registered users images dictionary in Storage
+                var data = NSData()
+                data = UIImageJPEGRepresentation(self.userImageView.image!, 0.01)! as NSData
+                
+                let metadata = StorageMetadata()
+                let imageStorage = Storage.storage().reference().child("images/user_profiles")
+                imageStorage.child("\(self.loginRegisterTextField.text!).jpg").putData(data as Data, metadata: metadata) { (metadata, error) in
+                    guard let metadata = metadata else {
+                        print("Error ocurred: \(error!)")
+                        return
+                    }
+                    print("Uploaded profile image with metadata: \(metadata)")
+                    print(metadata.downloadURL()!.absoluteString)
+                    
+                    let userImgDatabase = Database.database().reference().child("UserImg")
+                    let userImgDictionary = ["\(userName)": "\(metadata.downloadURL()!.absoluteString)"]
+                    print(userName)
+                    
+                    userImgDatabase.childByAutoId().setValue(userImgDictionary) {
+                        (error, reference) in
+                        if error != nil {
+                            print("Error: \(error!)")
+                        } else {
+                            print("User image url saved successfully")
+                        }
                     }
                 }
+                
+                //----Appending registered users passwords dictionary
+                let usersDatabase = Database.database().reference().child("Users")
+                let userID = usersDatabase.childByAutoId().key
+                var usersPasswordsDictionary = [String: String]()
+                usersPasswordsDictionary.updateValue(self.loginRegisterTextField.text!, forKey: "User")
+                usersPasswordsDictionary.updateValue(self.passwordRegisterTextField.text!, forKey: "Password")
+                usersPasswordsDictionary.updateValue(userID, forKey: "ID")
+                usersDatabase.child(userID).setValue(usersPasswordsDictionary)
+                
+                SVProgressHUD.dismiss()
+                
+                self.userImageSelectionEnded()
+                self.registerModeEnded()
             }
-            
-            SVProgressHUD.dismiss()
-            
             performSegue(withIdentifier: "toApp", sender: self)
-            userImageSelectionEnded()
-            registerModeEnded()
         }
     }
 }

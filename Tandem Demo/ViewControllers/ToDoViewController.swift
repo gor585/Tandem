@@ -83,9 +83,6 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
                 print("\(item.userLogin)")
             }
         }
-        
-        
-        
         return cell
     }
 

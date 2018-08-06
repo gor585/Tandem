@@ -14,17 +14,20 @@ import SVProgressHUD
 extension WelcomeViewController {
     
     func checkUserLoginInput() {
-        if logInTextField.text == "" {
+        if usersDataDictionary.keys.contains(logInTextField.text!) == false {
             let alert = UIAlertController(title: "Login is incorrect", message: "Please provide your correct e-mail adress", preferredStyle: .alert)
             let actionOk = UIAlertAction(title: "Ok", style: .default, handler: { (actionOk) in })
             
+            SVProgressHUD.dismiss()
             alert.addAction(actionOk)
             present(alert, animated: true, completion: nil)
             
-        } else if passwordTextField.text == "" {
+        } else if usersDataDictionary[logInTextField.text!] != passwordTextField.text {
             let alert = UIAlertController(title: "Password is incorrect", message: "Please provide valid password", preferredStyle: .alert)
             let actionOk = UIAlertAction(title: "Ok", style: .default, handler: { (actionOk) in })
+            passwordTextField.text = ""
             
+            SVProgressHUD.dismiss()
             alert.addAction(actionOk)
             present(alert, animated: true, completion: nil)
             

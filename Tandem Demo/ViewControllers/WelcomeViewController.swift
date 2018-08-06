@@ -41,6 +41,7 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var registrationStackView: UIStackView!
     
     var userEmail = ""
+    var usersDataDictionary = [String: String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,11 +52,17 @@ class WelcomeViewController: UIViewController {
         passwordRegisterTextField.delegate = self
         verifyPasswordTextField.delegate = self
         
+        retrieveUsersData()
+        
         self.hideKeyboardWhenTappedAround()
     }
 
     @IBAction func logInButtonPressed(_ sender: Any) {
         logInModeBegin()
+        retrieveUsersData()
+        for (key, value) in usersDataDictionary {
+            print("\(key) - \(value)")
+        }
     }
     
     @IBAction func registerButtonPressed(_ sender: Any) {
