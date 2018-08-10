@@ -34,21 +34,17 @@ class AccountSettingsViewController: UIViewController {
     @IBOutlet weak var cancelPasswordButton: UIButton!
     
     let imageCache = ImageCache.sharedCache
+    let imageStorage = Storage.storage().reference().child("images/user_profiles/\(Auth.auth().currentUser!.email!).jpg")
+    let usersDatabaseRef = Database.database().reference().child("Users")
+    let currentUser = Auth.auth().currentUser!.email!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         userImageLayout()
         
-        imageCache.object(forKey: Auth.auth().currentUser!.email! as NSString) != nil ? userImageView.image = imageCache.object(forKey: Auth.auth().currentUser!.email! as NSString) : print("No image avaliable")
+        imageCache.object(forKey: currentUser as NSString) != nil ? userImageView.image = imageCache.object(forKey: currentUser as NSString) : loadUserImageFromStorage()
         
-        userNameLabel.text = Auth.auth().currentUser!.email
-    }
-    
-    func userImageLayout() {
-        userImageView.layer.borderWidth = 1
-        userImageView.layer.borderColor = UIColor.white.cgColor
-        userImageView.layer.cornerRadius = userImageView.frame.width / 2
-        chooseImageButton.layer.cornerRadius = userImageView.frame.width / 2
+        userNameLabel.text = currentUser
     }
     
     //MARK: - Main options
@@ -79,7 +75,7 @@ class AccountSettingsViewController: UIViewController {
     //MARK: - Change password
     
     @IBAction func submitButtonPressed(_ sender: Any) {
-        
+        changePassword()
     }
     
     @IBAction func cancelPasswordModeButtonPressed(_ sender: Any) {

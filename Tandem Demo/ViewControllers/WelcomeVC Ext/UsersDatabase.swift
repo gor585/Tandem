@@ -18,7 +18,6 @@ extension WelcomeViewController {
             let user = snapshotValue["User"]!
             let password = snapshotValue["Password"]!
             self.usersDataDictionary.updateValue(password, forKey: user)
-            //print("User \(user) password is \(password)")
         }
     }
 }
