@@ -17,7 +17,6 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var filterDoneButton: UISegmentedControl!
     @IBOutlet weak var currentUserFilterButton: UIButton!
     @IBOutlet weak var allUsersFilterButton: UIButton!
-    @IBOutlet weak var otherUsersButton: UIButton!
     @IBOutlet weak var userFilterStackView: UIStackView!
     
     var itemArray = [Item]()
@@ -27,7 +26,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     var specifiedUserItemsDictionary = [String: [Item]]()
     var selectedCell: Item?
     let itemsDatabase = Database.database().reference().child("Items")
-    let cache = NSCache<NSString, UIImage>()
+    let imageCache = ImageCache.sharedCache
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +39,9 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.separatorStyle = .none
         retrieveItems()
         print("RETRIEVED DATA Sync !!!!!!!!")
+        
+        createObservers()
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        tableView.reloadData()
-//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemArray.count
@@ -127,7 +124,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         return [delete, done]
     }
     
-    //MARK - Filter done items
+    //MARK: - Filter done items
     
     @IBAction func filterDoneButtonPressed(_ sender: UISegmentedControl) {
         if filterDoneButton.selectedSegmentIndex == 1 {
@@ -145,7 +142,6 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func currentUserFilterButtonPressed(_ sender: Any) {
         userFilterUnabled()
-        //currentUserItems = itemArray.filter {$0.userLogin == Auth.auth().currentUser?.email}
         itemArray = currentUserItems
         tableView.reloadData()
     }

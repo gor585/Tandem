@@ -47,11 +47,9 @@ extension WelcomeViewController {
                         return
                     }
                     print("Uploaded profile image with metadata: \(metadata)")
-                    print(metadata.downloadURL()!.absoluteString)
                     
                     let userImgDatabase = Database.database().reference().child("UserImg")
                     let userImgDictionary = ["\(userName)": "\(metadata.downloadURL()!.absoluteString)"]
-                    print(userName)
                     
                     userImgDatabase.childByAutoId().setValue(userImgDictionary) {
                         (error, reference) in

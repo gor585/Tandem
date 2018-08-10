@@ -60,9 +60,6 @@ class WelcomeViewController: UIViewController {
     @IBAction func logInButtonPressed(_ sender: Any) {
         logInModeBegin()
         retrieveUsersData()
-        for (key, value) in usersDataDictionary {
-            print("\(key) - \(value)")
-        }
     }
     
     @IBAction func registerButtonPressed(_ sender: Any) {

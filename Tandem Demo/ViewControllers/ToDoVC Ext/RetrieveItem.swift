@@ -29,10 +29,10 @@ extension ToDoViewController {
             var userImage = UIImage(named: "tandem")
             let userImgURL = URL(string: userImgURLString)
             
-            if self.cache.object(forKey: user as NSString) == nil {
+            if self.imageCache.object(forKey: user as NSString) == nil {
                 do {
                     let imageData = try Data.init(contentsOf: userImgURL!)
-                    self.cache.setObject(UIImage(data: imageData)!, forKey: user as NSString)
+                    self.imageCache.setObject(UIImage(data: imageData)!, forKey: user as NSString)
                     print("Image of \(user) added to cache")
                 } catch {
                     print("Error retrieving data from \(userImgURL!)")
@@ -41,7 +41,7 @@ extension ToDoViewController {
                 print("Cache alresdy contains \(user) image")
             }
             
-            userImage = self.cache.object(forKey: user as NSString)
+            userImage = self.imageCache.object(forKey: user as NSString)
             
             let item = Item(title: title, image: userImage, text: text, userLogin: user, userImage: userImage, userImgURL: userImgURLString)
             item.date = date

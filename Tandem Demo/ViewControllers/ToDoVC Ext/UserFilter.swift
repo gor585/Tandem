@@ -47,7 +47,6 @@ extension ToDoViewController {
     }
     
     @objc func otherUserFilterButtonPressed(sender: UIButton) {
-        print("\(sender.titleLabel!.text!) filter is picked")
         userFilterUnabled()
         itemArray = specifiedUserItemsDictionary[sender.titleLabel!.text!]!
         tableView.reloadData()
