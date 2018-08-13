@@ -15,6 +15,8 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var filterDoneButton: UISegmentedControl!
+    @IBOutlet weak var addItemButton: UIBarButtonItem!
+    @IBOutlet weak var filterUsersButton: UIBarButtonItem!
     @IBOutlet weak var currentUserFilterButton: UIButton!
     @IBOutlet weak var allUsersFilterButton: UIButton!
     @IBOutlet weak var userFilterStackView: UIStackView!
@@ -27,20 +29,24 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     var selectedCell: Item?
     let itemsDatabase = Database.database().reference().child("Items")
     let imageCache = ImageCache.sharedCache
+    let userDefaults = UserDefaults.standard
+    var lightColorTheme: Bool = true
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        userFilterUnabled()
-        
         tableView.delegate = self
         tableView.dataSource = self
-        
         tableView.separatorStyle = .none
-        retrieveItems()
-        print("RETRIEVED DATA Sync !!!!!!!!")
         
+        userFilterUnabled()
+        retrieveItems()
         createObservers()
+        
+        lightColorTheme = userDefaults.bool(forKey: "lightThemeIsOn")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,6 +55,8 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell") as! ToDoCell
+        //Applying selected color theme to tableview cells
+        applyColorThemeToCells(cell: cell)
         
         cell.userImage.image = itemArray[indexPath.row].userImage
         cell.titleLabel.text = itemArray[indexPath.row].title
@@ -96,8 +104,12 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
             print("\(item.title ?? "") deleted")
-            self.itemArray.remove(at: indexPath.row)
             self.itemsDatabase.child(item.id).removeValue()
+            //Updating values in filter arrays & dictionary by item.id
+            self.itemArray = self.itemArray.filter {$0.id != item.id}
+            self.allRetrievedItemsArray = self.allRetrievedItemsArray.filter {$0.id != item.id}
+            self.currentUserItems = self.currentUserItems.filter {$0.id != item.id}
+            self.specifiedUserItemsDictionary.updateValue(self.allRetrievedItemsArray.filter {$0.userLogin == item.userLogin}, forKey: item.userLogin)
             self.tableView.reloadData()
         }
         
@@ -151,6 +163,4 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         itemArray = allRetrievedItemsArray
         tableView.reloadData()
     }
-    
-    
 }

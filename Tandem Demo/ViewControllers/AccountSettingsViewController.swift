@@ -37,6 +37,7 @@ class AccountSettingsViewController: UIViewController {
     let imageStorage = Storage.storage().reference().child("images/user_profiles/\(Auth.auth().currentUser!.email!).jpg")
     let usersDatabaseRef = Database.database().reference().child("Users")
     let currentUser = Auth.auth().currentUser!.email!
+    var lightColorTheme: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,10 @@ class AccountSettingsViewController: UIViewController {
         imageCache.object(forKey: currentUser as NSString) != nil ? userImageView.image = imageCache.object(forKey: currentUser as NSString) : loadUserImageFromStorage()
         
         userNameLabel.text = currentUser
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        applyColorTheme()
     }
     
     //MARK: - Main options

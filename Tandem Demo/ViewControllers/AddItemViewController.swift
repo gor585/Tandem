@@ -16,13 +16,13 @@ class AddItemViewController: UIViewController {
     @IBOutlet weak var textTextField: UITextView!
     
     var delegate: AddItem?
+    var lightColorTheme: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        applyColorTheme()
         titleTextField.delegate = self
         textTextField.delegate = self
-        
         self.hideKeyboardWhenTappedAround()
     }
     

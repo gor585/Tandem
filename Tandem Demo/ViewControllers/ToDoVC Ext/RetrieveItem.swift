@@ -55,7 +55,7 @@ extension ToDoViewController {
             
             self.itemArray.append(item)
             print("Item \(item.title!) appended to array!")
-            self.allRetrievedItemsArray = self.itemArray
+            self.allRetrievedItemsArray.append(item)
             
             print("RETRIEVED DATA Async !!!!!!!!")
             self.tableView.reloadData()

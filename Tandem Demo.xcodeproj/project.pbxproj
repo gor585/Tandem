@@ -28,10 +28,15 @@
 		255EFC3E20F89716006E9766 /* AddNewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255EFC3D20F89716006E9766 /* AddNewItem.swift */; };
 		255EFC4120F89776006E9766 /* RetrieveItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255EFC4020F89776006E9766 /* RetrieveItem.swift */; };
 		255EFC4320F89C7F006E9766 /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255EFC4220F89C7F006E9766 /* Segues.swift */; };
+		2572797321220AC8008E73CE /* AccountColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2572797221220AC8008E73CE /* AccountColorTheme.swift */; };
+		2572797521220C24008E73CE /* SettingsSegues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2572797421220C24008E73CE /* SettingsSegues.swift */; };
 		2577E6D3211C7AFB006A484B /* SaveNewUserImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577E6D2211C7AFB006A484B /* SaveNewUserImage.swift */; };
+		2579A9D52120DC520015A99F /* AddColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2579A9D42120DC520015A99F /* AddColorTheme.swift */; };
 		25AA449D211E01DA00EDBBBC /* LoadImageFromStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AA449C211E01DA00EDBBBC /* LoadImageFromStorage.swift */; };
 		25AA449F211E026D00EDBBBC /* ImageLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AA449E211E026D00EDBBBC /* ImageLayout.swift */; };
 		25AA44A1211E04C200EDBBBC /* ChangePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AA44A0211E04C200EDBBBC /* ChangePassword.swift */; };
+		25AD8A74211EC37300289501 /* SwitchColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AD8A73211EC37300289501 /* SwitchColorTheme.swift */; };
+		25AD8A76211EDBA900289501 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AD8A75211EDBA900289501 /* ColorTheme.swift */; };
 		25AE373E211C31B000B7FF61 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE373D211C31B000B7FF61 /* ImageCache.swift */; };
 		25AE3740211C722F00B7FF61 /* ChangeImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE373F211C722F00B7FF61 /* ChangeImagePicker.swift */; };
 		25B1163F20F0F530009D0A28 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B1163E20F0F530009D0A28 /* ToDoViewController.swift */; };
@@ -55,6 +60,9 @@
 		25E573ED20FE2A960058F007 /* EditItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E573EC20FE2A960058F007 /* EditItem.swift */; };
 		25E573EF20FE2C7A0058F007 /* EditAndDeleteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E573EE20FE2C7A0058F007 /* EditAndDeleteItem.swift */; };
 		25F20EFC211D9254002C973F /* UpdateUserImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F20EFB211D9254002C973F /* UpdateUserImage.swift */; };
+		25F26DF321216D0A0077BE06 /* DetailsColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F26DF221216D0A0077BE06 /* DetailsColorTheme.swift */; };
+		25F26DF5212173470077BE06 /* EventsColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F26DF4212173470077BE06 /* EventsColorTheme.swift */; };
+		25F26DF72121754C0077BE06 /* EventsObserveNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F26DF62121754C0077BE06 /* EventsObserveNotifications.swift */; };
 		25F6442120FF375100E7026D /* HideKeyboardReturn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F6442020FF375100E7026D /* HideKeyboardReturn.swift */; };
 		25FC964120F12DEE0035D9BF /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FC964020F12DEE0035D9BF /* EventsViewController.swift */; };
 		25FC964320F12FD50035D9BF /* EventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FC964220F12FD50035D9BF /* EventsCell.swift */; };
@@ -86,10 +94,15 @@
 		255EFC3D20F89716006E9766 /* AddNewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewItem.swift; sourceTree = "<group>"; };
 		255EFC4020F89776006E9766 /* RetrieveItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveItem.swift; sourceTree = "<group>"; };
 		255EFC4220F89C7F006E9766 /* Segues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
+		2572797221220AC8008E73CE /* AccountColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountColorTheme.swift; sourceTree = "<group>"; };
+		2572797421220C24008E73CE /* SettingsSegues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSegues.swift; sourceTree = "<group>"; };
 		2577E6D2211C7AFB006A484B /* SaveNewUserImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNewUserImage.swift; sourceTree = "<group>"; };
+		2579A9D42120DC520015A99F /* AddColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddColorTheme.swift; sourceTree = "<group>"; };
 		25AA449C211E01DA00EDBBBC /* LoadImageFromStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageFromStorage.swift; sourceTree = "<group>"; };
 		25AA449E211E026D00EDBBBC /* ImageLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLayout.swift; sourceTree = "<group>"; };
 		25AA44A0211E04C200EDBBBC /* ChangePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassword.swift; sourceTree = "<group>"; };
+		25AD8A73211EC37300289501 /* SwitchColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchColorTheme.swift; sourceTree = "<group>"; };
+		25AD8A75211EDBA900289501 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		25AE373D211C31B000B7FF61 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		25AE373F211C722F00B7FF61 /* ChangeImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeImagePicker.swift; sourceTree = "<group>"; };
 		25B1163E20F0F530009D0A28 /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +126,9 @@
 		25E573EC20FE2A960058F007 /* EditItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItem.swift; sourceTree = "<group>"; };
 		25E573EE20FE2C7A0058F007 /* EditAndDeleteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAndDeleteItem.swift; sourceTree = "<group>"; };
 		25F20EFB211D9254002C973F /* UpdateUserImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserImage.swift; sourceTree = "<group>"; };
+		25F26DF221216D0A0077BE06 /* DetailsColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsColorTheme.swift; sourceTree = "<group>"; };
+		25F26DF4212173470077BE06 /* EventsColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsColorTheme.swift; sourceTree = "<group>"; };
+		25F26DF62121754C0077BE06 /* EventsObserveNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsObserveNotifications.swift; sourceTree = "<group>"; };
 		25F6442020FF375100E7026D /* HideKeyboardReturn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardReturn.swift; sourceTree = "<group>"; };
 		25FC964020F12DEE0035D9BF /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		25FC964220F12FD50035D9BF /* EventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCell.swift; sourceTree = "<group>"; };
@@ -136,6 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				2510B2A720FB360D0091C1DC /* WeatherUpdate.swift */,
+				25F26DF62121754C0077BE06 /* EventsObserveNotifications.swift */,
+				25F26DF4212173470077BE06 /* EventsColorTheme.swift */,
 			);
 			path = "EventVC Ext";
 			sourceTree = "<group>";
@@ -180,10 +198,11 @@
 			children = (
 				255EFC3D20F89716006E9766 /* AddNewItem.swift */,
 				255EFC4020F89776006E9766 /* RetrieveItem.swift */,
+				252F5CBA211DD0B500887D9C /* ObserveNotifications.swift */,
 				25F20EFB211D9254002C973F /* UpdateUserImage.swift */,
+				25AD8A75211EDBA900289501 /* ColorTheme.swift */,
 				2532DEEA210C842400A6326B /* UserFilter.swift */,
 				255EFC4220F89C7F006E9766 /* Segues.swift */,
-				252F5CBA211DD0B500887D9C /* ObserveNotifications.swift */,
 				25E573EE20FE2C7A0058F007 /* EditAndDeleteItem.swift */,
 			);
 			path = "ToDoVC Ext";
@@ -276,6 +295,8 @@
 			isa = PBXGroup;
 			children = (
 				25BFE0AE2101E9D800B27EBA /* SignOut.swift */,
+				2572797421220C24008E73CE /* SettingsSegues.swift */,
+				25AD8A73211EC37300289501 /* SwitchColorTheme.swift */,
 			);
 			path = "SettingsVC Ext";
 			sourceTree = "<group>";
@@ -284,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				25AA449E211E026D00EDBBBC /* ImageLayout.swift */,
+				2572797221220AC8008E73CE /* AccountColorTheme.swift */,
 				25AA44A2211E052700EDBBBC /* ChangeImage */,
 				25AA44A3211E1FB800EDBBBC /* ChangePassword */,
 			);
@@ -309,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				25E1569A20F6449C00D638DC /* AddImagePicker.swift */,
+				2579A9D42120DC520015A99F /* AddColorTheme.swift */,
 			);
 			path = "AddVC Ext";
 			sourceTree = "<group>";
@@ -317,6 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				25E573E720FDC6310058F007 /* DetailsMode.swift */,
+				25F26DF221216D0A0077BE06 /* DetailsColorTheme.swift */,
 			);
 			path = "DetailsVC Ext";
 			sourceTree = "<group>";
@@ -506,6 +530,8 @@
 				25BF18D420F2960800393B77 /* AddItemViewController.swift in Sources */,
 				252F5CB9211DCEC900887D9C /* NotificationNames.swift in Sources */,
 				2526FDA52100D08600C58A7F /* LoginInput.swift in Sources */,
+				25F26DF5212173470077BE06 /* EventsColorTheme.swift in Sources */,
+				2572797321220AC8008E73CE /* AccountColorTheme.swift in Sources */,
 				255EFC4120F89776006E9766 /* RetrieveItem.swift in Sources */,
 				25BF18C820F272E200393B77 /* DateConverter.swift in Sources */,
 				25BFE0AF2101E9D800B27EBA /* SignOut.swift in Sources */,
@@ -519,6 +545,9 @@
 				25AA449F211E026D00EDBBBC /* ImageLayout.swift in Sources */,
 				252F5CB7211DCD3D00887D9C /* SendImageNotification .swift in Sources */,
 				25AE373E211C31B000B7FF61 /* ImageCache.swift in Sources */,
+				25AD8A76211EDBA900289501 /* ColorTheme.swift in Sources */,
+				25F26DF321216D0A0077BE06 /* DetailsColorTheme.swift in Sources */,
+				25AD8A74211EC37300289501 /* SwitchColorTheme.swift in Sources */,
 				25E156A020F6486000D638DC /* DetailsViewController.swift in Sources */,
 				25D1D7DF2119B23600F0840F /* ChangePasswordMode.swift in Sources */,
 				255EFC4320F89C7F006E9766 /* Segues.swift in Sources */,
@@ -529,6 +558,9 @@
 				25E1569720F621DA00D638DC /* ImagePicker.swift in Sources */,
 				254A71E720F0ACD3002D405C /* AppDelegate.swift in Sources */,
 				25BF18D020F275EA00393B77 /* ToDoCell.swift in Sources */,
+				2579A9D52120DC520015A99F /* AddColorTheme.swift in Sources */,
+				2572797521220C24008E73CE /* SettingsSegues.swift in Sources */,
+				25F26DF72121754C0077BE06 /* EventsObserveNotifications.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

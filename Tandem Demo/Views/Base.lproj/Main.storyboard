@@ -477,7 +477,8 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="h6W-u2-Rak" firstAttribute="bottom" secondItem="Hg4-dg-p2J" secondAttribute="bottom" id="6gK-Zg-9bY"/>
                             <constraint firstItem="Bir-pU-am4" firstAttribute="top" secondItem="Hg4-dg-p2J" secondAttribute="top" id="UnI-ja-sI9"/>
@@ -507,9 +508,11 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="addItemButton" destination="E63-pW-5Gc" id="LHI-03-1R7"/>
                         <outlet property="allUsersFilterButton" destination="gr0-01-dpq" id="qd8-Zo-d2L"/>
                         <outlet property="currentUserFilterButton" destination="W3b-Xo-h15" id="xGG-fc-G9w"/>
                         <outlet property="filterDoneButton" destination="nNS-zu-Fhp" id="JCJ-et-Zb4"/>
+                        <outlet property="filterUsersButton" destination="EIE-Ap-Hrr" id="EF9-Tx-Pz8"/>
                         <outlet property="tableView" destination="h6W-u2-Rak" id="Oc9-0q-ll9"/>
                         <outlet property="userFilterStackView" destination="Bir-pU-am4" id="iPw-hL-bX5"/>
                     </connections>
@@ -653,7 +656,7 @@
                         <sections>
                             <tableViewSection id="5ex-9q-jsU">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="lPN-f5-yaG">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="settingsCell" id="lPN-f5-yaG">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lPN-f5-yaG" id="rhG-Ju-4C6">
@@ -671,6 +674,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8cu-un-ags">
                                                     <rect key="frame" x="349" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="switchColorThemeButtonPressed:" destination="UQe-hG-qib" eventType="valueChanged" id="iSq-Pa-0cc"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -683,7 +689,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="pXr-Mr-Hmn">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="settingsCell" id="pXr-Mr-Hmn">
                                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pXr-Mr-Hmn" id="Zqi-h1-juf">
@@ -737,6 +743,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="accountSettingsLabel" destination="Hdo-hj-LTb" id="4Ro-LN-Bra"/>
+                        <outlet property="lightColorThemeLabel" destination="9Rl-32-9ki" id="Y5U-PQ-sLj"/>
                         <outlet property="logOutButton" destination="0df-vZ-uAJ" id="RWA-vn-heO"/>
                         <outlet property="switchColorTheme" destination="8cu-un-ags" id="4N3-dr-19d"/>
                     </connections>
@@ -1165,6 +1173,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="f5O-WX-LW5">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>

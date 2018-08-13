@@ -14,10 +14,14 @@ extension ToDoViewController {
         if segue.identifier == "addInfo" {
             let addItemVc = segue.destination as! AddItemViewController
             addItemVc.delegate = self
+            //Applying selected color theme
+            addItemVc.lightColorTheme = lightColorTheme
         }
         if segue.identifier == "toDetails" {
             let detailsVC = segue.destination as! DetailsViewController
             detailsVC.cell = itemArray[(tableView.indexPathForSelectedRow?.row)!]
+            //Applying selected color theme
+            detailsVC.lightColorTheme = lightColorTheme
             detailsVC.selectedItem = tableView.indexPathForSelectedRow?.row
             detailsVC.delegate = self
         }

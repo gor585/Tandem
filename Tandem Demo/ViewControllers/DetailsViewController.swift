@@ -26,10 +26,11 @@ class DetailsViewController: UIViewController {
     var delegate: EditItem?
     var cell: Item?
     var selectedItem: Int?
+    var lightColorTheme: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        applyColorTheme()
         editTitleTextField.delegate = self
         EditTextView.delegate = self 
         

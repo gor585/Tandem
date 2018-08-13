@@ -9,3 +9,5 @@
 import Foundation
 
 let USER_IMAGE_IS_CHANGED = NSNotification.Name("user.image.is.changed")
+let COLOR_THEME_DARK = NSNotification.Name("color.theme.dark")
+let COLOR_THEME_LIGHT = NSNotification.Name("color.theme.light")

@@ -11,18 +11,15 @@ import CoreLocation
 
 class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
-    let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
-    
-    let APP_ID = "59a54878a35a9d6c822d56aac3cfd0a6"
-    
-    let locationManager = CLLocationManager()
-    
-    let weatherDataModel = WeatherDataModel()
-
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var weatherIconImg: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityChangeButton: UIButton!
+    
+    let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
+    let APP_ID = "59a54878a35a9d6c822d56aac3cfd0a6"
+    let locationManager = CLLocationManager()
+    let weatherDataModel = WeatherDataModel()
     
     var eventArray = [Event]()
     
@@ -32,15 +29,25 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let kurbas = Event(title: "Teatr Kurbasa",image: UIImage(named: "kurbas-1")!, url: "http://www.kurbas.lviv.ua/afisha/")
     let philarmony = Event(title: "Philarmony",image: UIImage(named: "philarmony")!, url: "https://philharmonia.lviv.ua/events/")
     
+    let userDefaults = UserDefaults.standard
+    var lightColorTheme: Bool = true
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .none
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
+        createObservers()
         
         eventArray.append(planetaKino)
         eventArray.append(kinopalace)
@@ -49,6 +56,8 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         eventArray.append(philarmony)
         
         cityChangeButton.layer.cornerRadius = 15
+        
+        lightColorTheme = userDefaults.bool(forKey: "lightThemeIsOn")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,6 +66,8 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell") as! EventCell
+        //Applying selected color theme
+        applyColorTheme(cell: cell)
         cell.eventImage?.image = eventArray[indexPath.row].image
         cell.eventTitleLabel.text = eventArray[indexPath.row].title
         cell.eventItemView.layer.cornerRadius = 15

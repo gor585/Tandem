@@ -13,10 +13,25 @@ class SettingsViewController: UITableViewController {
     
     @IBOutlet weak var logOutButton: UIBarButtonItem!
     @IBOutlet weak var switchColorTheme: UISwitch!
+    @IBOutlet weak var lightColorThemeLabel: UILabel!
+    @IBOutlet weak var accountSettingsLabel: UILabel!
+    
+    let userDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        switchColorTheme.isOn = userDefaults.bool(forKey: "lightThemeIsOn")
+        switchColorThemeNotifications()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        switchColorThemeNotifications()
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        applyColorTheme(cell: cell)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -25,5 +40,12 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func logOutButtonPressed(_ sender: Any) {
         signOut()
+    }
+    
+    @IBAction func switchColorThemeButtonPressed(_ sender: UISwitch) {
+        switchColorThemeNotifications()
+        saveColorSettings(setting: switchColorTheme.isOn, key: "lightThemeIsOn")
+        //Reloading data to apply color theme changes
+        tableView.reloadData()
     }
 }
