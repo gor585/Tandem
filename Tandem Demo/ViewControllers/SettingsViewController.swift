@@ -17,9 +17,12 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var accountSettingsLabel: UILabel!
     
     let userDefaults = UserDefaults.standard
+    let usersDatabase = Database.database().reference().child("Users")
+    let currentUserName = Auth.auth().currentUser!.email!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         switchColorTheme.isOn = userDefaults.bool(forKey: "lightThemeIsOn")
         switchColorThemeNotifications()
     }

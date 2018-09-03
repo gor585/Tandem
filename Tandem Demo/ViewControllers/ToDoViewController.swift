@@ -28,6 +28,8 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     var specifiedUserItemsDictionary = [String: [Item]]()
     var selectedCell: Item?
     let itemsDatabase = Database.database().reference().child("Items")
+    let usersDatabase = Database.database().reference().child("Users")
+    let currentUserName = Auth.auth().currentUser!.email
     let imageCache = ImageCache.sharedCache
     let userDefaults = UserDefaults.standard
     var lightColorTheme: Bool = true
@@ -46,7 +48,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         retrieveItems()
         createObservers()
         
-        lightColorTheme = userDefaults.bool(forKey: "lightThemeIsOn")
+        loadColorThemeSetting()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

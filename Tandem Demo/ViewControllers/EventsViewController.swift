@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import CoreLocation
 
 class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
@@ -47,8 +48,6 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
-        createObservers()
-        
         eventArray.append(planetaKino)
         eventArray.append(kinopalace)
         eventArray.append(lesya)
@@ -56,6 +55,8 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         eventArray.append(philarmony)
         
         cityChangeButton.layer.cornerRadius = 15
+        
+        createObservers()
         
         lightColorTheme = userDefaults.bool(forKey: "lightThemeIsOn")
     }

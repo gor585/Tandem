@@ -68,6 +68,7 @@ extension WelcomeViewController {
                 usersPasswordsDictionary.updateValue(self.loginRegisterTextField.text!, forKey: "User")
                 usersPasswordsDictionary.updateValue(self.passwordRegisterTextField.text!, forKey: "Password")
                 usersPasswordsDictionary.updateValue(userID, forKey: "ID")
+                usersPasswordsDictionary.updateValue("true", forKey: "LightColorTheme") //------> settings
                 usersDatabase.child(userID).setValue(usersPasswordsDictionary)
                 
                 SVProgressHUD.dismiss()

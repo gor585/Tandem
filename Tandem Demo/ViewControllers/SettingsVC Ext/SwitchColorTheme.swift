@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 extension SettingsViewController {
     
@@ -21,7 +22,28 @@ extension SettingsViewController {
     }
     
     func saveColorSettings(setting: Bool, key: String) {
+        //Saving color theme settings in UserDefaults
         userDefaults.set(setting, forKey: key)
+        
+        //Converting bool setting to string value
+        var settingString = ""
+        if switchColorTheme.isOn == true {
+            settingString = "true"
+        } else {
+            settingString = "false"
+        }
+        
+        //Saving color theme setting in usersDatabase
+        let currentUserName = Auth.auth().currentUser!.email!
+        self.usersDatabase.observe(.childAdded) { (snapshot) in
+            var snapshotValue = snapshot.value as! Dictionary<String, String>
+            let userLogin = snapshotValue["User"]!
+            let userID = snapshotValue["ID"]!
+            
+            if userLogin == currentUserName {
+                self.usersDatabase.child(userID).updateChildValues(["LightColorTheme": settingString])
+            }
+        }
     }
     
     func applyColorTheme(cell: UITableViewCell) {
