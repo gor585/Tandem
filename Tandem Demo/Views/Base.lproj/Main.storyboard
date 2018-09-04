@@ -599,6 +599,7 @@
                                         </state>
                                         <connections>
                                             <action selector="cityChangeButtonPressed:" destination="ccR-ch-9gZ" eventType="touchUpInside" id="ct4-Qw-pBl"/>
+                                            <segue destination="rsE-hY-ImH" kind="show" identifier="changeCityName" id="nuI-uG-7TH"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="L2d-WA-mhi">
@@ -644,6 +645,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6mG-eG-64y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2775.1999999999998" y="551.87406296851577"/>
+        </scene>
+        <!--Change City View Controller-->
+        <scene sceneID="ko9-i1-O1a">
+            <objects>
+                <viewController id="rsE-hY-ImH" customClass="ChangeCityViewController" customModule="Tandem_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kw9-Yi-sRw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bml-ei-c6j" userLabel="Confirm Button">
+                                <rect key="frame" x="0.0" y="348" width="414" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="4nc-fT-TUP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                <state key="normal" title="Confirm">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirmButtonPressed:" destination="rsE-hY-ImH" eventType="touchUpInside" id="p9h-4r-qK8"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ypi-6B-86p">
+                                <rect key="frame" x="16" y="238" width="382" height="70"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter City Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6M9-dX-e98">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="30"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                        <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BF3-VD-93l">
+                                        <rect key="frame" x="0.0" y="40" width="382" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Bml-ei-c6j" firstAttribute="centerY" secondItem="Kw9-Yi-sRw" secondAttribute="centerY" id="FG3-vP-25V"/>
+                            <constraint firstItem="Bml-ei-c6j" firstAttribute="leading" secondItem="7UZ-Ne-u2F" secondAttribute="leading" id="H4c-du-iVO"/>
+                            <constraint firstItem="Bml-ei-c6j" firstAttribute="top" secondItem="Ypi-6B-86p" secondAttribute="bottom" constant="40" id="M0u-pQ-nnk"/>
+                            <constraint firstItem="Bml-ei-c6j" firstAttribute="trailing" secondItem="7UZ-Ne-u2F" secondAttribute="trailing" id="Vc8-Rl-Icq"/>
+                            <constraint firstItem="Ypi-6B-86p" firstAttribute="leading" secondItem="7UZ-Ne-u2F" secondAttribute="leading" constant="16" id="l3a-vZ-FW0"/>
+                            <constraint firstItem="7UZ-Ne-u2F" firstAttribute="trailing" secondItem="Ypi-6B-86p" secondAttribute="trailing" constant="16" id="yFX-g7-UeN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7UZ-Ne-u2F"/>
+                    </view>
+                    <connections>
+                        <outlet property="cityNameTextField" destination="BF3-VD-93l" id="7sd-si-C9a"/>
+                        <outlet property="confirmButton" destination="Bml-ei-c6j" id="G3a-N2-kwF"/>
+                        <outlet property="enterCityNameLabel" destination="6M9-dX-e98" id="9o5-aT-yFh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4HI-cz-nMM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3595.652173913044" y="550.27173913043487"/>
         </scene>
         <!--Settings-->
         <scene sceneID="ydD-iu-gFO">
@@ -1197,6 +1260,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zP3-eo-7Q7">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>

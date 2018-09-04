@@ -90,23 +90,4 @@ extension EventsViewController {
         activityIndicator.isHidden = true
         activityIndicator.stopAnimating()
     }
-    
-    //MARK: - Change City Delegate Methods
-    
-//    func userEnteredNewCityName(city: String) {
-//
-//        //"q" is a required perameter name for city search in OpenWeatherMap API
-//        let params: [String: String] = ["q": city, "appid": APP_ID]
-//
-//        getWeatherData(url: WEATHER_URL, parameters: params)
-//    }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        if segue.identifier == "changeCity" {
-//            let destinationVC = segue.destination as! ChangeCityViewController
-//            destinationVC.delegate = self
-//        }
-//    }
-
 }
