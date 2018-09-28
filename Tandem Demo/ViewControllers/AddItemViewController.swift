@@ -26,41 +26,29 @@ class AddItemViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
     }
     
-    func getUserImgURL(completion: @escaping (String) -> ()) {
-        let userEmailReference = Database.database().reference().child("UserImg")
-        let userEmail = Auth.auth().currentUser!.email!
-        let delimeter = "."
-        let token = userEmail.components(separatedBy: delimeter)
-        let userName = token[0]
-        var url = ""
-        
-        userEmailReference.observe(.childAdded) { (snapshot) in
-            let snapshotValue = snapshot.value as! Dictionary<String, String>
-            for (key, value) in snapshotValue {
-                if key == userName {
-                    url = value
-                    completion(url)
-                }
-            }
+    func applyColorTheme() {
+        switch lightColorTheme {
+        case false:
+            self.view.backgroundColor = UIColor(hexString: "7F7F7F")
+        default:
+            self.view.backgroundColor = UIColor(hexString: "E6E6E6")
         }
     }
-    
+        
     @IBAction func submitButtonPressed(_ sender: Any) {
         SVProgressHUD.show()
         var userImage = UIImage()
-        getUserImgURL { (url) in
-            let userImgURL = URL(string: url)
-            
+        DataService.shared.getUserImgURL { (url) in
+            guard let userImgURL = URL(string: url) else { return }
             do {
-                let imageData = try Data.init(contentsOf: userImgURL!)
+                let imageData = try Data.init(contentsOf: userImgURL)
                 userImage = UIImage(data: imageData)!
+                self.delegate?.userAddedNewItem(title: self.titleTextField.text!, text: self.textTextField.text!, userLogin: (Auth.auth().currentUser?.email)!, userImage: userImage, userImgURL: url)
+                self.navigationController?.popViewController(animated: true)
+                SVProgressHUD.dismiss()
             } catch {
                 print("Error retrieving data from \(url)")
             }
-            
-            self.delegate?.userAddedNewItem(title: self.titleTextField.text!, text: self.textTextField.text!, userLogin: (Auth.auth().currentUser?.email)!, userImage: userImage, userImgURL: url)
-            self.navigationController?.popViewController(animated: true)
-            SVProgressHUD.dismiss()
         }
     }
 }

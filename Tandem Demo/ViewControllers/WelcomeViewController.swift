@@ -52,14 +52,15 @@ class WelcomeViewController: UIViewController {
         passwordRegisterTextField.delegate = self
         verifyPasswordTextField.delegate = self
         
-        retrieveUsersData()
-        
         self.hideKeyboardWhenTappedAround()
     }
 
     @IBAction func logInButtonPressed(_ sender: Any) {
         logInModeBegin()
-        retrieveUsersData()
+        
+        DataService.shared.retrieveUsersData { (data) in
+            self.usersDataDictionary = data
+        }
     }
     
     @IBAction func registerButtonPressed(_ sender: Any) {
@@ -93,7 +94,13 @@ class WelcomeViewController: UIViewController {
     
     @IBAction func submitButtonPressed(_ sender: Any) {
         SVProgressHUD.show()
-        createUserAndUploadImage()
+        DataService.shared.createUser(withEmail: loginRegisterTextField.text!, password: passwordRegisterTextField.text!, image: userImageView.image!) { user, password, image in
+            SVProgressHUD.dismiss()
+            self.userImageSelectionEnded()
+            self.registerModeEnded()
+            self.performSegue(withIdentifier: "toApp", sender: self)
+        }
+        
     }
     
     func textFieldReturn(textField: UITextField) -> Bool {
@@ -102,5 +109,42 @@ class WelcomeViewController: UIViewController {
     }
     
     @IBAction func unwindToWelcomeVC(segue: UIStoryboardSegue) {}
+}
+
+//MARK: - Image Picker
+extension WelcomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func chooseImage() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        
+        let actionSheet = UIAlertController(title: "Image Source", message: "Choose your image source", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                imagePickerController.sourceType = .camera
+                self.present(imagePickerController, animated: true, completion: nil)
+            }
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action) in
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                imagePickerController.sourceType = .photoLibrary
+                self.present(imagePickerController, animated: true, completion: nil)
+            }
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let pickedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        userImageView.image = pickedImage
+        chooseImageButton.backgroundColor = UIColor.clear
+        chooseImageButton.imageView?.image = pickedImage
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
 }
 

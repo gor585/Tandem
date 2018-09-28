@@ -27,10 +27,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     var currentUserItems = [Item]()
     var specifiedUserItemsDictionary = [String: [Item]]()
     var selectedCell: Item?
-    let itemsDatabase = Database.database().reference().child("Items")
-    let usersDatabase = Database.database().reference().child("Users")
-    let currentUserName = Auth.auth().currentUser!.email
-    let imageCache = ImageCache.sharedCache
+    
     let userDefaults = UserDefaults.standard
     var lightColorTheme: Bool = true
     
@@ -45,10 +42,28 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.separatorStyle = .none
         
         userFilterUnabled()
-        retrieveItems()
+        
+        SVProgressHUD.show()
+        DataService.shared.retrieveItems { (item) in
+            if let item = item {
+                self.itemArray.append(item)
+                print("Item \(item.title!) appended to array!")
+                self.allRetrievedItemsArray.append(item)
+                
+                print("RETRIEVED DATA Async !!!!!!!!")
+                self.tableView.reloadData()
+                SVProgressHUD.dismiss()
+                self.currentUserItems = self.itemArray.filter {$0.userLogin == Auth.auth().currentUser?.email}
+            }
+        }
+        
         createObservers()
         
-        loadColorThemeSetting()
+        //Loading preferred color settings of current user
+        DataService.shared.loadColorThemeSetting { (colorTheme) in
+            self.userDefaults.set(colorTheme, forKey: "lightThemeIsOn")
+            self.lightColorTheme = colorTheme
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -104,27 +119,33 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let item = itemArray[indexPath.row]
         
+        //MARK: - Delete item at row index
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
             print("\(item.title ?? "") deleted")
-            self.itemsDatabase.child(item.id).removeValue()
-            //Updating values in filter arrays & dictionary by item.id
-            self.itemArray = self.itemArray.filter {$0.id != item.id}
-            self.allRetrievedItemsArray = self.allRetrievedItemsArray.filter {$0.id != item.id}
-            self.currentUserItems = self.currentUserItems.filter {$0.id != item.id}
-            self.specifiedUserItemsDictionary.updateValue(self.allRetrievedItemsArray.filter {$0.userLogin == item.userLogin}, forKey: item.userLogin)
-            self.tableView.reloadData()
+            
+            DataService.shared.deleteItem(id: item.id, completion: {
+                //Updating values in filter arrays & dictionary by item.id
+                self.itemArray = self.itemArray.filter {$0.id != item.id}
+                self.allRetrievedItemsArray = self.allRetrievedItemsArray.filter {$0.id != item.id}
+                self.currentUserItems = self.currentUserItems.filter {$0.id != item.id}
+                self.specifiedUserItemsDictionary.updateValue(self.allRetrievedItemsArray.filter {$0.userLogin == item.userLogin}, forKey: item.userLogin)
+                self.tableView.reloadData()
+            })
         }
         
+        //MARK: - Done/unDone
         var done = UITableViewRowAction(style: .default, title: "Done") { (action, indexPath) in
             item.done = true
-            self.itemsDatabase.child(item.id).updateChildValues(["IsDone": "true"])
-            self.tableView.reloadData()
+            DataService.shared.updateDone(id: item.id, isDone: item.done, completion: {
+                self.tableView.reloadData()
+            })
         }
         
         let unDone = UITableViewRowAction(style: .default, title: "Undone") { (action, indexPath) in
             item.done = false
-            self.itemsDatabase.child(item.id).updateChildValues(["IsDone": "false"])
-            self.tableView.reloadData()
+            DataService.shared.updateDone(id: item.id, isDone: item.done, completion: {
+                self.tableView.reloadData()
+            })
         }
         
         if item.done == true {
@@ -138,8 +159,25 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         return [delete, done]
     }
     
-    //MARK: - Filter done items
+    //MARK: - Segues
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addInfo" {
+            let addItemVc = segue.destination as! AddItemViewController
+            addItemVc.delegate = self
+            //Applying selected color theme
+            addItemVc.lightColorTheme = lightColorTheme
+        }
+        if segue.identifier == "toDetails" {
+            let detailsVC = segue.destination as! DetailsViewController
+            detailsVC.cell = itemArray[(tableView.indexPathForSelectedRow?.row)!]
+            //Applying selected color theme
+            detailsVC.lightColorTheme = lightColorTheme
+            detailsVC.selectedItem = tableView.indexPathForSelectedRow?.row
+            detailsVC.delegate = self
+        }
+    }
     
+    //MARK: - Filter done items
     @IBAction func filterDoneButtonPressed(_ sender: UISegmentedControl) {
         if filterDoneButton.selectedSegmentIndex == 1 {
             itemArray = itemArray.filter {$0.done == false}
@@ -164,5 +202,34 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         userFilterUnabled()
         itemArray = allRetrievedItemsArray
         tableView.reloadData()
+    }
+}
+
+//MARK: - Add item extension
+extension ToDoViewController: AddItem {
+    
+    func userAddedNewItem(title: String, text: String, userLogin: String, userImage: UIImage, userImgURL: String) {
+        DataService.shared.addNewItem(title: title, text: text, userLogin: userLogin, userImage: userImage, userImgURL: userImgURL) { (newItemDict) in
+            if newItemDict != nil {
+                self.tableView.reloadData()
+            }
+        }
+    }
+}
+
+//MARK: - Edit/Delete item extension
+extension ToDoViewController: EditItem {
+    
+    func userEditedItem(atIndex: Int, title: String, image: UIImage, text: String) {
+        DataService.shared.editItem(id: itemArray[atIndex].id, title: title, text: text) {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func userDeletedItem(atIndex: Int) {
+        DataService.shared.deleteItem(id: itemArray[atIndex].id) {
+            self.itemArray.remove(at: atIndex)
+            self.tableView.reloadData()
+        }
     }
 }

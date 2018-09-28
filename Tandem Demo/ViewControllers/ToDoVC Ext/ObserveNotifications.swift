@@ -18,4 +18,27 @@ extension ToDoViewController {
         //Light color theme
         NotificationCenter.default.addObserver(self, selector: #selector(ToDoViewController.lightColorTheme(notification:)), name: COLOR_THEME_LIGHT, object: nil)
     }
+    
+    @objc func updateUserImage(notification: NSNotification) {
+        DataService.shared.updateUserImage { (user, image) in
+            if let user = user, let image = image {
+                for item in self.itemArray {
+                    if item.userLogin == user {
+                        item.userImage = image
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        }
+    }
+    
+    @objc func darkColorTheme(notification: NSNotification) {
+        lightColorTheme = false
+        tableView.reloadData()
+    }
+    
+    @objc func lightColorTheme(notification: NSNotification) {
+        lightColorTheme = true
+        tableView.reloadData()
+    }
 }

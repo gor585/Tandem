@@ -12,14 +12,12 @@
 		251CE8BF20F754F1002D9845 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 251CE8BE20F754F1002D9845 /* GoogleService-Info.plist */; };
 		251CE8C120F78162002D9845 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CE8C020F78162002D9845 /* SettingsViewController.swift */; };
 		2526C9EE20FB3D7B00EBE943 /* WeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2526C9ED20FB3D7B00EBE943 /* WeatherDataModel.swift */; };
-		2526FDA32100CFF000C58A7F /* RegistrationInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2526FDA22100CFF000C58A7F /* RegistrationInput.swift */; };
-		2526FDA52100D08600C58A7F /* LoginInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2526FDA42100D08600C58A7F /* LoginInput.swift */; };
-		2526FDA72100D18C00C58A7F /* CreateUser&UploadImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2526FDA62100D18C00C58A7F /* CreateUser&UploadImg.swift */; };
+		2526FDA52100D08600C58A7F /* Login\RegisterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2526FDA42100D08600C58A7F /* Login\RegisterInput.swift */; };
 		252F5CB7211DCD3D00887D9C /* SendImageNotification .swift in Sources */ = {isa = PBXBuildFile; fileRef = 252F5CB6211DCD3D00887D9C /* SendImageNotification .swift */; };
 		252F5CB9211DCEC900887D9C /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252F5CB8211DCEC900887D9C /* NotificationNames.swift */; };
 		252F5CBB211DD0B500887D9C /* ObserveNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252F5CBA211DD0B500887D9C /* ObserveNotifications.swift */; };
 		2532DEEB210C842400A6326B /* UserFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2532DEEA210C842400A6326B /* UserFilter.swift */; };
-		25340D892113244A004FCDC2 /* UsersDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25340D882113244A004FCDC2 /* UsersDatabase.swift */; };
+		253944B4215B6D0A0057D8CF /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253944B3215B6D0A0057D8CF /* DataService.swift */; };
 		254A71E720F0ACD3002D405C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254A71E620F0ACD3002D405C /* AppDelegate.swift */; };
 		254A71E920F0ACD3002D405C /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254A71E820F0ACD3002D405C /* WelcomeViewController.swift */; };
 		254A71EC20F0ACD3002D405C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 254A71EA20F0ACD3002D405C /* Main.storyboard */; };
@@ -28,18 +26,15 @@
 		25535A56213E78BC0090030F /* ChangeCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25535A55213E78BC0090030F /* ChangeCityViewController.swift */; };
 		25535A58213E797A0090030F /* ChangeCityName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25535A57213E797A0090030F /* ChangeCityName.swift */; };
 		25535A5A213E7D630090030F /* ChangeCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25535A59213E7D630090030F /* ChangeCity.swift */; };
-		255EFC3E20F89716006E9766 /* AddNewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255EFC3D20F89716006E9766 /* AddNewItem.swift */; };
-		255EFC4120F89776006E9766 /* RetrieveItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255EFC4020F89776006E9766 /* RetrieveItem.swift */; };
-		255EFC4320F89C7F006E9766 /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255EFC4220F89C7F006E9766 /* Segues.swift */; };
 		2572797321220AC8008E73CE /* AccountColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2572797221220AC8008E73CE /* AccountColorTheme.swift */; };
 		2572797521220C24008E73CE /* SettingsSegues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2572797421220C24008E73CE /* SettingsSegues.swift */; };
 		2577E6D3211C7AFB006A484B /* SaveNewUserImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577E6D2211C7AFB006A484B /* SaveNewUserImage.swift */; };
-		2579A9D52120DC520015A99F /* AddColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2579A9D42120DC520015A99F /* AddColorTheme.swift */; };
 		25AA449D211E01DA00EDBBBC /* LoadImageFromStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AA449C211E01DA00EDBBBC /* LoadImageFromStorage.swift */; };
 		25AA449F211E026D00EDBBBC /* ImageLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AA449E211E026D00EDBBBC /* ImageLayout.swift */; };
 		25AA44A1211E04C200EDBBBC /* ChangePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AA44A0211E04C200EDBBBC /* ChangePassword.swift */; };
 		25AD8A74211EC37300289501 /* SwitchColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AD8A73211EC37300289501 /* SwitchColorTheme.swift */; };
 		25AD8A76211EDBA900289501 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AD8A75211EDBA900289501 /* ColorTheme.swift */; };
+		25ADDC15215A2A30002EAB1B /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25ADDC14215A2A30002EAB1B /* AlertView.swift */; };
 		25AE373E211C31B000B7FF61 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE373D211C31B000B7FF61 /* ImageCache.swift */; };
 		25AE3740211C722F00B7FF61 /* ChangeImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE373F211C722F00B7FF61 /* ChangeImagePicker.swift */; };
 		25B1163F20F0F530009D0A28 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B1163E20F0F530009D0A28 /* ToDoViewController.swift */; };
@@ -53,16 +48,10 @@
 		25D1D7DF2119B23600F0840F /* ChangePasswordMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D1D7DE2119B23600F0840F /* ChangePasswordMode.swift */; };
 		25D1D7E12119B24E00F0840F /* ChangeImageMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D1D7E02119B24E00F0840F /* ChangeImageMode.swift */; };
 		25E0528520F20F4F00E4206C /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E0528420F20F4F00E4206C /* EventModel.swift */; };
-		25E1569020F618FD00D638DC /* LogInMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1568F20F618FD00D638DC /* LogInMode.swift */; };
-		25E1569220F6193400D638DC /* RegisterMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1569120F6193400D638DC /* RegisterMode.swift */; };
-		25E1569420F619EC00D638DC /* UserImageSelectionMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1569320F619EC00D638DC /* UserImageSelectionMode.swift */; };
-		25E1569720F621DA00D638DC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1569620F621DA00D638DC /* ImagePicker.swift */; };
-		25E1569B20F6449C00D638DC /* AddImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1569A20F6449C00D638DC /* AddImagePicker.swift */; };
+		25E1569020F618FD00D638DC /* LayoutModes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1568F20F618FD00D638DC /* LayoutModes.swift */; };
 		25E156A020F6486000D638DC /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1569F20F6486000D638DC /* DetailsViewController.swift */; };
 		25E573E820FDC6310058F007 /* DetailsMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E573E720FDC6310058F007 /* DetailsMode.swift */; };
 		25E573ED20FE2A960058F007 /* EditItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E573EC20FE2A960058F007 /* EditItem.swift */; };
-		25E573EF20FE2C7A0058F007 /* EditAndDeleteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E573EE20FE2C7A0058F007 /* EditAndDeleteItem.swift */; };
-		25F20EFC211D9254002C973F /* UpdateUserImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F20EFB211D9254002C973F /* UpdateUserImage.swift */; };
 		25F26DF321216D0A0077BE06 /* DetailsColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F26DF221216D0A0077BE06 /* DetailsColorTheme.swift */; };
 		25F26DF5212173470077BE06 /* EventsColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F26DF4212173470077BE06 /* EventsColorTheme.swift */; };
 		25F26DF72121754C0077BE06 /* EventsObserveNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F26DF62121754C0077BE06 /* EventsObserveNotifications.swift */; };
@@ -79,14 +68,12 @@
 		251CE8BE20F754F1002D9845 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		251CE8C020F78162002D9845 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2526C9ED20FB3D7B00EBE943 /* WeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataModel.swift; sourceTree = "<group>"; };
-		2526FDA22100CFF000C58A7F /* RegistrationInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationInput.swift; sourceTree = "<group>"; };
-		2526FDA42100D08600C58A7F /* LoginInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInput.swift; sourceTree = "<group>"; };
-		2526FDA62100D18C00C58A7F /* CreateUser&UploadImg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateUser&UploadImg.swift"; sourceTree = "<group>"; };
+		2526FDA42100D08600C58A7F /* Login\RegisterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login\\RegisterInput.swift"; sourceTree = "<group>"; };
 		252F5CB6211DCD3D00887D9C /* SendImageNotification .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SendImageNotification .swift"; sourceTree = "<group>"; };
 		252F5CB8211DCEC900887D9C /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
 		252F5CBA211DD0B500887D9C /* ObserveNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserveNotifications.swift; sourceTree = "<group>"; };
 		2532DEEA210C842400A6326B /* UserFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFilter.swift; sourceTree = "<group>"; };
-		25340D882113244A004FCDC2 /* UsersDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDatabase.swift; sourceTree = "<group>"; };
+		253944B3215B6D0A0057D8CF /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		254A71E320F0ACD3002D405C /* Tandem Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tandem Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		254A71E620F0ACD3002D405C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		254A71E820F0ACD3002D405C /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -97,18 +84,15 @@
 		25535A55213E78BC0090030F /* ChangeCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityViewController.swift; sourceTree = "<group>"; };
 		25535A57213E797A0090030F /* ChangeCityName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityName.swift; sourceTree = "<group>"; };
 		25535A59213E7D630090030F /* ChangeCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCity.swift; sourceTree = "<group>"; };
-		255EFC3D20F89716006E9766 /* AddNewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewItem.swift; sourceTree = "<group>"; };
-		255EFC4020F89776006E9766 /* RetrieveItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveItem.swift; sourceTree = "<group>"; };
-		255EFC4220F89C7F006E9766 /* Segues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
 		2572797221220AC8008E73CE /* AccountColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountColorTheme.swift; sourceTree = "<group>"; };
 		2572797421220C24008E73CE /* SettingsSegues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSegues.swift; sourceTree = "<group>"; };
 		2577E6D2211C7AFB006A484B /* SaveNewUserImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNewUserImage.swift; sourceTree = "<group>"; };
-		2579A9D42120DC520015A99F /* AddColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddColorTheme.swift; sourceTree = "<group>"; };
 		25AA449C211E01DA00EDBBBC /* LoadImageFromStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageFromStorage.swift; sourceTree = "<group>"; };
 		25AA449E211E026D00EDBBBC /* ImageLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLayout.swift; sourceTree = "<group>"; };
 		25AA44A0211E04C200EDBBBC /* ChangePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassword.swift; sourceTree = "<group>"; };
 		25AD8A73211EC37300289501 /* SwitchColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchColorTheme.swift; sourceTree = "<group>"; };
 		25AD8A75211EDBA900289501 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
+		25ADDC14215A2A30002EAB1B /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		25AE373D211C31B000B7FF61 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		25AE373F211C722F00B7FF61 /* ChangeImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeImagePicker.swift; sourceTree = "<group>"; };
 		25B1163E20F0F530009D0A28 /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
@@ -122,16 +106,10 @@
 		25D1D7DE2119B23600F0840F /* ChangePasswordMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordMode.swift; sourceTree = "<group>"; };
 		25D1D7E02119B24E00F0840F /* ChangeImageMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeImageMode.swift; sourceTree = "<group>"; };
 		25E0528420F20F4F00E4206C /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
-		25E1568F20F618FD00D638DC /* LogInMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInMode.swift; sourceTree = "<group>"; };
-		25E1569120F6193400D638DC /* RegisterMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterMode.swift; sourceTree = "<group>"; };
-		25E1569320F619EC00D638DC /* UserImageSelectionMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageSelectionMode.swift; sourceTree = "<group>"; };
-		25E1569620F621DA00D638DC /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		25E1569A20F6449C00D638DC /* AddImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImagePicker.swift; sourceTree = "<group>"; };
+		25E1568F20F618FD00D638DC /* LayoutModes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutModes.swift; sourceTree = "<group>"; };
 		25E1569F20F6486000D638DC /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		25E573E720FDC6310058F007 /* DetailsMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsMode.swift; sourceTree = "<group>"; };
 		25E573EC20FE2A960058F007 /* EditItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItem.swift; sourceTree = "<group>"; };
-		25E573EE20FE2C7A0058F007 /* EditAndDeleteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAndDeleteItem.swift; sourceTree = "<group>"; };
-		25F20EFB211D9254002C973F /* UpdateUserImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserImage.swift; sourceTree = "<group>"; };
 		25F26DF221216D0A0077BE06 /* DetailsColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsColorTheme.swift; sourceTree = "<group>"; };
 		25F26DF4212173470077BE06 /* EventsColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsColorTheme.swift; sourceTree = "<group>"; };
 		25F26DF62121754C0077BE06 /* EventsObserveNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsObserveNotifications.swift; sourceTree = "<group>"; };
@@ -165,6 +143,14 @@
 			path = "EventVC Ext";
 			sourceTree = "<group>";
 		};
+		253944B5215B80A40057D8CF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				253944B3215B6D0A0057D8CF /* DataService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		254A71DA20F0ACD3002D405C = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +176,7 @@
 				255EFC4420F89D77006E9766 /* Protocols */,
 				25BF18CE20F275C400393B77 /* ViewControllers */,
 				25BF18CB20F2757D00393B77 /* Models */,
+				253944B5215B80A40057D8CF /* Services */,
 				25BF18CC20F2758800393B77 /* Helpers */,
 				25BF18CD20F275B600393B77 /* Views */,
 				254A71ED20F0ACD3002D405C /* Assets.xcassets */,
@@ -203,14 +190,9 @@
 		255EFC3F20F89735006E9766 /* ToDoVC Ext */ = {
 			isa = PBXGroup;
 			children = (
-				255EFC3D20F89716006E9766 /* AddNewItem.swift */,
-				255EFC4020F89776006E9766 /* RetrieveItem.swift */,
 				252F5CBA211DD0B500887D9C /* ObserveNotifications.swift */,
-				25F20EFB211D9254002C973F /* UpdateUserImage.swift */,
 				25AD8A75211EDBA900289501 /* ColorTheme.swift */,
 				2532DEEA210C842400A6326B /* UserFilter.swift */,
-				255EFC4220F89C7F006E9766 /* Segues.swift */,
-				25E573EE20FE2C7A0058F007 /* EditAndDeleteItem.swift */,
 			);
 			path = "ToDoVC Ext";
 			sourceTree = "<group>";
@@ -264,6 +246,7 @@
 				25F6442020FF375100E7026D /* HideKeyboardReturn.swift */,
 				25AE373D211C31B000B7FF61 /* ImageCache.swift */,
 				252F5CB8211DCEC900887D9C /* NotificationNames.swift */,
+				25ADDC14215A2A30002EAB1B /* AlertView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -286,7 +269,6 @@
 				25B1163E20F0F530009D0A28 /* ToDoViewController.swift */,
 				255EFC3F20F89735006E9766 /* ToDoVC Ext */,
 				25BF18D320F2960800393B77 /* AddItemViewController.swift */,
-				25E1569C20F644FA00D638DC /* AddVC Ext */,
 				25E1569F20F6486000D638DC /* DetailsViewController.swift */,
 				25E573EB20FE297C0058F007 /* DetailsVC Ext */,
 				25FC964020F12DEE0035D9BF /* EventsViewController.swift */,
@@ -324,25 +306,10 @@
 		25E1569520F61A2300D638DC /* WelcomeVC Ext */ = {
 			isa = PBXGroup;
 			children = (
-				25E1568F20F618FD00D638DC /* LogInMode.swift */,
-				2526FDA42100D08600C58A7F /* LoginInput.swift */,
-				25340D882113244A004FCDC2 /* UsersDatabase.swift */,
-				25E1569120F6193400D638DC /* RegisterMode.swift */,
-				2526FDA22100CFF000C58A7F /* RegistrationInput.swift */,
-				25E1569320F619EC00D638DC /* UserImageSelectionMode.swift */,
-				2526FDA62100D18C00C58A7F /* CreateUser&UploadImg.swift */,
-				25E1569620F621DA00D638DC /* ImagePicker.swift */,
+				25E1568F20F618FD00D638DC /* LayoutModes.swift */,
+				2526FDA42100D08600C58A7F /* Login\RegisterInput.swift */,
 			);
 			path = "WelcomeVC Ext";
-			sourceTree = "<group>";
-		};
-		25E1569C20F644FA00D638DC /* AddVC Ext */ = {
-			isa = PBXGroup;
-			children = (
-				25E1569A20F6449C00D638DC /* AddImagePicker.swift */,
-				2579A9D42120DC520015A99F /* AddColorTheme.swift */,
-			);
-			path = "AddVC Ext";
 			sourceTree = "<group>";
 		};
 		25E573EB20FE297C0058F007 /* DetailsVC Ext */ = {
@@ -521,8 +488,8 @@
 				25E573ED20FE2A960058F007 /* EditItem.swift in Sources */,
 				250829CC20F9FE1400590CB9 /* HideKeyboardTap.swift in Sources */,
 				25E573E820FDC6310058F007 /* DetailsMode.swift in Sources */,
-				25E1569B20F6449C00D638DC /* AddImagePicker.swift in Sources */,
 				2532DEEB210C842400A6326B /* UserFilter.swift in Sources */,
+				25ADDC15215A2A30002EAB1B /* AlertView.swift in Sources */,
 				25AA449D211E01DA00EDBBBC /* LoadImageFromStorage.swift in Sources */,
 				25BF18D220F294A300393B77 /* AddItem.swift in Sources */,
 				251CE8C120F78162002D9845 /* SettingsViewController.swift in Sources */,
@@ -530,9 +497,6 @@
 				252F5CBB211DD0B500887D9C /* ObserveNotifications.swift in Sources */,
 				25D1D7E12119B24E00F0840F /* ChangeImageMode.swift in Sources */,
 				25FC964120F12DEE0035D9BF /* EventsViewController.swift in Sources */,
-				25E1569420F619EC00D638DC /* UserImageSelectionMode.swift in Sources */,
-				25E573EF20FE2C7A0058F007 /* EditAndDeleteItem.swift in Sources */,
-				25340D892113244A004FCDC2 /* UsersDatabase.swift in Sources */,
 				25D1D7DD2119AFC700F0840F /* AccountSettingsViewController.swift in Sources */,
 				25B1163F20F0F530009D0A28 /* ToDoViewController.swift in Sources */,
 				25FC964320F12FD50035D9BF /* EventsCell.swift in Sources */,
@@ -540,19 +504,14 @@
 				25BF18D420F2960800393B77 /* AddItemViewController.swift in Sources */,
 				252F5CB9211DCEC900887D9C /* NotificationNames.swift in Sources */,
 				25535A58213E797A0090030F /* ChangeCityName.swift in Sources */,
-				2526FDA52100D08600C58A7F /* LoginInput.swift in Sources */,
+				2526FDA52100D08600C58A7F /* Login\RegisterInput.swift in Sources */,
 				25F26DF5212173470077BE06 /* EventsColorTheme.swift in Sources */,
 				2572797321220AC8008E73CE /* AccountColorTheme.swift in Sources */,
-				255EFC4120F89776006E9766 /* RetrieveItem.swift in Sources */,
 				25BF18C820F272E200393B77 /* DateConverter.swift in Sources */,
 				25BFE0AF2101E9D800B27EBA /* SignOut.swift in Sources */,
-				25F20EFC211D9254002C973F /* UpdateUserImage.swift in Sources */,
-				255EFC3E20F89716006E9766 /* AddNewItem.swift in Sources */,
 				25535A56213E78BC0090030F /* ChangeCityViewController.swift in Sources */,
-				25E1569220F6193400D638DC /* RegisterMode.swift in Sources */,
 				25E0528520F20F4F00E4206C /* EventModel.swift in Sources */,
-				2526FDA32100CFF000C58A7F /* RegistrationInput.swift in Sources */,
-				2526FDA72100D18C00C58A7F /* CreateUser&UploadImg.swift in Sources */,
+				253944B4215B6D0A0057D8CF /* DataService.swift in Sources */,
 				25BF18C620F2727D00393B77 /* ItemModel.swift in Sources */,
 				25AA449F211E026D00EDBBBC /* ImageLayout.swift in Sources */,
 				252F5CB7211DCD3D00887D9C /* SendImageNotification .swift in Sources */,
@@ -562,15 +521,12 @@
 				25AD8A74211EC37300289501 /* SwitchColorTheme.swift in Sources */,
 				25E156A020F6486000D638DC /* DetailsViewController.swift in Sources */,
 				25D1D7DF2119B23600F0840F /* ChangePasswordMode.swift in Sources */,
-				255EFC4320F89C7F006E9766 /* Segues.swift in Sources */,
-				25E1569020F618FD00D638DC /* LogInMode.swift in Sources */,
+				25E1569020F618FD00D638DC /* LayoutModes.swift in Sources */,
 				2510B2A820FB360D0091C1DC /* WeatherUpdate.swift in Sources */,
 				2526C9EE20FB3D7B00EBE943 /* WeatherDataModel.swift in Sources */,
 				2577E6D3211C7AFB006A484B /* SaveNewUserImage.swift in Sources */,
-				25E1569720F621DA00D638DC /* ImagePicker.swift in Sources */,
 				254A71E720F0ACD3002D405C /* AppDelegate.swift in Sources */,
 				25BF18D020F275EA00393B77 /* ToDoCell.swift in Sources */,
-				2579A9D52120DC520015A99F /* AddColorTheme.swift in Sources */,
 				2572797521220C24008E73CE /* SettingsSegues.swift in Sources */,
 				25F26DF72121754C0077BE06 /* EventsObserveNotifications.swift in Sources */,
 			);

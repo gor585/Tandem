@@ -11,42 +11,6 @@ import Firebase
 
 extension ToDoViewController {
     
-    //Loading current users color setting from Firebase Users dict
-    func loadColorThemeSetting() {
-        usersDatabase.observe(.childAdded) { (snapshot) in
-            let snapshotValue = snapshot.value as! Dictionary<String, String>
-            let userLogin = snapshotValue["User"]!
-            let userID = snapshotValue["ID"]!
-            
-            if userLogin == self.currentUserName {
-                let colorSettingRef = self.usersDatabase.child(userID).child("LightColorTheme")
-                colorSettingRef.observe(.value, with: { (snapshot) in
-                    let colorSetting = snapshot.value as! String
-                    if colorSetting == "true" {
-                        self.lightColorTheme = true
-                        print("ToDo light is on")
-                    } else {
-                        self.lightColorTheme = false
-                        print("ToDo light is off")
-                    }
-                    self.userDefaults.set(self.lightColorTheme, forKey: "lightThemeIsOn")
-                    print("Defaults set to \(self.lightColorTheme)")
-                })
-                
-            }
-        }
-    }
-    
-    @objc func darkColorTheme(notification: NSNotification) {
-        lightColorTheme = false
-        tableView.reloadData()
-    }
-    
-    @objc func lightColorTheme(notification: NSNotification) {
-        lightColorTheme = true
-        tableView.reloadData()
-    }
-    
     func applyColorThemeToCells(cell: UITableViewCell) {
         switch lightColorTheme {
         case false:
