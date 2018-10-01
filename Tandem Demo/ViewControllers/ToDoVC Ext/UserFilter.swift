@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 extension ToDoViewController {
     
@@ -23,7 +22,7 @@ extension ToDoViewController {
     
     func userFilterEnabled() {
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
-            self.currentUserFilterButton.setTitle(Auth.auth().currentUser?.email, for: .normal)
+            self.currentUserFilterButton.setTitle(self.currentUser, for: .normal)
             self.currentUserFilterButton.isHidden = false
             self.currentUserFilterButton.isEnabled = true
             self.allUsersFilterButton.isHidden = false

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 import SVProgressHUD
 
 class AddItemViewController: UIViewController {
@@ -37,18 +36,11 @@ class AddItemViewController: UIViewController {
         
     @IBAction func submitButtonPressed(_ sender: Any) {
         SVProgressHUD.show()
-        var userImage = UIImage()
-        DataService.shared.getUserImgURL { (url) in
-            guard let userImgURL = URL(string: url) else { return }
-            do {
-                let imageData = try Data.init(contentsOf: userImgURL)
-                userImage = UIImage(data: imageData)!
-                self.delegate?.userAddedNewItem(title: self.titleTextField.text!, text: self.textTextField.text!, userLogin: (Auth.auth().currentUser?.email)!, userImage: userImage, userImgURL: url)
-                self.navigationController?.popViewController(animated: true)
-                SVProgressHUD.dismiss()
-            } catch {
-                print("Error retrieving data from \(url)")
-            }
+        DataService.shared.getUserImg { (user, image, url) in
+            guard let userName = user, let userImage = image, let imageURL = url else { return }
+            self.delegate?.userAddedNewItem(title: self.titleTextField.text!, text: self.textTextField.text!, userLogin: userName, userImage: userImage, userImgURL: imageURL)
+            self.navigationController?.popViewController(animated: true)
+            SVProgressHUD.dismiss()
         }
     }
 }

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseStorage
 import SVProgressHUD
 
 class WelcomeViewController: UIViewController {
@@ -57,7 +55,6 @@ class WelcomeViewController: UIViewController {
 
     @IBAction func logInButtonPressed(_ sender: Any) {
         logInModeBegin()
-        
         DataService.shared.retrieveUsersData { (data) in
             self.usersDataDictionary = data
         }
@@ -98,7 +95,6 @@ class WelcomeViewController: UIViewController {
             SVProgressHUD.dismiss()
             self.userImageSelectionEnded()
             self.registerModeEnded()
-            self.performSegue(withIdentifier: "toApp", sender: self)
         }
         
     }
@@ -107,8 +103,6 @@ class WelcomeViewController: UIViewController {
         self.view.endEditing(true)
         return true
     }
-    
-    @IBAction func unwindToWelcomeVC(segue: UIStoryboardSegue) {}
 }
 
 //MARK: - Image Picker

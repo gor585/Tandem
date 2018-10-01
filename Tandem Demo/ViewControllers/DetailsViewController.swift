@@ -44,6 +44,17 @@ class DetailsViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
     }
     
+    //MARK: - Color theme
+    func applyColorTheme() {
+        switch lightColorTheme {
+        case false:
+            self.view.backgroundColor = UIColor(hexString: "7F7F7F")
+        default:
+            self.view.backgroundColor = UIColor(hexString: "E6E6E6")
+        }
+    }
+    
+    //MARK: - Edit item
     @IBAction func editButtonPressed(_ sender: Any) {
         detailsModeEnded()
     }
@@ -87,4 +98,40 @@ class DetailsViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    //MARK: - Details mode layout
+    func detailsModeBegin() {
+        detailsTitleLabel.isHidden = false
+        detailsImageView.isHidden = false
+        detailsTextView.isHidden = false
+        detailsView.isHidden = false
+        editButton.isHidden = false
+        editButton.isEnabled = true
+        deleteButton.isHidden = false
+        deleteButton.isEnabled = true
+        
+        editTitleTextField.isHidden = true
+        editImageView.isHidden = true
+        editView.isHidden = true
+        EditTextView.isHidden = true
+        confirmButton.isHidden = true
+        confirmButton.isEnabled = false
+    }
+    
+    func detailsModeEnded() {
+        detailsTitleLabel.isHidden = true
+        detailsImageView.isHidden = true
+        detailsTextView.isHidden = true
+        detailsView.isHidden = true
+        editButton.isHidden = true
+        editButton.isEnabled = false
+        deleteButton.isHidden = true
+        deleteButton.isEnabled = false
+        
+        editTitleTextField.isHidden = false
+        editImageView.isHidden = false
+        editView.isHidden = false
+        EditTextView.isHidden = false
+        confirmButton.isHidden = false
+        confirmButton.isEnabled = true
+    }
 }

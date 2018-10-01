@@ -19,6 +19,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if user != nil {
+                guard let controller = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as? UITabBarController else { return }
+                self.window?.rootViewController = controller
+                self.window?.makeKeyAndVisible()
+            } else {
+                let controller = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController")
+                self.window?.rootViewController = controller
+                self.window?.makeKeyAndVisible()
+            }
+            
+        }
+        
         return true
     }
 

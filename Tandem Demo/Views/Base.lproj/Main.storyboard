@@ -23,7 +23,7 @@
         <!--Welcome View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="WelcomeViewController" customModule="Tandem_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="WelcomeViewController" customModule="Tandem_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -309,7 +309,6 @@
                         <outlet property="userImageView" destination="ZFV-fC-sbm" id="Yh4-CJ-fEp"/>
                         <outlet property="verifyPasswordLabel" destination="zgq-hi-aC2" id="BHf-Wp-Lms"/>
                         <outlet property="verifyPasswordTextField" destination="AE2-4I-uYl" id="OvQ-TU-2rZ"/>
-                        <segue destination="xhS-rQ-X8B" kind="show" identifier="toApp" id="EOo-zq-OWW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -319,7 +318,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yY8-Tz-sHV">
             <objects>
-                <tabBarController id="xhS-rQ-X8B" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xhS-rQ-X8B" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xUm-Nz-4B8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -339,7 +338,7 @@
         <!--ToDo-->
         <scene sceneID="UfJ-XN-Kqu">
             <objects>
-                <viewController id="Mp8-wE-tk0" customClass="ToDoViewController" customModule="Tandem_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ToDoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mp8-wE-tk0" customClass="ToDoViewController" customModule="Tandem_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kEV-0d-07e">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -800,8 +799,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Log Out" id="0df-vZ-uAJ">
                             <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="logOutButtonPressed:" destination="UQe-hG-qib" id="KBt-LM-dVg"/>
-                                <segue destination="vuZ-cf-FR3" kind="unwind" unwindAction="unwindToWelcomeVCWithSegue:" id="29k-JG-4MI"/>
+                                <action selector="logOutButtonPressed:" destination="UQe-hG-qib" id="f69-xF-d84"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -813,7 +811,6 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7XA-0M-0WJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="vuZ-cf-FR3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1249" y="1245"/>
         </scene>

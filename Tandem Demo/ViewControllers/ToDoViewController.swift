@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 import SVProgressHUD
 import ChameleonFramework
 
@@ -29,7 +28,8 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     var selectedCell: Item?
     
     let userDefaults = UserDefaults.standard
-    var lightColorTheme: Bool = true
+    var lightColorTheme = Bool()
+    var currentUser: String?
     
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -44,28 +44,21 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         userFilterUnabled()
         
         SVProgressHUD.show()
-        DataService.shared.retrieveItems { (item) in
-            if let item = item {
+        DataService.shared.retrieveItems { (currentUser, item) in
+            if let currentUser = currentUser, let item = item {
                 self.itemArray.append(item)
-                print("Item \(item.title!) appended to array!")
                 self.allRetrievedItemsArray.append(item)
-                
-                print("RETRIEVED DATA Async !!!!!!!!")
+                self.currentUser = currentUser
                 self.tableView.reloadData()
+                self.currentUserItems = self.itemArray.filter {$0.userLogin == self.currentUser}
                 SVProgressHUD.dismiss()
-                self.currentUserItems = self.itemArray.filter {$0.userLogin == Auth.auth().currentUser?.email}
             }
         }
         
         createObservers()
-        
-        //Loading preferred color settings of current user
-        DataService.shared.loadColorThemeSetting { (colorTheme) in
-            self.userDefaults.set(colorTheme, forKey: "lightThemeIsOn")
-            self.lightColorTheme = colorTheme
-        }
     }
     
+    //MARK: - TableView delegate methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemArray.count
     }
@@ -99,7 +92,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         selectedCell = itemArray[indexPath.row]
         
         for item in itemArray {
-            if usersArray.contains(item.userLogin) == false && item.userLogin != Auth.auth().currentUser?.email {
+            if usersArray.contains(item.userLogin) == false && item.userLogin != currentUser {
                 usersArray.append(item.userLogin)
                 stackFilterAppendUsers()
                 print("\(item.userLogin)")
