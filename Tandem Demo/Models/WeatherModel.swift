@@ -1,14 +1,14 @@
 //
-//  WeatherDataModel.swift
+//  WeatherModel.swift
 //  Tandem Demo
 //
-//  Created by Jaroslav Stupinskyi on 15.07.18.
+//  Created by Jaroslav Stupinskyi on 02.10.18.
 //  Copyright © 2018 Jaroslav Stupinskyi. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class WeatherDataModel {
+class WeatherModel {
     
     var temperature: Int = 0
     var condition: Int = 0

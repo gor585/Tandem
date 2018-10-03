@@ -7,19 +7,13 @@
 //
 
 import UIKit
-import CoreLocation
 
-class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
+class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LocationData {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var weatherIconImg: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityChangeButton: UIButton!
-    
-    let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
-    let APP_ID = "59a54878a35a9d6c822d56aac3cfd0a6"
-    let locationManager = CLLocationManager()
-    let weatherDataModel = WeatherDataModel()
     
     var eventArray = [Event]()
     
@@ -42,10 +36,8 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.dataSource = self
         tableView.separatorStyle = .none
         
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+        //Getting location for weather update
+        LocationService.shared.delegate = self
         
         eventArray.append(planetaKino)
         eventArray.append(kinopalace)
@@ -85,5 +77,101 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     @IBAction func cityChangeButtonPressed(_ sender: Any) {
+    }
+    
+    //MARK: - Location data delegate method
+    func getLocationData(lat: String, long: String) {
+        WeatherService.shared.getWeatherData(lat: lat, long: long) { (temp, city, iconName) in
+            guard let temp = temp, let city = city, let weatherIconName = iconName else { print("Error getting weather data"); self.cityChangeButton.setTitle("Error", for: .normal); return }
+            self.updateUIWithWeatherData(temperature: temp, cityName: city, weatherIconName: weatherIconName)
+            print("Received weather data: \(temp), \(city), \(weatherIconName)")
+        }
+    }
+    
+    func updateUIWithWeatherData(temperature: Int, cityName: String, weatherIconName: String) {
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        activityIndicator.center = cityChangeButton.center
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
+        cityChangeButton.addSubview(activityIndicator)
+        
+        if temperature > 0 {
+            temperatureLabel.text = "+\(temperature)°"
+        } else if temperature == 0 {
+            temperatureLabel.text = "\(temperature)°"
+        } else {
+            temperatureLabel.text = "-\(temperature)°"
+        }
+        
+        weatherIconImg.image = UIImage(named: weatherIconName)
+        cityChangeButton.setTitle(cityName, for: .normal)
+        activityIndicator.isHidden = true
+        activityIndicator.stopAnimating()
+    }
+    
+    //MARK: - Observers
+    func createObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(EventsViewController.darkColorTheme(notification:)), name: COLOR_THEME_DARK, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(EventsViewController.lightColorTheme(notification:)), name: COLOR_THEME_LIGHT, object: nil)
+    }
+    
+    //MARK: - Color theme settings
+    @objc func darkColorTheme(notification: NSNotification) {
+        lightColorTheme = false
+        tableView.reloadData()
+    }
+    
+    @objc func lightColorTheme(notification: NSNotification) {
+        lightColorTheme = true
+        tableView.reloadData()
+    }
+    
+    func applyColorTheme(cell: UITableViewCell) {
+        switch lightColorTheme {
+        case false:
+            navigationController?.navigationBar.barTintColor = UIColor(hexString: "7F7F7F")
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+            navigationController?.navigationBar.tintColor = UIColor.white
+            tabBarController?.tabBar.barTintColor = UIColor(hexString: "7F7F7F")
+            tabBarController?.tabBar.tintColor = UIColor.white
+            tabBarController?.tabBar.unselectedItemTintColor = UIColor(hexString: "B3B3B3")
+            self.view.backgroundColor = UIColor(hexString: "7F7F7F")
+            tableView.backgroundColor = UIColor(hexString: "7F7F7F")
+            cell.contentView.backgroundColor = UIColor(hexString: "7F7F7F")
+            temperatureLabel.textColor = UIColor.white
+        case true:
+            navigationController?.navigationBar.barTintColor = UIColor(hexString: "E6E6E6")
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(hexString: "008080")]
+            navigationController?.navigationBar.tintColor = UIColor(hexString: "008080")
+            tabBarController?.tabBar.barTintColor = UIColor(hexString: "E6E6E6")
+            tabBarController?.tabBar.tintColor = UIColor(hexString: "008080")
+            tabBarController?.tabBar.unselectedItemTintColor = UIColor(hexString: "7F7F7F")
+            self.view.backgroundColor = UIColor(hexString: "E6E6E6")
+            tableView.backgroundColor = UIColor(hexString: "E6E6E6")
+            cell.contentView.backgroundColor = UIColor(hexString: "E6E6E6")
+            temperatureLabel.textColor = UIColor.black
+            break
+        }
+    }
+}
+
+extension EventsViewController: ChangeCityName {
+    
+    //MARK: - Change city delegate methods
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "changeCityName" {
+            let changeCityNameVC = segue.destination as! ChangeCityViewController
+            changeCityNameVC.lightColorTheme = lightColorTheme
+            changeCityNameVC.delegate = self
+        }
+    }
+    
+    func userChangedCityName(cityName: String) {
+        cityChangeButton.setTitle(cityName, for: .normal)
+        WeatherService.shared.cityWeatherUpdate(city: cityName) { (temp, city, iconName) in
+            guard let temp = temp, let city = city, let weatherIconName = iconName else { print("Error getting weather data"); self.cityChangeButton.setTitle("Error", for: .normal); return }
+            self.updateUIWithWeatherData(temperature: temp, cityName: city, weatherIconName: weatherIconName)
+        }
     }
 }

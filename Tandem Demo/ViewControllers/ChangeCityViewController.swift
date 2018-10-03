@@ -32,7 +32,8 @@ class ChangeCityViewController: UIViewController {
             present(alert, animated: true, completion: nil)
             
         } else {
-            delegate?.userChangedCityName(cityName: cityNameTextField.text!)
+            guard let city = cityNameTextField.text else { return }
+            delegate?.userChangedCityName(cityName: city)
             self.navigationController?.popViewController(animated: true)
         }
     }

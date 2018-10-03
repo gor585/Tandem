@@ -8,10 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		250829CC20F9FE1400590CB9 /* HideKeyboardTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250829CB20F9FE1400590CB9 /* HideKeyboardTap.swift */; };
-		2510B2A820FB360D0091C1DC /* WeatherUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2510B2A720FB360D0091C1DC /* WeatherUpdate.swift */; };
 		251CE8BF20F754F1002D9845 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 251CE8BE20F754F1002D9845 /* GoogleService-Info.plist */; };
 		251CE8C120F78162002D9845 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CE8C020F78162002D9845 /* SettingsViewController.swift */; };
-		2526C9EE20FB3D7B00EBE943 /* WeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2526C9ED20FB3D7B00EBE943 /* WeatherDataModel.swift */; };
 		2526FDA52100D08600C58A7F /* Login\RegisterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2526FDA42100D08600C58A7F /* Login\RegisterInput.swift */; };
 		252F5CB9211DCEC900887D9C /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252F5CB8211DCEC900887D9C /* NotificationNames.swift */; };
 		252F5CBB211DD0B500887D9C /* ObserveNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252F5CBA211DD0B500887D9C /* ObserveNotifications.swift */; };
@@ -24,7 +22,9 @@
 		254A71F120F0ACD3002D405C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 254A71EF20F0ACD3002D405C /* LaunchScreen.storyboard */; };
 		25535A56213E78BC0090030F /* ChangeCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25535A55213E78BC0090030F /* ChangeCityViewController.swift */; };
 		25535A58213E797A0090030F /* ChangeCityName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25535A57213E797A0090030F /* ChangeCityName.swift */; };
-		25535A5A213E7D630090030F /* ChangeCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25535A59213E7D630090030F /* ChangeCity.swift */; };
+		258195772163935E00EC528A /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258195762163935E00EC528A /* WeatherService.swift */; };
+		2581957B21639DCC00EC528A /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2581957A21639DCC00EC528A /* LocationModel.swift */; };
+		2581957D2163B5E200EC528A /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2581957C2163B5E200EC528A /* WeatherModel.swift */; };
 		25AD8A76211EDBA900289501 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AD8A75211EDBA900289501 /* ColorTheme.swift */; };
 		25ADDC15215A2A30002EAB1B /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25ADDC14215A2A30002EAB1B /* AlertView.swift */; };
 		25AE373E211C31B000B7FF61 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE373D211C31B000B7FF61 /* ImageCache.swift */; };
@@ -40,21 +40,19 @@
 		25E1569020F618FD00D638DC /* LayoutModes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1568F20F618FD00D638DC /* LayoutModes.swift */; };
 		25E156A020F6486000D638DC /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1569F20F6486000D638DC /* DetailsViewController.swift */; };
 		25E573ED20FE2A960058F007 /* EditItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E573EC20FE2A960058F007 /* EditItem.swift */; };
-		25F26DF5212173470077BE06 /* EventsColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F26DF4212173470077BE06 /* EventsColorTheme.swift */; };
-		25F26DF72121754C0077BE06 /* EventsObserveNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F26DF62121754C0077BE06 /* EventsObserveNotifications.swift */; };
 		25F6442120FF375100E7026D /* HideKeyboardReturn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F6442020FF375100E7026D /* HideKeyboardReturn.swift */; };
 		25FC964120F12DEE0035D9BF /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FC964020F12DEE0035D9BF /* EventsViewController.swift */; };
 		25FC964320F12FD50035D9BF /* EventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FC964220F12FD50035D9BF /* EventsCell.swift */; };
+		25FE857B2164BE6D00A621E2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FE857A2164BE6D00A621E2 /* LocationService.swift */; };
+		25FE857D2164BFEF00A621E2 /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FE857C2164BFEF00A621E2 /* LocationData.swift */; };
 		BD9ACE3F5C3452407179018B /* Pods_Tandem_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB82E272A33F0B83EF6F9F8 /* Pods_Tandem_Demo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0DEC5D17CC68153172A9D09A /* Pods-Tandem Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tandem Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tandem Demo/Pods-Tandem Demo.release.xcconfig"; sourceTree = "<group>"; };
 		250829CB20F9FE1400590CB9 /* HideKeyboardTap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardTap.swift; sourceTree = "<group>"; };
-		2510B2A720FB360D0091C1DC /* WeatherUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUpdate.swift; sourceTree = "<group>"; };
 		251CE8BE20F754F1002D9845 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		251CE8C020F78162002D9845 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		2526C9ED20FB3D7B00EBE943 /* WeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataModel.swift; sourceTree = "<group>"; };
 		2526FDA42100D08600C58A7F /* Login\RegisterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login\\RegisterInput.swift"; sourceTree = "<group>"; };
 		252F5CB8211DCEC900887D9C /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
 		252F5CBA211DD0B500887D9C /* ObserveNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserveNotifications.swift; sourceTree = "<group>"; };
@@ -69,7 +67,9 @@
 		254A71F220F0ACD3002D405C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25535A55213E78BC0090030F /* ChangeCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityViewController.swift; sourceTree = "<group>"; };
 		25535A57213E797A0090030F /* ChangeCityName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityName.swift; sourceTree = "<group>"; };
-		25535A59213E7D630090030F /* ChangeCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCity.swift; sourceTree = "<group>"; };
+		258195762163935E00EC528A /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		2581957A21639DCC00EC528A /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		2581957C2163B5E200EC528A /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		25AD8A75211EDBA900289501 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		25ADDC14215A2A30002EAB1B /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		25AE373D211C31B000B7FF61 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
@@ -85,11 +85,11 @@
 		25E1568F20F618FD00D638DC /* LayoutModes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutModes.swift; sourceTree = "<group>"; };
 		25E1569F20F6486000D638DC /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		25E573EC20FE2A960058F007 /* EditItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItem.swift; sourceTree = "<group>"; };
-		25F26DF4212173470077BE06 /* EventsColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsColorTheme.swift; sourceTree = "<group>"; };
-		25F26DF62121754C0077BE06 /* EventsObserveNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsObserveNotifications.swift; sourceTree = "<group>"; };
 		25F6442020FF375100E7026D /* HideKeyboardReturn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardReturn.swift; sourceTree = "<group>"; };
 		25FC964020F12DEE0035D9BF /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		25FC964220F12FD50035D9BF /* EventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCell.swift; sourceTree = "<group>"; };
+		25FE857A2164BE6D00A621E2 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		25FE857C2164BFEF00A621E2 /* LocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
 		3DB82E272A33F0B83EF6F9F8 /* Pods_Tandem_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tandem_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E5F55B946F087272E712657 /* Pods-Tandem Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tandem Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tandem Demo/Pods-Tandem Demo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,21 +106,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2510B2A920FB36380091C1DC /* EventVC Ext */ = {
-			isa = PBXGroup;
-			children = (
-				2510B2A720FB360D0091C1DC /* WeatherUpdate.swift */,
-				25535A59213E7D630090030F /* ChangeCity.swift */,
-				25F26DF62121754C0077BE06 /* EventsObserveNotifications.swift */,
-				25F26DF4212173470077BE06 /* EventsColorTheme.swift */,
-			);
-			path = "EventVC Ext";
-			sourceTree = "<group>";
-		};
 		253944B5215B80A40057D8CF /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				25AE373D211C31B000B7FF61 /* ImageCache.swift */,
 				253944B3215B6D0A0057D8CF /* DataService.swift */,
+				25FE857A2164BE6D00A621E2 /* LocationService.swift */,
+				258195762163935E00EC528A /* WeatherService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -177,6 +169,7 @@
 				25BF18D120F294A300393B77 /* AddItem.swift */,
 				25E573EC20FE2A960058F007 /* EditItem.swift */,
 				25535A57213E797A0090030F /* ChangeCityName.swift */,
+				25FE857C2164BFEF00A621E2 /* LocationData.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -186,7 +179,8 @@
 			children = (
 				25BF18C520F2727D00393B77 /* ItemModel.swift */,
 				25E0528420F20F4F00E4206C /* EventModel.swift */,
-				2526C9ED20FB3D7B00EBE943 /* WeatherDataModel.swift */,
+				2581957A21639DCC00EC528A /* LocationModel.swift */,
+				2581957C2163B5E200EC528A /* WeatherModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -197,7 +191,6 @@
 				25BF18C720F272E200393B77 /* DateConverter.swift */,
 				250829CB20F9FE1400590CB9 /* HideKeyboardTap.swift */,
 				25F6442020FF375100E7026D /* HideKeyboardReturn.swift */,
-				25AE373D211C31B000B7FF61 /* ImageCache.swift */,
 				252F5CB8211DCEC900887D9C /* NotificationNames.swift */,
 				25ADDC14215A2A30002EAB1B /* AlertView.swift */,
 			);
@@ -224,7 +217,6 @@
 				25BF18D320F2960800393B77 /* AddItemViewController.swift */,
 				25E1569F20F6486000D638DC /* DetailsViewController.swift */,
 				25FC964020F12DEE0035D9BF /* EventsViewController.swift */,
-				2510B2A920FB36380091C1DC /* EventVC Ext */,
 				25535A55213E78BC0090030F /* ChangeCityViewController.swift */,
 				251CE8C020F78162002D9845 /* SettingsViewController.swift */,
 				25D1D7DC2119AFC700F0840F /* AccountSettingsViewController.swift */,
@@ -411,15 +403,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25535A5A213E7D630090030F /* ChangeCity.swift in Sources */,
 				25E573ED20FE2A960058F007 /* EditItem.swift in Sources */,
 				250829CC20F9FE1400590CB9 /* HideKeyboardTap.swift in Sources */,
 				2532DEEB210C842400A6326B /* UserFilter.swift in Sources */,
 				25ADDC15215A2A30002EAB1B /* AlertView.swift in Sources */,
 				25BF18D220F294A300393B77 /* AddItem.swift in Sources */,
+				25FE857B2164BE6D00A621E2 /* LocationService.swift in Sources */,
 				251CE8C120F78162002D9845 /* SettingsViewController.swift in Sources */,
 				254A71E920F0ACD3002D405C /* WelcomeViewController.swift in Sources */,
+				25FE857D2164BFEF00A621E2 /* LocationData.swift in Sources */,
 				252F5CBB211DD0B500887D9C /* ObserveNotifications.swift in Sources */,
+				2581957B21639DCC00EC528A /* LocationModel.swift in Sources */,
 				25FC964120F12DEE0035D9BF /* EventsViewController.swift in Sources */,
 				25D1D7DD2119AFC700F0840F /* AccountSettingsViewController.swift in Sources */,
 				25B1163F20F0F530009D0A28 /* ToDoViewController.swift in Sources */,
@@ -429,7 +423,6 @@
 				252F5CB9211DCEC900887D9C /* NotificationNames.swift in Sources */,
 				25535A58213E797A0090030F /* ChangeCityName.swift in Sources */,
 				2526FDA52100D08600C58A7F /* Login\RegisterInput.swift in Sources */,
-				25F26DF5212173470077BE06 /* EventsColorTheme.swift in Sources */,
 				25BF18C820F272E200393B77 /* DateConverter.swift in Sources */,
 				25535A56213E78BC0090030F /* ChangeCityViewController.swift in Sources */,
 				25E0528520F20F4F00E4206C /* EventModel.swift in Sources */,
@@ -439,12 +432,11 @@
 				25AD8A76211EDBA900289501 /* ColorTheme.swift in Sources */,
 				25E156A020F6486000D638DC /* DetailsViewController.swift in Sources */,
 				25D1D7DF2119B23600F0840F /* ChangeImg&PassMode.swift in Sources */,
+				2581957D2163B5E200EC528A /* WeatherModel.swift in Sources */,
 				25E1569020F618FD00D638DC /* LayoutModes.swift in Sources */,
-				2510B2A820FB360D0091C1DC /* WeatherUpdate.swift in Sources */,
-				2526C9EE20FB3D7B00EBE943 /* WeatherDataModel.swift in Sources */,
 				254A71E720F0ACD3002D405C /* AppDelegate.swift in Sources */,
 				25BF18D020F275EA00393B77 /* ToDoCell.swift in Sources */,
-				25F26DF72121754C0077BE06 /* EventsObserveNotifications.swift in Sources */,
+				258195772163935E00EC528A /* WeatherService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
