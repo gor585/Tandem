@@ -15,7 +15,7 @@ class ChangeCityViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
     
     var delegate: ChangeCityName?
-    var lightColorTheme: Bool = true
+    var lightColorTheme = Bool()
     
     override func viewDidLoad() {
         super.viewDidLoad()

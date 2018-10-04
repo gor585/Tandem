@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             if user != nil {
                 guard let controller = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as? UITabBarController else { return }
+                //Loading current users preferred color settings
+                DataService.shared.loadColorThemeSetting(completion: { (colorTheme) in })
                 self.window?.rootViewController = controller
                 self.window?.makeKeyAndVisible()
             } else {

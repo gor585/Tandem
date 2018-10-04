@@ -14,6 +14,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var weatherIconImg: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityChangeButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var eventArray = [Event]()
     
@@ -24,13 +25,14 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let philarmony = Event(title: "Philarmony",image: UIImage(named: "philarmony")!, url: "https://philharmonia.lviv.ua/events/")
     
     let userDefaults = UserDefaults.standard
-    var lightColorTheme: Bool = true
+    var lightColorTheme = Bool()
     
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
     override func viewDidLoad() {
+        print("EV VC LOADED")
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
@@ -38,6 +40,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         //Getting location for weather update
         LocationService.shared.delegate = self
+        LocationService.shared.locationManager.startUpdatingLocation()
         
         eventArray.append(planetaKino)
         eventArray.append(kinopalace)
@@ -45,7 +48,11 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         eventArray.append(kurbas)
         eventArray.append(philarmony)
         
+        activityIndicator.layer.cornerRadius = 15
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
         cityChangeButton.layer.cornerRadius = 15
+        cityChangeButton.isHidden = true
         
         createObservers()
         
@@ -83,18 +90,13 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func getLocationData(lat: String, long: String) {
         WeatherService.shared.getWeatherData(lat: lat, long: long) { (temp, city, iconName) in
             guard let temp = temp, let city = city, let weatherIconName = iconName else { print("Error getting weather data"); self.cityChangeButton.setTitle("Error", for: .normal); return }
-            self.updateUIWithWeatherData(temperature: temp, cityName: city, weatherIconName: weatherIconName)
-            print("Received weather data: \(temp), \(city), \(weatherIconName)")
+            DispatchQueue.main.async {
+                self.updateUIWithWeatherData(temperature: temp, cityName: city, weatherIconName: weatherIconName)
+            }
         }
     }
     
     func updateUIWithWeatherData(temperature: Int, cityName: String, weatherIconName: String) {
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-        activityIndicator.center = cityChangeButton.center
-        activityIndicator.startAnimating()
-        activityIndicator.isHidden = false
-        cityChangeButton.addSubview(activityIndicator)
-        
         if temperature > 0 {
             temperatureLabel.text = "+\(temperature)°"
         } else if temperature == 0 {
@@ -102,11 +104,15 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             temperatureLabel.text = "-\(temperature)°"
         }
-        
+
         weatherIconImg.image = UIImage(named: weatherIconName)
         cityChangeButton.setTitle(cityName, for: .normal)
+        cityChangeButton.isHidden = false
+        cityChangeButton.isEnabled = true
         activityIndicator.isHidden = true
         activityIndicator.stopAnimating()
+
+        print("Got update for UI: \(cityName), \(temperature), \(weatherIconName)")
     }
     
     //MARK: - Observers

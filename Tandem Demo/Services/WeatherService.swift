@@ -13,8 +13,6 @@ import SwiftyJSON
 class WeatherService {
     static let shared = WeatherService()
     
-    let weatherDataModel = WeatherModel()
-    
     let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
     let APP_ID = "59a54878a35a9d6c822d56aac3cfd0a6"
     
@@ -28,9 +26,9 @@ class WeatherService {
                 print("Success, got weather data!")
                 let weatherJSON: JSON = JSON(response.result.value!)
                 self.convertWeatherData(json: weatherJSON, completion: { (temp, city, weatherIconName) in
-                    guard let temp = temp else { return }
-                    guard let city = city else { return }
-                    guard let iconName = weatherIconName else { return }
+                    guard let temp = temp,
+                        let city = city,
+                        let iconName = weatherIconName else { return }
                     completion!(temp, city, iconName)
                 })
             } else {
@@ -43,16 +41,27 @@ class WeatherService {
     func convertWeatherData(json: JSON, completion: (_ temp: Int?, _ city: String?, _ iconName: String?) -> Void) {
         if let temperatureResults = json["main"]["temp"].double {
             //Converting calvins to celcius
-            weatherDataModel.temperature = Int(temperatureResults - 273.15)
-            weatherDataModel.city = json["name"].stringValue
-            weatherDataModel.condition = json["weather"][0]["id"].intValue
-            weatherDataModel.weatherIconName = weatherDataModel.updateWeatherIcon(condition: weatherDataModel.condition)
+            let temp = Int(temperatureResults - 273.15)
+            let city = json["name"].stringValue
+            let condition = json["weather"][0]["id"].intValue
+            let weatherIconName: String = {
+                switch (condition) {
+                case 0...300 : return "tstorm1"
+                case 301...500 : return "light_rain"
+                case 501...600 : return "shower3"
+                case 601...700 : return "snow4"
+                case 701...771 : return "fog"
+                case 772...799 : return "tstorm3"
+                case 800 : return "sunny"
+                case 801...804 : return "cloudy2"
+                case 900...903, 905...1000  : return "tstorm3"
+                case 903 : return "snow5"
+                case 904 : return "sunny"
+                default : return "dunno" }
+            }()
             
-            let temp = weatherDataModel.temperature
-            let city = weatherDataModel.city
-            let weatherIconName = weatherDataModel.weatherIconName
             completion(temp, city, weatherIconName)
-            print("City: \(city), temperature: \(temp), condition: \(weatherIconName)")
+            print("Converted data: city: \(city), temperature: \(temp), condition: \(weatherIconName)")
         } else {
             print("Weather unavaliable")
         }

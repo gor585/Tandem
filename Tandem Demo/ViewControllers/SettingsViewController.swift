@@ -43,7 +43,6 @@ class SettingsViewController: UITableViewController {
     @IBAction func logOutButtonPressed(_ sender: Any) {
         DataService.shared.signOut(vievController: self) {
             print("Signed Out")
-            
         }
     }
     

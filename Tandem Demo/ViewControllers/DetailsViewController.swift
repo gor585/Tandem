@@ -26,7 +26,7 @@ class DetailsViewController: UIViewController {
     var delegate: EditItem?
     var cell: Item?
     var selectedItem: Int?
-    var lightColorTheme: Bool = true
+    var lightColorTheme = Bool()
     
     override func viewDidLoad() {
         super.viewDidLoad()

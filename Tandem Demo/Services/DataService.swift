@@ -12,6 +12,7 @@ import Firebase
 class DataService {
     static let shared = DataService()
     let databaseRef = Database.database().reference()
+    let userDefaults = UserDefaults.standard
     
     init() {}
     
@@ -99,7 +100,7 @@ class DataService {
     //MARK: - Load color settings
     func loadColorThemeSetting(completion: @escaping (_ lightColorTheme: Bool?) -> Void) {
         guard let userName = Auth.auth().currentUser?.email else { return }
-        var lightColorTheme = false
+        var lightColorTheme = Bool()
         let usersDatabase = databaseRef.child("Users")
         usersDatabase.observe(.childAdded) { (snapshot) in
             guard let snapshotValue = snapshot.value as? [String: String] else { return }
@@ -112,11 +113,12 @@ class DataService {
                     guard let colorSetting = snapshot.value as? String else { return }
                     if colorSetting == "true" {
                         lightColorTheme = true
-                        print("ToDo light is on")
+                        NotificationCenter.default.post(name: COLOR_THEME_LIGHT, object: nil)
                     } else {
                         lightColorTheme = false
-                        print("ToDo light is off")
+                        NotificationCenter.default.post(name: COLOR_THEME_DARK, object: nil)
                     }
+                    self.userDefaults.set(lightColorTheme, forKey: "lightThemeIsOn")
                     completion(lightColorTheme)
                 })
             }
@@ -286,9 +288,7 @@ class DataService {
                 } catch {
                     print("Error retrieving data from \(userImgURL!)")
                 }
-            } else {
-                print("Cache alresdy contains \(user) image")
-            }
+            } 
             
             //Setting user image to cache object
             userImage = ImageCache.sharedCache.object(forKey: user as NSString)!
