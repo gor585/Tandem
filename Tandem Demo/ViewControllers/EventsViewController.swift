@@ -15,14 +15,9 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityChangeButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var tableViewActivityIndicator: UIActivityIndicatorView!
     
     var eventArray = [Event]()
-    
-    let planetaKino = Event(title: "Planeta Kino", image: UIImage(named: "planetaKino")!, url: "https://planetakino.ua/lvov2/showtimes/#imax_4dx_relux_cinetech_vr_2d_3d_one-day")
-    let kinopalace = Event(title: "Kinopalace",image: UIImage(named: "kinopalace-logo")!, url: "http://kinopalace.lviv.ua/schedule/")
-    let lesya = Event(title: "Teatr Lesi",image: UIImage(named: "teatr-lesi")!, url: "http://teatrlesi.lviv.ua/events/")
-    let kurbas = Event(title: "Teatr Kurbasa",image: UIImage(named: "kurbas-1")!, url: "http://www.kurbas.lviv.ua/afisha/")
-    let philarmony = Event(title: "Philarmony",image: UIImage(named: "philarmony")!, url: "https://philharmonia.lviv.ua/events/")
     
     let userDefaults = UserDefaults.standard
     var lightColorTheme = Bool()
@@ -32,22 +27,20 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func viewDidLoad() {
-        print("EV VC LOADED")
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
+        tableViewActivityIndicator.startAnimating()
         
         //Getting location for weather update
         LocationService.shared.delegate = self
         LocationService.shared.locationManager.startUpdatingLocation()
         
-        eventArray.append(planetaKino)
-        eventArray.append(kinopalace)
-        eventArray.append(lesya)
-        eventArray.append(kurbas)
-        eventArray.append(philarmony)
-        
+        //Registering eventCell nib in tableView
+        let cellNib = UINib(nibName: "EventCell", bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: "eventCell")
+
         activityIndicator.layer.cornerRadius = 15
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
@@ -67,15 +60,11 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell") as! EventCell
         //Applying selected color theme
         applyColorTheme(cell: cell)
-        cell.eventImage?.image = eventArray[indexPath.row].image
-        cell.eventTitleLabel.text = eventArray[indexPath.row].title
-        cell.eventItemView.layer.cornerRadius = 15
+        cell.setEvent(event: eventArray[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let url = URL(string: eventArray[indexPath.row].url!) else { return }
-        UIApplication.shared.open(url as URL)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -88,11 +77,23 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     //MARK: - Location data delegate method
     func getLocationData(lat: String, long: String) {
+        //MARK: - Getting weather data in current location
         WeatherService.shared.getWeatherData(lat: lat, long: long) { (temp, city, iconName) in
             guard let temp = temp, let city = city, let weatherIconName = iconName else { print("Error getting weather data"); self.cityChangeButton.setTitle("Error", for: .normal); return }
             DispatchQueue.main.async {
                 self.updateUIWithWeatherData(temperature: temp, cityName: city, weatherIconName: weatherIconName)
             }
+            
+            //MARK: - Getting events in current location
+            EventService.shared.getEvents(city: city, completion: { (events) in
+                guard let eventsArray = events else { return }
+                self.eventArray = eventsArray
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    self.tableViewActivityIndicator.isHidden = true
+                    self.tableViewActivityIndicator.stopAnimating()
+                }
+            })
         }
     }
     
@@ -102,7 +103,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else if temperature == 0 {
             temperatureLabel.text = "\(temperature)°"
         } else {
-            temperatureLabel.text = "-\(temperature)°"
+            temperatureLabel.text = "\(temperature)°"
         }
 
         weatherIconImg.image = UIImage(named: weatherIconName)
@@ -132,7 +133,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.reloadData()
     }
     
-    func applyColorTheme(cell: UITableViewCell) {
+    func applyColorTheme(cell: EventCell) {
         switch lightColorTheme {
         case false:
             navigationController?.navigationBar.barTintColor = UIColor(hexString: "7F7F7F")
@@ -144,6 +145,9 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.view.backgroundColor = UIColor(hexString: "7F7F7F")
             tableView.backgroundColor = UIColor(hexString: "7F7F7F")
             cell.contentView.backgroundColor = UIColor(hexString: "7F7F7F")
+            cell.titleLabel.textColor = UIColor.white
+            cell.startLabel.textColor = UIColor.white
+            cell.endLabel.textColor = UIColor.white
             temperatureLabel.textColor = UIColor.white
         case true:
             navigationController?.navigationBar.barTintColor = UIColor(hexString: "E6E6E6")
@@ -155,6 +159,9 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.view.backgroundColor = UIColor(hexString: "E6E6E6")
             tableView.backgroundColor = UIColor(hexString: "E6E6E6")
             cell.contentView.backgroundColor = UIColor(hexString: "E6E6E6")
+            cell.titleLabel.textColor = UIColor.black
+            cell.startLabel.textColor = UIColor.black
+            cell.endLabel.textColor = UIColor.black
             temperatureLabel.textColor = UIColor.black
             break
         }
@@ -174,10 +181,25 @@ extension EventsViewController: ChangeCityName {
     }
     
     func userChangedCityName(cityName: String) {
+        tableViewActivityIndicator.isHidden = false
+        tableViewActivityIndicator.startAnimating()
+        //Clearing event tableView
+        eventArray.removeAll()
+        tableView.reloadData()
+        
         cityChangeButton.setTitle(cityName, for: .normal)
         WeatherService.shared.cityWeatherUpdate(city: cityName) { (temp, city, iconName) in
             guard let temp = temp, let city = city, let weatherIconName = iconName else { print("Error getting weather data"); self.cityChangeButton.setTitle("Error", for: .normal); return }
             self.updateUIWithWeatherData(temperature: temp, cityName: city, weatherIconName: weatherIconName)
+        }
+        EventService.shared.getEvents(city: cityName) { (events) in
+            guard let eventArray = events else { return }
+            self.eventArray = eventArray
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.tableViewActivityIndicator.isHidden = true
+                self.tableViewActivityIndicator.stopAnimating()
+            }
         }
     }
 }

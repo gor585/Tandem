@@ -9,13 +9,17 @@
 import UIKit
 
 class Event {
-    let title: String?
-    var image: UIImage?
-    let url: String?
+    var title: String
+    var category: String
+    var description: String
+    var start: String
+    var end: String
     
-    init(title: String, image: UIImage, url: String) {
+    init(title: String, category: String, description: String, start: String, end: String) {
         self.title = title
-        self.image = image
-        self.url = url
+        self.category = category
+        self.description = description
+        self.start = start
+        self.end = end
     }
 }

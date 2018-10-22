@@ -7,12 +7,12 @@
 //
 
 import UIKit
-import SVProgressHUD
 
 class AddItemViewController: UIViewController {
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var textTextField: UITextView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var delegate: AddItem?
     var lightColorTheme: Bool = true
@@ -35,12 +35,14 @@ class AddItemViewController: UIViewController {
     }
         
     @IBAction func submitButtonPressed(_ sender: Any) {
-        SVProgressHUD.show()
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
         DataService.shared.getUserImg { (user, image, url) in
             guard let userName = user, let userImage = image, let imageURL = url else { return }
             self.delegate?.userAddedNewItem(title: self.titleTextField.text!, text: self.textTextField.text!, userLogin: userName, userImage: userImage, userImgURL: imageURL)
             self.navigationController?.popViewController(animated: true)
-            SVProgressHUD.dismiss()
+            self.activityIndicator.isHidden = true
+            self.activityIndicator.stopAnimating()
         }
     }
 }

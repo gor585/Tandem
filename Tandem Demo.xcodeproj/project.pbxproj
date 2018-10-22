@@ -23,6 +23,9 @@
 		25535A56213E78BC0090030F /* ChangeCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25535A55213E78BC0090030F /* ChangeCityViewController.swift */; };
 		25535A58213E797A0090030F /* ChangeCityName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25535A57213E797A0090030F /* ChangeCityName.swift */; };
 		258195772163935E00EC528A /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258195762163935E00EC528A /* WeatherService.swift */; };
+		25A13BB2217DE3C90088974E /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A13BB0217DE3C90088974E /* EventCell.swift */; };
+		25A13BB3217DE3C90088974E /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25A13BB1217DE3C90088974E /* EventCell.xib */; };
+		25A13BB5217DE7CC0088974E /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A13BB4217DE7CC0088974E /* EventService.swift */; };
 		25AD8A76211EDBA900289501 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AD8A75211EDBA900289501 /* ColorTheme.swift */; };
 		25ADDC15215A2A30002EAB1B /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25ADDC14215A2A30002EAB1B /* AlertView.swift */; };
 		25AE373E211C31B000B7FF61 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE373D211C31B000B7FF61 /* ImageCache.swift */; };
@@ -40,7 +43,6 @@
 		25E573ED20FE2A960058F007 /* EditItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E573EC20FE2A960058F007 /* EditItem.swift */; };
 		25F6442120FF375100E7026D /* HideKeyboardReturn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F6442020FF375100E7026D /* HideKeyboardReturn.swift */; };
 		25FC964120F12DEE0035D9BF /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FC964020F12DEE0035D9BF /* EventsViewController.swift */; };
-		25FC964320F12FD50035D9BF /* EventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FC964220F12FD50035D9BF /* EventsCell.swift */; };
 		25FE857B2164BE6D00A621E2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FE857A2164BE6D00A621E2 /* LocationService.swift */; };
 		25FE857D2164BFEF00A621E2 /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FE857C2164BFEF00A621E2 /* LocationData.swift */; };
 		BD9ACE3F5C3452407179018B /* Pods_Tandem_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB82E272A33F0B83EF6F9F8 /* Pods_Tandem_Demo.framework */; };
@@ -66,6 +68,9 @@
 		25535A55213E78BC0090030F /* ChangeCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityViewController.swift; sourceTree = "<group>"; };
 		25535A57213E797A0090030F /* ChangeCityName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityName.swift; sourceTree = "<group>"; };
 		258195762163935E00EC528A /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		25A13BB0217DE3C90088974E /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		25A13BB1217DE3C90088974E /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		25A13BB4217DE7CC0088974E /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
 		25AD8A75211EDBA900289501 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		25ADDC14215A2A30002EAB1B /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		25AE373D211C31B000B7FF61 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
@@ -83,7 +88,6 @@
 		25E573EC20FE2A960058F007 /* EditItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItem.swift; sourceTree = "<group>"; };
 		25F6442020FF375100E7026D /* HideKeyboardReturn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardReturn.swift; sourceTree = "<group>"; };
 		25FC964020F12DEE0035D9BF /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
-		25FC964220F12FD50035D9BF /* EventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCell.swift; sourceTree = "<group>"; };
 		25FE857A2164BE6D00A621E2 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		25FE857C2164BFEF00A621E2 /* LocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
 		3DB82E272A33F0B83EF6F9F8 /* Pods_Tandem_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tandem_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +113,7 @@
 				253944B3215B6D0A0057D8CF /* DataService.swift */,
 				25FE857A2164BE6D00A621E2 /* LocationService.swift */,
 				258195762163935E00EC528A /* WeatherService.swift */,
+				25A13BB4217DE7CC0088974E /* EventService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -195,7 +200,8 @@
 			isa = PBXGroup;
 			children = (
 				25BF18CF20F275EA00393B77 /* ToDoCell.swift */,
-				25FC964220F12FD50035D9BF /* EventsCell.swift */,
+				25A13BB0217DE3C90088974E /* EventCell.swift */,
+				25A13BB1217DE3C90088974E /* EventCell.xib */,
 				254A71EA20F0ACD3002D405C /* Main.storyboard */,
 			);
 			path = Views;
@@ -318,6 +324,7 @@
 				254A71F120F0ACD3002D405C /* LaunchScreen.storyboard in Resources */,
 				251CE8BF20F754F1002D9845 /* GoogleService-Info.plist in Resources */,
 				254A71EE20F0ACD3002D405C /* Assets.xcassets in Resources */,
+				25A13BB3217DE3C90088974E /* EventCell.xib in Resources */,
 				254A71EC20F0ACD3002D405C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,6 +410,7 @@
 				25ADDC15215A2A30002EAB1B /* AlertView.swift in Sources */,
 				25BF18D220F294A300393B77 /* AddItem.swift in Sources */,
 				25FE857B2164BE6D00A621E2 /* LocationService.swift in Sources */,
+				25A13BB5217DE7CC0088974E /* EventService.swift in Sources */,
 				251CE8C120F78162002D9845 /* SettingsViewController.swift in Sources */,
 				254A71E920F0ACD3002D405C /* WelcomeViewController.swift in Sources */,
 				25FE857D2164BFEF00A621E2 /* LocationData.swift in Sources */,
@@ -410,7 +418,6 @@
 				25FC964120F12DEE0035D9BF /* EventsViewController.swift in Sources */,
 				25D1D7DD2119AFC700F0840F /* AccountSettingsViewController.swift in Sources */,
 				25B1163F20F0F530009D0A28 /* ToDoViewController.swift in Sources */,
-				25FC964320F12FD50035D9BF /* EventsCell.swift in Sources */,
 				25F6442120FF375100E7026D /* HideKeyboardReturn.swift in Sources */,
 				25BF18D420F2960800393B77 /* AddItemViewController.swift in Sources */,
 				252F5CB9211DCEC900887D9C /* NotificationNames.swift in Sources */,
@@ -425,6 +432,7 @@
 				25AD8A76211EDBA900289501 /* ColorTheme.swift in Sources */,
 				25E156A020F6486000D638DC /* DetailsViewController.swift in Sources */,
 				25D1D7DF2119B23600F0840F /* ChangeImg&PassMode.swift in Sources */,
+				25A13BB2217DE3C90088974E /* EventCell.swift in Sources */,
 				25E1569020F618FD00D638DC /* LayoutModes.swift in Sources */,
 				254A71E720F0ACD3002D405C /* AppDelegate.swift in Sources */,
 				25BF18D020F275EA00393B77 /* ToDoCell.swift in Sources */,

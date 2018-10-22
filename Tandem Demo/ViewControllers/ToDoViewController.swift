@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SVProgressHUD
 import ChameleonFramework
 
 class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -19,6 +18,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var currentUserFilterButton: UIButton!
     @IBOutlet weak var allUsersFilterButton: UIButton!
     @IBOutlet weak var userFilterStackView: UIStackView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var itemArray = [Item]()
     var allRetrievedItemsArray = [Item]()
@@ -43,7 +43,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         userFilterUnabled()
         
-        SVProgressHUD.show()
+        activityIndicator.startAnimating()
         DataService.shared.retrieveItems { (currentUser, item) in
             if let currentUser = currentUser, let item = item {
                 self.itemArray.append(item)
@@ -51,7 +51,8 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.currentUser = currentUser
                 self.tableView.reloadData()
                 self.currentUserItems = self.itemArray.filter {$0.userLogin == self.currentUser}
-                SVProgressHUD.dismiss()
+                self.activityIndicator.isHidden = true
+                self.activityIndicator.stopAnimating()
             }
         }
         

@@ -8,7 +8,6 @@
 
 import Foundation
 import CoreLocation
-import Firebase
 
 class LocationService: NSObject, CLLocationManagerDelegate {
     static let shared = LocationService()
@@ -30,23 +29,19 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         //Getting last (most accurate) location value of locations array
         let location = locations[locations.count - 1]
         
-        Auth.auth().addStateDidChangeListener { (auth, user) in
-            if user != nil {
-                //Stop updating location when valid location is received (horizontalAccuracy > 0)
-                if location.horizontalAccuracy > 0 {
-                    self.locationManager.stopUpdatingLocation()
-                    print("longitude = \(location.coordinate.longitude), latitude = \(location.coordinate.latitude)")
-
-                    let latitude = String(location.coordinate.latitude)
-                    let longitude = String(location.coordinate.longitude)
-
-                    //Passing location data to delegate
-                    self.delegate?.getLocationData(lat: latitude, long: longitude)
-                } else {
-                    self.locationManager.stopUpdatingLocation()
-                    self.locationManager.delegate = nil
-                }
-            }
+        //Stop updating location when valid location is received (horizontalAccuracy > 0)
+        if location.horizontalAccuracy > 0 {
+            locationManager.stopUpdatingLocation()
+            print("longitude = \(location.coordinate.longitude), latitude = \(location.coordinate.latitude)")
+            
+            let latitude = String(location.coordinate.latitude)
+            let longitude = String(location.coordinate.longitude)
+            
+            //Passing location data to delegate
+            delegate?.getLocationData(lat: latitude, long: longitude)
+        } else {
+            locationManager.stopUpdatingLocation()
+            locationManager.delegate = nil
         }
     }
     
