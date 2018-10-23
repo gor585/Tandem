@@ -48,4 +48,23 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Location error: \(error)")
     }
+    
+    func reverseGeocoding(lat: Double, long: Double, completion: @escaping (_ addressDict: [String: String]?) -> Void) {
+        var addressDict = [String: String]()
+        let location = CLLocation(latitude: lat, longitude: long)
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+            guard let buildingNumber = placemarks?.first?.subThoroughfare else { return }
+            guard let street = placemarks?.first?.thoroughfare else { return }
+            guard let city = placemarks?.first?.locality else { return }
+            guard let region = placemarks?.first?.administrativeArea else { return }
+            guard let country = placemarks?.first?.country else { return }
+            addressDict.updateValue(buildingNumber, forKey: "buildingNumber")
+            addressDict.updateValue(street, forKey: "street")
+            addressDict.updateValue(city, forKey: "city")
+            addressDict.updateValue(region, forKey: "region")
+            addressDict.updateValue(country, forKey: "country")
+            completion(addressDict)
+        }
+    }
 }

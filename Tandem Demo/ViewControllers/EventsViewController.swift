@@ -176,6 +176,9 @@ extension EventsViewController: ChangeCityName {
         if segue.identifier == "changeCityName" {
             let changeCityNameVC = segue.destination as! ChangeCityViewController
             changeCityNameVC.lightColorTheme = lightColorTheme
+            guard let cityName = cityChangeButton.titleLabel?.text else { return }
+            changeCityNameVC.currentCityName = cityName
+            print(cityName)
             changeCityNameVC.delegate = self
         }
     }
