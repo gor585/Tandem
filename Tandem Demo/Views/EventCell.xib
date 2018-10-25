@@ -58,14 +58,14 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="BAD-ux-RAO" firstAttribute="height" secondItem="1E9-wv-qb1" secondAttribute="height" id="4z2-Ve-gUx"/>
-                    <constraint firstItem="BAD-ux-RAO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Cq2-Qs-mna"/>
+                    <constraint firstItem="BAD-ux-RAO" firstAttribute="top" secondItem="1E9-wv-qb1" secondAttribute="top" id="B1i-HE-S98"/>
+                    <constraint firstItem="BAD-ux-RAO" firstAttribute="leading" secondItem="1E9-wv-qb1" secondAttribute="trailing" constant="8" id="BVq-qP-HiS"/>
                     <constraint firstItem="vxl-9w-bm2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ELH-39-RwR"/>
-                    <constraint firstItem="BAD-ux-RAO" firstAttribute="leading" secondItem="1E9-wv-qb1" secondAttribute="trailing" constant="8" id="EpT-8c-rXA"/>
                     <constraint firstItem="vxl-9w-bm2" firstAttribute="top" secondItem="1E9-wv-qb1" secondAttribute="bottom" constant="8" id="FGx-oe-bcs"/>
                     <constraint firstItem="1E9-wv-qb1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="XnY-Fk-ecs"/>
                     <constraint firstAttribute="trailingMargin" secondItem="vxl-9w-bm2" secondAttribute="trailing" id="heI-Jd-zjn"/>
-                    <constraint firstItem="BAD-ux-RAO" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="spk-2j-L7A"/>
+                    <constraint firstItem="BAD-ux-RAO" firstAttribute="height" secondItem="1E9-wv-qb1" secondAttribute="height" id="kQh-w7-Osc"/>
+                    <constraint firstItem="BAD-ux-RAO" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="oJy-R2-fld"/>
                     <constraint firstItem="1E9-wv-qb1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="tdw-Lk-Jee"/>
                 </constraints>
             </tableViewCellContentView>

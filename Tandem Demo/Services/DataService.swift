@@ -167,14 +167,13 @@ class DataService {
                     if ImageCache.sharedCache.object(forKey: currentUserName as NSString) != nil {
                         guard let imageData = try? Data.init(contentsOf: userImageURL!) else { return }
                         ImageCache.sharedCache.setObject(UIImage(data: imageData)!, forKey: currentUserName as NSString)
-                        print("\(user) image updated and added to cache")
                         
                         userImage = ImageCache.sharedCache.object(forKey: currentUserName as NSString)!
                         
                         completion(currentUserName, userImage)
                         
                     } else {
-                        print("No matches found in cache")
+                        print("No matches found in cache for \(currentUserName)")
                     }
                 }
             }

@@ -16,7 +16,6 @@ class ChangeCityViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var slider: UISlider!
     
     var delegate: ChangeCityName?
     var lightColorTheme = Bool()
@@ -62,23 +61,6 @@ class ChangeCityViewController: UIViewController {
         break
         }
     }
-    
-    //Additional scale slider for app testing
-    @IBAction func sliderScaleChanged(_ sender: UISlider) {
-        if sender.value == sender.maximumValue {
-            span.latitudeDelta = 50.00
-            span.longitudeDelta = 50.00
-        } else if sender.value == sender.minimumValue {
-            span.latitudeDelta = 0.00
-            span.longitudeDelta = 0.00
-        } else {
-            span.latitudeDelta = CLLocationDegrees(sender.value)
-            span.longitudeDelta = CLLocationDegrees(sender.value)
-        }
-        
-        region = MKCoordinateRegion(center: mapView.region.center, span: span)
-        mapView.setRegion(region, animated: true)
-    }
 }
 
 //MARK: - Location & MapKit delegate methods
@@ -100,13 +82,14 @@ extension ChangeCityViewController: MKMapViewDelegate, LocationData {
         
         LocationService.shared.reverseGeocoding(lat: latitude, long: longitude) { (address) in
             guard let addressDict = address else { return }
-            guard let buildingNumber = addressDict["buildingNumber"] else { return }
-            guard let street = addressDict["street"] else { return }
-            guard let city = addressDict["city"] else { return }
-            guard let region = addressDict["region"] else { return }
-            guard let country = addressDict["country"] else { return }
+            let address = addressDict["address"]
+            print("Received address: \(address)")
             DispatchQueue.main.async {
-                self.addressLabel.text = "\(buildingNumber) \(street), \(city), \(region), \(country)"
+                if address != nil && address != "" {
+                    self.addressLabel.text = "Location: \(address!))"
+                } else {
+                    self.addressLabel.text = "Location is unavailable"
+                }
             }
         }
     }

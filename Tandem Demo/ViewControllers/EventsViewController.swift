@@ -65,6 +65,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toEventDescription", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -112,8 +113,6 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cityChangeButton.isEnabled = true
         activityIndicator.isHidden = true
         activityIndicator.stopAnimating()
-
-        print("Got update for UI: \(cityName), \(temperature), \(weatherIconName)")
     }
     
     //MARK: - Observers
@@ -178,8 +177,13 @@ extension EventsViewController: ChangeCityName {
             changeCityNameVC.lightColorTheme = lightColorTheme
             guard let cityName = cityChangeButton.titleLabel?.text else { return }
             changeCityNameVC.currentCityName = cityName
-            print(cityName)
             changeCityNameVC.delegate = self
+        }
+        
+        if segue.identifier == "toEventDescription" {
+            let descriptionVC = segue.destination as! DescriptionViewController
+            guard let index = tableView.indexPathForSelectedRow?.row else { return }
+            descriptionVC.event = eventArray[index]
         }
     }
     

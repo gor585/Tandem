@@ -23,7 +23,6 @@ class WeatherService {
         let parameters = ["lat": lat, "lon": long, "appid": APP_ID]
         Alamofire.request(WEATHER_URL, method: .get, parameters: parameters).responseJSON { response in
             if response.result.isSuccess {
-                print("Success, got weather data!")
                 let weatherJSON: JSON = JSON(response.result.value!)
                 self.convertWeatherData(json: weatherJSON, completion: { (temp, city, weatherIconName) in
                     guard let temp = temp,
@@ -61,7 +60,6 @@ class WeatherService {
             }()
             
             completion(temp, city, weatherIconName)
-            print("Converted data: city: \(city), temperature: \(temp), condition: \(weatherIconName)")
         } else {
             print("Weather unavaliable")
         }

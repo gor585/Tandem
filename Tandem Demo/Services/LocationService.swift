@@ -32,7 +32,6 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         //Stop updating location when valid location is received (horizontalAccuracy > 0)
         if location.horizontalAccuracy > 0 {
             locationManager.stopUpdatingLocation()
-            print("longitude = \(location.coordinate.longitude), latitude = \(location.coordinate.latitude)")
             
             let latitude = String(location.coordinate.latitude)
             let longitude = String(location.coordinate.longitude)
@@ -54,17 +53,34 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         let location = CLLocation(latitude: lat, longitude: long)
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
-            guard let buildingNumber = placemarks?.first?.subThoroughfare else { return }
-            guard let street = placemarks?.first?.thoroughfare else { return }
-            guard let city = placemarks?.first?.locality else { return }
-            guard let region = placemarks?.first?.administrativeArea else { return }
-            guard let country = placemarks?.first?.country else { return }
-            addressDict.updateValue(buildingNumber, forKey: "buildingNumber")
-            addressDict.updateValue(street, forKey: "street")
-            addressDict.updateValue(city, forKey: "city")
-            addressDict.updateValue(region, forKey: "region")
-            addressDict.updateValue(country, forKey: "country")
-            completion(addressDict)
+            if error == nil {
+                guard let place = placemarks?.first else { return }
+                //Full placemark address
+                let address = String(describing: place)
+                //Address components
+                let name = placemarks?.first?.name
+                let buildingNumber = placemarks?.first?.subThoroughfare
+                let street = placemarks?.first?.thoroughfare
+                let city = placemarks?.first?.locality
+                let region = placemarks?.first?.administrativeArea
+                let country = placemarks?.first?.country
+                addressDict.updateValue(address, forKey: "address")
+                addressDict.updateValue(name ?? "", forKey: "name")
+                addressDict.updateValue(buildingNumber ?? "", forKey: "buildingNumber")
+                addressDict.updateValue(street ?? "", forKey: "street")
+                addressDict.updateValue(city ?? "", forKey: "city")
+                addressDict.updateValue(region ?? "", forKey: "region")
+                addressDict.updateValue(country ?? "", forKey: "country")
+                completion(addressDict)
+            } else {
+                print("Reverse geocoding error: \(error!.localizedDescription)")
+            }
         }
+    }
+    
+    func getDistance(currentLocation: CLLocation, eventLocation: CLLocation, completion: (Double?) -> Void) {
+        let distanceInMeters = eventLocation.distance(from: currentLocation)
+        let distanceInKilometers = Double(round(distanceInMeters) / 1000)
+        completion(distanceInKilometers)
     }
 }

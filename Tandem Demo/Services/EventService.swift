@@ -38,8 +38,11 @@ class EventService {
                             guard let description = result["description"] as? String else { return }
                             guard let start = result["start"] as? String else { return }
                             guard let end = result["end"] as? String else { return }
+                            guard let location = result["location"] as? [Any] else { return }
+                            let latitude = String(describing: location[1])
+                            let longitude = String(describing: location[0])
                             
-                            let newEvent = Event(title: title, category: category, description: description, start: start, end: end)
+                            let newEvent = Event(title: title, category: category, description: description, start: start, end: end, lat: latitude, long: longitude) 
                             eventsArray.append(newEvent)
                             completion(eventsArray)
                         }

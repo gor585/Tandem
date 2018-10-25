@@ -22,6 +22,8 @@ class AddItemViewController: UIViewController {
         applyColorTheme()
         titleTextField.delegate = self
         textTextField.delegate = self
+        activityIndicator.isHidden = true
+        activityIndicator.stopAnimating()
         self.hideKeyboardWhenTappedAround()
     }
     

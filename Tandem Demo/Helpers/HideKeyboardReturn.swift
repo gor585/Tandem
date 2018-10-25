@@ -9,7 +9,6 @@
 import UIKit
 
 extension WelcomeViewController: UITextFieldDelegate {
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return true
@@ -17,7 +16,6 @@ extension WelcomeViewController: UITextFieldDelegate {
 }
 
 extension DetailsViewController: UITextFieldDelegate, UITextViewDelegate {
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return true
@@ -25,7 +23,13 @@ extension DetailsViewController: UITextFieldDelegate, UITextViewDelegate {
 }
 
 extension AddItemViewController: UITextFieldDelegate, UITextViewDelegate {
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+}
+
+extension ChangeCityViewController: UITextFieldDelegate, UITextViewDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return true
