@@ -55,9 +55,11 @@ class ChangeCityViewController: UIViewController {
         case true:
             self.view.backgroundColor = UIColor(hexString: "E6E6E6")
             enterCityNameLabel.textColor = UIColor(hexString: "008080")
+            addressLabel.textColor = UIColor.black
         case false:
             self.view.backgroundColor = UIColor(hexString: "7F7F7F")
             enterCityNameLabel.textColor = UIColor.white
+            addressLabel.textColor = UIColor.white
         break
         }
     }
@@ -83,7 +85,6 @@ extension ChangeCityViewController: MKMapViewDelegate, LocationData {
         LocationService.shared.reverseGeocoding(lat: latitude, long: longitude) { (address) in
             guard let addressDict = address else { return }
             let address = addressDict["address"]
-            print("Received address: \(address)")
             DispatchQueue.main.async {
                 if address != nil && address != "" {
                     self.addressLabel.text = "Location: \(address!))"

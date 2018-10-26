@@ -18,7 +18,6 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var tableViewActivityIndicator: UIActivityIndicatorView!
     
     var eventArray = [Event]()
-    
     let userDefaults = UserDefaults.standard
     var lightColorTheme = Bool()
     
@@ -52,6 +51,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         lightColorTheme = userDefaults.bool(forKey: "lightThemeIsOn")
     }
     
+    //MARK: - TableView delegate methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return eventArray.count
     }
@@ -61,6 +61,19 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //Applying selected color theme
         applyColorTheme(cell: cell)
         cell.setEvent(event: eventArray[indexPath.row])
+        
+        if eventArray[indexPath.row].selected == true {
+            cell.contentView.backgroundColor = UIColor(hexString: "008080")
+            cell.titleLabel.textColor = UIColor.white
+            cell.startLabel.textColor = UIColor.white
+            cell.endLabel.textColor = UIColor.white
+        } else {
+            cell.backgroundColor = UIColor(hexString: "E6E6E6")
+            cell.titleLabel.textColor = UIColor.black
+            cell.startLabel.textColor = UIColor.black
+            cell.endLabel.textColor = UIColor.black
+        }
+        
         return cell
     }
     
@@ -71,6 +84,23 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let event = eventArray[indexPath.row]
+        let select = UITableViewRowAction(style: .default, title: "Select") { (action, indexPath) in
+            DataService.shared.getUserImg(completion: { (userName, userImage, url) in
+                guard let name = userName else { return }
+                guard let image = userImage else { return }
+                guard let url = url else { return }
+                //MARK: - Add new item in ToDo list
+                DataService.shared.addNewItem(title: event.title, text: event.description + "\n Location: \(event.lat), \(event.long), \n Start: \(event.start),\n End: \(event.end).", userLogin: name, userImage: image, userImgURL: url, completion: { (newItemDict) in })
+            })
+            event.selected = true
+            tableView.reloadData()
+        }
+        select.backgroundColor = UIColor(hexString: "008080")
+        return [select]
     }
 
     @IBAction func cityChangeButtonPressed(_ sender: Any) {
@@ -184,6 +214,7 @@ extension EventsViewController: ChangeCityName {
             let descriptionVC = segue.destination as! DescriptionViewController
             guard let index = tableView.indexPathForSelectedRow?.row else { return }
             descriptionVC.event = eventArray[index]
+            descriptionVC.lightColorTheme = lightColorTheme
         }
     }
     

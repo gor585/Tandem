@@ -73,7 +73,7 @@ class SettingsViewController: UITableViewController {
         }
     }
     
-    //MARK: - Savie color theme settings
+    //MARK: - Save color theme settings
     func saveColorSettings(setting: Bool, key: String) {
         //Saving color theme settings in UserDefaults
         userDefaults.set(setting, forKey: key)

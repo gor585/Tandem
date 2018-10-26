@@ -16,6 +16,7 @@ class Event {
     var end: String
     var lat: String
     var long: String
+    var selected: Bool
     
     init(title: String, category: String, description: String, start: String, end: String, lat: String, long: String) {
         self.title = title
@@ -25,5 +26,6 @@ class Event {
         self.end = end
         self.lat = lat
         self.long = long
+        self.selected = false
     }
 }

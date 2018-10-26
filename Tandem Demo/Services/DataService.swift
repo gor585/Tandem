@@ -196,14 +196,24 @@ class DataService {
             for (key, value) in snapshotValue {
                 if key == userName {
                     url = value
-                    guard let imageURL = URL(string: url) else { return }
-                    do {
-                        let imageData = try Data(contentsOf: imageURL)
-                        userImage = UIImage(data: imageData)!
-                    } catch {
-                        print("Error getting user image data: \(error)")
+                    if ImageCache.sharedCache.object(forKey: userEmail as NSString) == nil {
+                        guard let imageURL = URL(string: url) else { return }
+                        do {
+                            let imageData = try Data(contentsOf: imageURL)
+                            userImage = UIImage(data: imageData)!
+                            print("Image of \(userEmail) loaded from Storage")
+                        } catch {
+                            print("Error getting user image data: \(error)")
+                        }
+                        completion(userEmail, userImage, url)
+                    } else {
+                        self.getUserImageFromCache(completion: { (userName, userImage) in
+                            guard let name = userName else { return }
+                            guard let image = userImage else { return }
+                            completion(name, image, url)
+                            print("Image of \(name) loaded from cache")
+                        })
                     }
-                    completion(userEmail, userImage, url)
                 }
             }
         }
@@ -283,7 +293,6 @@ class DataService {
                     let imageData = try Data.init(contentsOf: userImgURL!)
                     //Saving user image to cahe
                     ImageCache.sharedCache.setObject(UIImage(data: imageData)!, forKey: user as NSString)
-                    print("Image of \(user) added to cache")
                 } catch {
                     print("Error retrieving data from \(userImgURL!)")
                 }

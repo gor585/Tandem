@@ -23,13 +23,39 @@ class DescriptionViewController: UIViewController {
     var event: Event?
     var usersCurrentLatitude = 0.0
     var usersCurrentLongitude = 0.0
+    var lightColorTheme = Bool()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        applyColorTheme()
         mapView.delegate = self
         LocationService.shared.delegate = self
         LocationService.shared.locationManager.startUpdatingLocation()
         setUpEvent()
+    }
+    
+    func applyColorTheme() {
+        switch lightColorTheme {
+        case true:
+            self.view.backgroundColor = UIColor(hexString: "E6E6E6")
+            titleLabel.textColor = UIColor(hexString: "800000")
+            startLabel.textColor = UIColor(hexString: "008080")
+            endLabel.textColor = UIColor(hexString: "008080")
+            addressLabel.textColor = UIColor(hexString: "008080")
+            distanceLabel.textColor = UIColor(hexString: "800000")
+            descriptionTextView.backgroundColor = UIColor(hexString: "E6E6E6")
+            descriptionTextView.textColor = UIColor.black
+        case false:
+            self.view.backgroundColor = UIColor(hexString: "7F7F7F")
+            titleLabel.textColor = UIColor(hexString: "FFCC66")
+            startLabel.textColor = UIColor.white
+            endLabel.textColor = UIColor.white
+            addressLabel.textColor = UIColor.white
+            distanceLabel.textColor = UIColor(hexString: "FFCC66")
+            descriptionTextView.backgroundColor = UIColor(hexString: "7F7F7F")
+            descriptionTextView.textColor = UIColor.white
+            break
+        }
     }
     
     //MARK: - Event info setup
