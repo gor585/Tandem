@@ -19,6 +19,7 @@ class DescriptionViewController: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var eventIcon: UIImageView!
+    @IBOutlet weak var pathButton: UIButton!
     
     var event: Event?
     var usersCurrentLatitude = 0.0
@@ -32,6 +33,7 @@ class DescriptionViewController: UIViewController {
         LocationService.shared.delegate = self
         LocationService.shared.locationManager.startUpdatingLocation()
         setUpEvent()
+        pathButton.layer.cornerRadius = 15
     }
     
     func applyColorTheme() {
@@ -45,6 +47,7 @@ class DescriptionViewController: UIViewController {
             distanceLabel.textColor = UIColor(hexString: "800000")
             descriptionTextView.backgroundColor = UIColor(hexString: "E6E6E6")
             descriptionTextView.textColor = UIColor.black
+            pathButton.backgroundColor = UIColor(hexString: "800000")
         case false:
             self.view.backgroundColor = UIColor(hexString: "7F7F7F")
             titleLabel.textColor = UIColor(hexString: "FFCC66")
@@ -54,6 +57,7 @@ class DescriptionViewController: UIViewController {
             distanceLabel.textColor = UIColor(hexString: "FFCC66")
             descriptionTextView.backgroundColor = UIColor(hexString: "7F7F7F")
             descriptionTextView.textColor = UIColor.white
+            pathButton.backgroundColor = UIColor(hexString: "FFCC66")
             break
         }
     }
@@ -115,6 +119,22 @@ class DescriptionViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    //MARK: - Detailed Map Navigation
+    @IBAction func pathButtonPressed(_ sender: Any) {
+        guard let lat = event?.lat else { return }
+        guard let long = event?.long else { return }
+        guard let eventLatitude = Double(lat) else { return }
+        guard let eventLongitude = Double(long) else { return }
+        let eventCoordinates = CLLocationCoordinate2DMake(eventLatitude, eventLongitude)
+        let regionDistance: CLLocationDistance = 1000
+        let regionSpan = MKCoordinateRegionMakeWithDistance(eventCoordinates, regionDistance, regionDistance)
+        let options = [MKLaunchOptionsMapCenterKey: regionSpan.center, MKLaunchOptionsMapSpanKey: regionSpan.span] as [String: Any]
+        let placemark = MKPlacemark(coordinate: eventCoordinates)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = "\(event?.title ?? "Event")"
+        mapItem.openInMaps(launchOptions: options)
     }
 }
 

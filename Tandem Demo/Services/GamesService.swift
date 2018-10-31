@@ -63,7 +63,6 @@ class GamesService {
                 if error == nil {
                     guard let response = response as? HTTPURLResponse else { return }
                     if response.statusCode == 200 {
-                        print("Got 200")
                         guard let data = data else { return }
                         self.gameParsing(data: data, completion: { (game) in
                             guard let newGame = game else { return }
