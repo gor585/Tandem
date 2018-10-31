@@ -328,6 +328,7 @@
                     <connections>
                         <segue destination="Hsz-Cw-HKx" kind="relationship" relationship="viewControllers" id="7Q4-0i-B1O"/>
                         <segue destination="gqq-r2-CaY" kind="relationship" relationship="viewControllers" id="RsF-QJ-0aJ"/>
+                        <segue destination="p7L-I5-xJu" kind="relationship" relationship="viewControllers" id="pFn-Pl-Lqg"/>
                         <segue destination="v20-0r-VD5" kind="relationship" relationship="viewControllers" id="0Hx-vC-8rE"/>
                     </connections>
                 </tabBarController>
@@ -352,7 +353,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BpE-q8-I1D" id="ysc-BS-ld6">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="79.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zW8-j1-iAt">
@@ -543,7 +544,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EYH-vA-5mf" id="MZF-WB-POQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -624,7 +625,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6mG-eG-64y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2775.1999999999998" y="551.87406296851577"/>
+            <point key="canvasLocation" x="2435" y="580"/>
         </scene>
         <!--Change City View Controller-->
         <scene sceneID="ko9-i1-O1a">
@@ -704,7 +705,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4HI-cz-nMM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3540.579710144928" y="450.81521739130437"/>
+            <point key="canvasLocation" x="3222" y="417"/>
         </scene>
         <!--Description View Controller-->
         <scene sceneID="t8Z-jq-83p">
@@ -820,7 +821,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="37y-su-vu6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3540.579710144928" y="1130.7065217391305"/>
+            <point key="canvasLocation" x="3528.985507246377" y="1116.8478260869565"/>
         </scene>
         <!--Settings-->
         <scene sceneID="ydD-iu-gFO">
@@ -837,7 +838,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lPN-f5-yaG" id="rhG-Ju-4C6">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Light Color Theme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Rl-32-9ki">
@@ -870,7 +871,7 @@
                                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pXr-Mr-Hmn" id="Zqi-h1-juf">
-                                            <rect key="frame" x="0.0" y="0.0" width="376" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hdo-hj-LTb">
@@ -897,7 +898,7 @@
                                         <rect key="frame" x="0.0" y="88" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HAW-uT-F2o" id="C9J-2G-mJL">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -927,7 +928,244 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7XA-0M-0WJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1249" y="1245"/>
+            <point key="canvasLocation" x="-243" y="1061"/>
+        </scene>
+        <!--Fotball Scores Updates-->
+        <scene sceneID="YsA-fv-vCU">
+            <objects>
+                <viewController id="gZW-kJ-goZ" customClass="FootballViewController" customModule="Tandem_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y7C-Is-k4j">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tfg-j6-ths">
+                                <rect key="frame" x="0.0" y="184" width="414" height="503"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameCell" id="jPA-Ht-uYo">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jPA-Ht-uYo" id="Bsh-lJ-W8h">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="RUE-64-Da5" userLabel="Main Stack View">
+                                <rect key="frame" x="16" y="84" width="382" height="30"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tto-5Q-7AI">
+                                        <rect key="frame" x="0.0" y="0.0" width="191" height="30"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FA Premiere League" translatesAutoresizingMaskIntoConstraints="NO" id="qdv-gY-qVA">
+                                                <rect key="frame" x="153" y="0.0" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="cab-uc-dyf"/>
+                                                    <constraint firstAttribute="width" constant="30" id="yff-hx-u4F"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="qdv-gY-qVA" secondAttribute="bottom" id="2r0-op-E0u"/>
+                                            <constraint firstAttribute="trailing" secondItem="qdv-gY-qVA" secondAttribute="trailing" constant="8" id="MKW-n8-OPJ"/>
+                                            <constraint firstItem="qdv-gY-qVA" firstAttribute="top" secondItem="tto-5Q-7AI" secondAttribute="top" id="jz5-Ii-vBz"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vtU-SV-KGZ">
+                                        <rect key="frame" x="191" y="0.0" width="191" height="30"/>
+                                        <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                        <state key="normal" title="FA Premiere League">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="mainButtonPressed:" destination="gZW-kJ-goZ" eventType="touchUpInside" id="sBQ-0A-uTv"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Y2z-7X-X70"/>
+                                </constraints>
+                            </stackView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ewI-fU-sA4">
+                                <rect key="frame" x="16" y="134" width="382" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="BTR-Qk-9oT"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Latest"/>
+                                    <segment title="Upcoming"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControllPressed:" destination="gZW-kJ-goZ" eventType="valueChanged" id="u51-cm-kHF"/>
+                                </connections>
+                            </segmentedControl>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="ezm-H0-eLI" userLabel="Others Stack View">
+                                <rect key="frame" x="16" y="116" width="382" height="94"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="rmL-iG-9cU">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="30"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hFy-lG-k9p">
+                                                <rect key="frame" x="0.0" y="0.0" width="191" height="30"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bundesliga" translatesAutoresizingMaskIntoConstraints="NO" id="Gnz-YE-41s">
+                                                        <rect key="frame" x="153" y="0.0" width="30" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="30" id="86N-Kw-AQc"/>
+                                                            <constraint firstAttribute="height" constant="30" id="vmf-Q1-qW8"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="Gnz-YE-41s" secondAttribute="trailing" constant="8" id="rjs-pM-x8q"/>
+                                                    <constraint firstItem="Gnz-YE-41s" firstAttribute="top" secondItem="hFy-lG-k9p" secondAttribute="top" id="zSH-E6-BEO"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Gnz-YE-41s" secondAttribute="bottom" id="zeY-F4-rox"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D0x-MD-VLZ">
+                                                <rect key="frame" x="191" y="0.0" width="191" height="30"/>
+                                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="msg-EN-v6O"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                <state key="normal" title="Bundesliga">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="otherLeagueButtonPressed:" destination="gZW-kJ-goZ" eventType="touchUpInside" id="9T8-Lp-bh0"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="74N-EY-haT"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Svq-iv-tUc">
+                                        <rect key="frame" x="0.0" y="32" width="382" height="30"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MdV-6i-58b">
+                                                <rect key="frame" x="0.0" y="0.0" width="191" height="30"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Serie A" translatesAutoresizingMaskIntoConstraints="NO" id="VRf-gV-SlA">
+                                                        <rect key="frame" x="153" y="0.0" width="30" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="30" id="r2f-ZV-zXe"/>
+                                                            <constraint firstAttribute="height" constant="30" id="wF7-YS-BnB"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="VRf-gV-SlA" firstAttribute="top" secondItem="MdV-6i-58b" secondAttribute="top" id="GaE-Cg-ctU"/>
+                                                    <constraint firstAttribute="bottom" secondItem="VRf-gV-SlA" secondAttribute="bottom" id="j3D-y2-3sk"/>
+                                                    <constraint firstAttribute="trailing" secondItem="VRf-gV-SlA" secondAttribute="trailing" constant="8" id="ywh-dm-cSr"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcd-J4-o7e">
+                                                <rect key="frame" x="191" y="0.0" width="191" height="30"/>
+                                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                <state key="normal" title="Serie A">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="otherLeagueButtonPressed:" destination="gZW-kJ-goZ" eventType="touchUpInside" id="4JZ-rd-s9d"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="WFu-7n-W9T"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MsA-am-c5E">
+                                        <rect key="frame" x="0.0" y="64" width="382" height="30"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bpU-u2-Lf6">
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="30"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZfL-fz-YNx">
+                                                        <rect key="frame" x="0.0" y="0.0" width="191" height="30"/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Primera" translatesAutoresizingMaskIntoConstraints="NO" id="9Z4-dR-8Um">
+                                                                <rect key="frame" x="153" y="0.0" width="30" height="30"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="30" id="0Zp-Ve-Nsj"/>
+                                                                    <constraint firstAttribute="height" constant="30" id="r2t-5q-ajk"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="9Z4-dR-8Um" secondAttribute="trailing" constant="8" id="J6G-pw-sAB"/>
+                                                            <constraint firstItem="9Z4-dR-8Um" firstAttribute="top" secondItem="ZfL-fz-YNx" secondAttribute="top" id="Mz7-lm-ocS"/>
+                                                            <constraint firstAttribute="bottom" secondItem="9Z4-dR-8Um" secondAttribute="bottom" id="qwO-Sn-zk9"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8jU-Pk-GRY">
+                                                        <rect key="frame" x="191" y="0.0" width="191" height="30"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                        <state key="normal" title="Primera">
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="otherLeagueButtonPressed:" destination="gZW-kJ-goZ" eventType="touchUpInside" id="4te-N2-y3F"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="Vxo-kq-CHW"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="uXk-Sd-6DM">
+                                <rect key="frame" x="189" y="350" width="37" height="37"/>
+                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Tfg-j6-ths" firstAttribute="bottom" secondItem="6vA-kD-Ccd" secondAttribute="bottom" id="4rB-AA-K6V"/>
+                            <constraint firstItem="Tfg-j6-ths" firstAttribute="leading" secondItem="6vA-kD-Ccd" secondAttribute="leading" id="7J2-tD-Fhq"/>
+                            <constraint firstItem="uXk-Sd-6DM" firstAttribute="centerX" secondItem="y7C-Is-k4j" secondAttribute="centerX" id="N3X-OK-aUa"/>
+                            <constraint firstItem="6vA-kD-Ccd" firstAttribute="trailing" secondItem="ewI-fU-sA4" secondAttribute="trailing" constant="16" id="QjX-b5-bPX"/>
+                            <constraint firstItem="Tfg-j6-ths" firstAttribute="top" secondItem="ewI-fU-sA4" secondAttribute="bottom" constant="20" id="SvC-oC-frP"/>
+                            <constraint firstItem="uXk-Sd-6DM" firstAttribute="centerY" secondItem="y7C-Is-k4j" secondAttribute="centerY" id="ddt-X1-GIX"/>
+                            <constraint firstItem="ewI-fU-sA4" firstAttribute="leading" secondItem="6vA-kD-Ccd" secondAttribute="leading" constant="16" id="fOX-Qb-KJ2"/>
+                            <constraint firstItem="RUE-64-Da5" firstAttribute="top" secondItem="6vA-kD-Ccd" secondAttribute="top" constant="20" id="gP5-dd-lbU"/>
+                            <constraint firstAttribute="trailing" secondItem="RUE-64-Da5" secondAttribute="trailing" constant="16" id="mtN-7U-zzV"/>
+                            <constraint firstItem="Tfg-j6-ths" firstAttribute="trailing" secondItem="6vA-kD-Ccd" secondAttribute="trailing" id="prN-oi-1fe"/>
+                            <constraint firstItem="ewI-fU-sA4" firstAttribute="top" secondItem="RUE-64-Da5" secondAttribute="bottom" constant="20" id="sSU-wT-EYa"/>
+                            <constraint firstItem="ezm-H0-eLI" firstAttribute="leading" secondItem="6vA-kD-Ccd" secondAttribute="leading" constant="16" id="sgf-Jj-fAR"/>
+                            <constraint firstItem="6vA-kD-Ccd" firstAttribute="trailing" secondItem="ezm-H0-eLI" secondAttribute="trailing" constant="16" id="t1L-Pf-dwk"/>
+                            <constraint firstItem="ezm-H0-eLI" firstAttribute="top" secondItem="RUE-64-Da5" secondAttribute="bottom" constant="2" id="vB9-QK-KPW"/>
+                            <constraint firstItem="RUE-64-Da5" firstAttribute="leading" secondItem="6vA-kD-Ccd" secondAttribute="leading" constant="16" id="w8q-8a-3uG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6vA-kD-Ccd"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Fotball Scores Updates" id="c3G-1S-5hj"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="uXk-Sd-6DM" id="tO1-GX-rDh"/>
+                        <outlet property="firstImage" destination="Gnz-YE-41s" id="Fzv-Jw-SkH"/>
+                        <outlet property="mainFilterButton" destination="vtU-SV-KGZ" id="g1K-ky-paT"/>
+                        <outlet property="mainFlagImage" destination="qdv-gY-qVA" id="CKy-Ki-otc"/>
+                        <outlet property="othersStackView" destination="ezm-H0-eLI" id="Wd6-VC-XQ5"/>
+                        <outlet property="secondImage" destination="VRf-gV-SlA" id="aul-4Q-gs7"/>
+                        <outlet property="segmentedControl" destination="ewI-fU-sA4" id="dt6-W0-GpZ"/>
+                        <outlet property="tableView" destination="Tfg-j6-ths" id="Xj0-fX-Jgp"/>
+                        <outlet property="thirdImage" destination="9Z4-dR-8Um" id="dHa-pc-jAN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mju-Wt-45c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2434.7826086956525" y="1373.6413043478262"/>
         </scene>
         <!--Account Settings View Controller-->
         <scene sceneID="dcz-QL-Vcr">
@@ -1170,7 +1408,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ub-ia-rQY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2011.594202898551" y="1244.021739130435"/>
+            <point key="canvasLocation" x="506" y="1061"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="mCV-jk-hqB">
@@ -1367,7 +1605,7 @@
         <scene sceneID="t5C-k5-6op">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gqq-r2-CaY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="topRated" id="4ag-LO-0FL"/>
+                    <tabBarItem key="tabBarItem" systemItem="featured" id="4ag-LO-0FL"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zP3-eo-7Q7">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -1384,7 +1622,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YFj-s3-tfZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2012" y="551.87406296851577"/>
+            <point key="canvasLocation" x="1674" y="580"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TDA-n1-pa6">
@@ -1410,7 +1648,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fWO-1B-xod" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="484" y="1245"/>
+            <point key="canvasLocation" x="-1007" y="1062"/>
         </scene>
         <!--Add Item View Controller-->
         <scene sceneID="Km5-qg-eGf">
@@ -1499,8 +1737,34 @@
             </objects>
             <point key="canvasLocation" x="3180" y="-619.34032983508246"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="y6w-W8-yTS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p7L-I5-xJu" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="Z75-FY-M6l"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wE3-Lz-iwm">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gZW-kJ-goZ" kind="relationship" relationship="rootViewController" id="PmH-ce-esx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AMY-ZU-lyO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1674" y="1374"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Bundesliga" width="512" height="512"/>
+        <image name="FA Premiere League" width="512" height="512"/>
+        <image name="Primera" width="512" height="512"/>
+        <image name="Serie A" width="512" height="512"/>
         <image name="tandem" width="490" height="175"/>
     </resources>
 </document>

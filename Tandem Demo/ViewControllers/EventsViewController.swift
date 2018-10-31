@@ -174,10 +174,12 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.view.backgroundColor = UIColor(hexString: "7F7F7F")
             tableView.backgroundColor = UIColor(hexString: "7F7F7F")
             cell.contentView.backgroundColor = UIColor(hexString: "7F7F7F")
-            cell.titleLabel.textColor = UIColor.white
-            cell.startLabel.textColor = UIColor.white
-            cell.endLabel.textColor = UIColor.white
             temperatureLabel.textColor = UIColor.white
+            DispatchQueue.main.async {
+                cell.titleLabel.textColor = UIColor.white
+                cell.startLabel.textColor = UIColor.white
+                cell.endLabel.textColor = UIColor.white
+            }
         case true:
             navigationController?.navigationBar.barTintColor = UIColor(hexString: "E6E6E6")
             navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(hexString: "008080")]
@@ -188,10 +190,12 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.view.backgroundColor = UIColor(hexString: "E6E6E6")
             tableView.backgroundColor = UIColor(hexString: "E6E6E6")
             cell.contentView.backgroundColor = UIColor(hexString: "E6E6E6")
-            cell.titleLabel.textColor = UIColor.black
-            cell.startLabel.textColor = UIColor.black
-            cell.endLabel.textColor = UIColor.black
             temperatureLabel.textColor = UIColor.black
+            DispatchQueue.main.async {
+                cell.titleLabel.textColor = UIColor.black
+                cell.startLabel.textColor = UIColor.black
+                cell.endLabel.textColor = UIColor.black
+            }
             break
         }
     }

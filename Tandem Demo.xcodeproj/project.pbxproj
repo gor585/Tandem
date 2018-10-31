@@ -22,6 +22,11 @@
 		25535A56213E78BC0090030F /* ChangeCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25535A55213E78BC0090030F /* ChangeCityViewController.swift */; };
 		25535A58213E797A0090030F /* ChangeCityName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25535A57213E797A0090030F /* ChangeCityName.swift */; };
 		258195772163935E00EC528A /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258195762163935E00EC528A /* WeatherService.swift */; };
+		2595D2BF21888B0400737830 /* FootballViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2595D2BE21888B0400737830 /* FootballViewController.swift */; };
+		2595D2C121888B5B00737830 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2595D2C021888B5B00737830 /* GameModel.swift */; };
+		2595D2C421888F1F00737830 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2595D2C221888F1F00737830 /* GameCell.swift */; };
+		2595D2C521888F1F00737830 /* GameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2595D2C321888F1F00737830 /* GameCell.xib */; };
+		2595D2C72188979300737830 /* GamesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2595D2C62188979300737830 /* GamesService.swift */; };
 		25A13BB2217DE3C90088974E /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A13BB0217DE3C90088974E /* EventCell.swift */; };
 		25A13BB3217DE3C90088974E /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25A13BB1217DE3C90088974E /* EventCell.xib */; };
 		25A13BB5217DE7CC0088974E /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A13BB4217DE7CC0088974E /* EventService.swift */; };
@@ -66,6 +71,11 @@
 		25535A55213E78BC0090030F /* ChangeCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityViewController.swift; sourceTree = "<group>"; };
 		25535A57213E797A0090030F /* ChangeCityName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityName.swift; sourceTree = "<group>"; };
 		258195762163935E00EC528A /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		2595D2BE21888B0400737830 /* FootballViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootballViewController.swift; sourceTree = "<group>"; };
+		2595D2C021888B5B00737830 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		2595D2C221888F1F00737830 /* GameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
+		2595D2C321888F1F00737830 /* GameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameCell.xib; sourceTree = "<group>"; };
+		2595D2C62188979300737830 /* GamesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesService.swift; sourceTree = "<group>"; };
 		25A13BB0217DE3C90088974E /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		25A13BB1217DE3C90088974E /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		25A13BB4217DE7CC0088974E /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
@@ -112,6 +122,7 @@
 				25FE857A2164BE6D00A621E2 /* LocationService.swift */,
 				258195762163935E00EC528A /* WeatherService.swift */,
 				25A13BB4217DE7CC0088974E /* EventService.swift */,
+				2595D2C62188979300737830 /* GamesService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -178,6 +189,7 @@
 			children = (
 				25BF18C520F2727D00393B77 /* ItemModel.swift */,
 				25E0528420F20F4F00E4206C /* EventModel.swift */,
+				2595D2C021888B5B00737830 /* GameModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -200,6 +212,8 @@
 				25BF18CF20F275EA00393B77 /* ToDoCell.swift */,
 				25A13BB0217DE3C90088974E /* EventCell.swift */,
 				25A13BB1217DE3C90088974E /* EventCell.xib */,
+				2595D2C221888F1F00737830 /* GameCell.swift */,
+				2595D2C321888F1F00737830 /* GameCell.xib */,
 				254A71EA20F0ACD3002D405C /* Main.storyboard */,
 			);
 			path = Views;
@@ -216,6 +230,7 @@
 				25FC964020F12DEE0035D9BF /* EventsViewController.swift */,
 				25535A55213E78BC0090030F /* ChangeCityViewController.swift */,
 				25D99A9821806F43009524A3 /* DescriptionViewController.swift */,
+				2595D2BE21888B0400737830 /* FootballViewController.swift */,
 				251CE8C020F78162002D9845 /* SettingsViewController.swift */,
 				25D1D7DC2119AFC700F0840F /* AccountSettingsViewController.swift */,
 				25D1D7E22119B25A00F0840F /* AccountSettingsVC Ext */,
@@ -315,6 +330,7 @@
 				254A71EE20F0ACD3002D405C /* Assets.xcassets in Resources */,
 				25A13BB3217DE3C90088974E /* EventCell.xib in Resources */,
 				254A71EC20F0ACD3002D405C /* Main.storyboard in Resources */,
+				2595D2C521888F1F00737830 /* GameCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +412,7 @@
 				25E573ED20FE2A960058F007 /* EditItem.swift in Sources */,
 				250829CC20F9FE1400590CB9 /* HideKeyboardTap.swift in Sources */,
 				2532DEEB210C842400A6326B /* UserFilter.swift in Sources */,
+				2595D2C72188979300737830 /* GamesService.swift in Sources */,
 				25ADDC15215A2A30002EAB1B /* AlertView.swift in Sources */,
 				25BF18D220F294A300393B77 /* AddItem.swift in Sources */,
 				25FE857B2164BE6D00A621E2 /* LocationService.swift in Sources */,
@@ -413,18 +430,21 @@
 				25535A58213E797A0090030F /* ChangeCityName.swift in Sources */,
 				25BF18C820F272E200393B77 /* DateConverter.swift in Sources */,
 				25535A56213E78BC0090030F /* ChangeCityViewController.swift in Sources */,
+				2595D2C421888F1F00737830 /* GameCell.swift in Sources */,
 				25E0528520F20F4F00E4206C /* EventModel.swift in Sources */,
 				253944B4215B6D0A0057D8CF /* DataService.swift in Sources */,
 				25BF18C620F2727D00393B77 /* ItemModel.swift in Sources */,
 				25AE373E211C31B000B7FF61 /* ImageCache.swift in Sources */,
 				25AD8A76211EDBA900289501 /* ColorTheme.swift in Sources */,
 				25E156A020F6486000D638DC /* DetailsViewController.swift in Sources */,
+				2595D2BF21888B0400737830 /* FootballViewController.swift in Sources */,
 				25D1D7DF2119B23600F0840F /* ChangeImg&PassMode.swift in Sources */,
 				25A13BB2217DE3C90088974E /* EventCell.swift in Sources */,
 				254A71E720F0ACD3002D405C /* AppDelegate.swift in Sources */,
 				25D99A9921806F43009524A3 /* DescriptionViewController.swift in Sources */,
 				25BF18D020F275EA00393B77 /* ToDoCell.swift in Sources */,
 				258195772163935E00EC528A /* WeatherService.swift in Sources */,
+				2595D2C121888B5B00737830 /* GameModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
