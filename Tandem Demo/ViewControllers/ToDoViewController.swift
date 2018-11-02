@@ -202,8 +202,8 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
 //MARK: - Add item extension
 extension ToDoViewController: AddItem {
     
-    func userAddedNewItem(title: String, text: String, userLogin: String, userImage: UIImage, userImgURL: String) {
-        DataService.shared.addNewItem(title: title, text: text, userLogin: userLogin, userImage: userImage, userImgURL: userImgURL) { (newItemDict) in
+    func userAddedNewItem(title: String, text: String, imageURL: String, latitude: String, longitude: String, userLogin: String, userImage: UIImage, userImgURL: String) {
+        DataService.shared.addNewItem(title: title, text: text, imageURL: imageURL, latitude: latitude, longitude: longitude, userLogin: userLogin, userImage: userImage, userImgURL: userImgURL) { (newItemDict) in
             if newItemDict != nil {
                 self.tableView.reloadData()
             }

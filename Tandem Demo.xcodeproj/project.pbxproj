@@ -42,6 +42,7 @@
 		25D1D7DD2119AFC700F0840F /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D1D7DC2119AFC700F0840F /* AccountSettingsViewController.swift */; };
 		25D1D7DF2119B23600F0840F /* ChangeImg&PassMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D1D7DE2119B23600F0840F /* ChangeImg&PassMode.swift */; };
 		25D99A9921806F43009524A3 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D99A9821806F43009524A3 /* DescriptionViewController.swift */; };
+		25DA8663218C83FC00CF2BDC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DA8662218C83FC00CF2BDC /* MapViewController.swift */; };
 		25E0528520F20F4F00E4206C /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E0528420F20F4F00E4206C /* EventModel.swift */; };
 		25E156A020F6486000D638DC /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1569F20F6486000D638DC /* DetailsViewController.swift */; };
 		25E573ED20FE2A960058F007 /* EditItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E573EC20FE2A960058F007 /* EditItem.swift */; };
@@ -91,6 +92,7 @@
 		25D1D7DC2119AFC700F0840F /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
 		25D1D7DE2119B23600F0840F /* ChangeImg&PassMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChangeImg&PassMode.swift"; sourceTree = "<group>"; };
 		25D99A9821806F43009524A3 /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
+		25DA8662218C83FC00CF2BDC /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		25E0528420F20F4F00E4206C /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		25E1569F20F6486000D638DC /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		25E573EC20FE2A960058F007 /* EditItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItem.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				25B1163E20F0F530009D0A28 /* ToDoViewController.swift */,
 				255EFC3F20F89735006E9766 /* ToDoVC Ext */,
 				25BF18D320F2960800393B77 /* AddItemViewController.swift */,
+				25DA8662218C83FC00CF2BDC /* MapViewController.swift */,
 				25E1569F20F6486000D638DC /* DetailsViewController.swift */,
 				25FC964020F12DEE0035D9BF /* EventsViewController.swift */,
 				25535A55213E78BC0090030F /* ChangeCityViewController.swift */,
@@ -436,6 +439,7 @@
 				25BF18C620F2727D00393B77 /* ItemModel.swift in Sources */,
 				25AE373E211C31B000B7FF61 /* ImageCache.swift in Sources */,
 				25AD8A76211EDBA900289501 /* ColorTheme.swift in Sources */,
+				25DA8663218C83FC00CF2BDC /* MapViewController.swift in Sources */,
 				25E156A020F6486000D638DC /* DetailsViewController.swift in Sources */,
 				2595D2BF21888B0400737830 /* FootballViewController.swift in Sources */,
 				25D1D7DF2119B23600F0840F /* ChangeImg&PassMode.swift in Sources */,

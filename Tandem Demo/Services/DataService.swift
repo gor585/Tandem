@@ -97,6 +97,27 @@ class DataService {
         }
     }
     
+    //MARK: - Upload item image to Storage
+    func uploadItemImageToStorage(itemTitle: String, itemImage: UIImage, completion: @escaping (_ imageURL: String?) -> Void) {
+        var data = NSData()
+        data = UIImageJPEGRepresentation(itemImage, 0.05)! as NSData
+        let metadata = StorageMetadata()
+        let imageStorage = Storage.storage().reference().child("images/item_images")
+        imageStorage.child("\(itemTitle).jpg").putData(data as Data, metadata: metadata) { (metadata, error) in
+            guard let metadata = metadata else { print("Metadata error: \(error!)"); return }
+            guard let imageURLString = metadata.downloadURL()?.absoluteString else { return }
+            completion(imageURLString)
+        }
+    }
+    
+    //MARK: - Load item image from Storage
+    func loadItemImageFromStorage(imageURL: String, completion: (_ image: UIImage?) -> Void) {
+        guard let imageURL = URL(string: imageURL) else { return }
+        guard let imageData = try? Data(contentsOf: imageURL) else { print("Error getting item image data"); return }
+        let image = UIImage(data: imageData)!
+        completion(image)
+    }
+    
     //MARK: - Load color settings
     func loadColorThemeSetting(completion: @escaping (_ lightColorTheme: Bool?) -> Void) {
         guard let userName = Auth.auth().currentUser?.email else { return }
@@ -236,6 +257,31 @@ class DataService {
         }
     }
     
+    //MARK: - Replace item image in Storage
+    func replaceItemImageWithNewOne(itemTitle: String, newImage: UIImage, completion: @escaping () -> Void) {
+        guard let data = UIImageJPEGRepresentation(newImage, 0.05) as NSData? else { return }
+        let metadata = StorageMetadata()
+        let imageStorage = Storage.storage().reference().child("images/item_images/\(itemTitle).jpg")
+        imageStorage.putData(data as Data, metadata: metadata) { (metadata, error) in
+            completion()
+        }
+    }
+    
+    //MARK: - Update item image url in Database
+    func updateImageURLInDatabase(itemID: String, newImageURL: String, completion: @escaping () -> Void) {
+        let itemDatabaseRef = databaseRef.child("Items/\(itemID)")
+        itemDatabaseRef.observe(.value) { (snapshot) in
+            guard var snapshotValue = snapshot.value as? [String: String] else { return }
+            if snapshotValue["ImageURL"] != nil {
+                //snapshotValue["ImageURL"] = newImageURL
+                itemDatabaseRef.updateChildValues(["ImageURL": newImageURL])
+            } else {
+                itemDatabaseRef.child("ImageURL").setValue(newImageURL)
+            }
+            completion()
+        }
+    }
+    
     //MARK: - Change password
     func changePassword(password: String, newPassword: String, verifyPassword: String, viewController: UIViewController, completion: @escaping (_ newPassword: String?) -> Void) {
         guard let currentUserName = Auth.auth().currentUser?.email else { return }
@@ -280,9 +326,25 @@ class DataService {
             guard let title = snapshotValue["Title"] else { return }
             guard let text = snapshotValue["Text"] else { return }
             guard let date = snapshotValue["Date"] else { return }
-            guard let isDone = snapshotValue["IsDone"] else { return }
             guard let userImgURLString = snapshotValue["UserImageURL"] else { return }
+            guard let isDone = snapshotValue["IsDone"] else { return }
             guard let id = snapshotValue["ID"] else { return }
+            //Additional part for loading old items with no imageURL property
+            //guard let imageURL = snapshotValue["ImageURL"] else { return }
+            var imageURL = ""
+            if snapshotValue["ImageURL"] != nil {
+                imageURL = snapshotValue["ImageURL"]!
+            }
+            
+            //Additional part for loading coordinates
+//            guard let latitude = snapshotValue["Latutude"] else { return }
+//            guard let longitude = snapshotValue["Longitude"] else { return }
+            var lat = ""
+            var long = ""
+            if snapshotValue["Latitude"] != nil && snapshotValue["Longitude"] != nil {
+                lat = snapshotValue["Latitude"]!
+                long = snapshotValue["Longitude"]!
+            }
             
             var userImage = UIImage()
             let userImgURL = URL(string: userImgURLString)
@@ -301,7 +363,7 @@ class DataService {
             //Setting user image to cache object
             userImage = ImageCache.sharedCache.object(forKey: user as NSString)!
             
-            let item = Item(title: title, image: userImage, text: text, userLogin: user, userImage: userImage, userImgURL: userImgURLString)
+            let item = Item(title: title, image: userImage, imageURL: imageURL, text: text, latitude: lat, longitude: long, userLogin: user, userImage: userImage, userImgURL: userImgURLString)
             item.date = date
             item.id = id
             
@@ -316,8 +378,8 @@ class DataService {
     }
     
     //MARK: - Add new item
-    func addNewItem(title: String, text: String, userLogin: String, userImage: UIImage, userImgURL: String, completion: @escaping ([String: String]?) -> Void) {
-        let newItem = Item(title: title, text: text, userLogin: userLogin, userImage: userImage, userImgURL: userImgURL)
+    func addNewItem(title: String, text: String, imageURL: String, latitude: String, longitude: String, userLogin: String, userImage: UIImage, userImgURL: String, completion: @escaping ([String: String]?) -> Void) {
+        let newItem = Item(title: title, imageURL: imageURL, text: text, latitude: latitude, longitude: longitude, userLogin: userLogin, userImage: userImage, userImgURL: userImgURL)
         
         var isDone = "false"
         
@@ -331,7 +393,7 @@ class DataService {
         newItem.id = itemsDatabase.childByAutoId().key
         print("ID: \(newItem.id)")
         
-        guard let newItemDict = ["User": Auth.auth().currentUser?.email, "UserImageURL": newItem.userImgURL, "Title": newItem.title, "Text": newItem.text, "Date": newItem.date, "IsDone": isDone, "ID": newItem.id] as? [String: String] else { return }
+        guard let newItemDict = ["User": Auth.auth().currentUser?.email, "UserImageURL": newItem.userImgURL, "Title": newItem.title, "Text": newItem.text, "ImageURL": newItem.imageURL, "Date": newItem.date, "Latitude": newItem.latitude, "Longitude": newItem.longitude, "IsDone": isDone, "ID": newItem.id] as? [String: String] else { return }
         
         DispatchQueue.global(qos: .userInteractive).async {
             itemsDatabase.child(newItem.id).setValue(newItemDict) {

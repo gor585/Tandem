@@ -14,6 +14,9 @@ class Item {
     var title: String?
     var text: String?
     var image: UIImage?
+    var imageURL: String?
+    var latitude: String?
+    var longitude: String?
     var done: Bool
     var id: String
     
@@ -21,10 +24,13 @@ class Item {
     var userImage: UIImage?
     var userImgURL: String
     
-    init(title: String? = "", image: UIImage? = UIImage(named: "camera"), text: String? = "", userLogin: String, userImage: UIImage? = UIImage(named: "camera"), userImgURL: String = "") {
+    init(title: String? = "", image: UIImage? = UIImage(named: "camera-1"), imageURL: String? = "", text: String? = "", latitude: String? = "", longitude: String? = "", userLogin: String, userImage: UIImage? = UIImage(named: "camera-1"), userImgURL: String = "") {
         self.title = title
         self.image = image
+        self.imageURL = imageURL
         self.text = text
+        self.latitude = latitude
+        self.longitude = longitude
         self.userLogin = userLogin
         self.userImage = userImage
         self.userImgURL = userImgURL

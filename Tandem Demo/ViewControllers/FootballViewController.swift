@@ -87,7 +87,7 @@ class FootballViewController: UIViewController, UITableViewDelegate, UITableView
                     guard let image = userImage else { return }
                     guard let url = url else { return }
                     //MARK: - Add new item in ToDo list
-                    DataService.shared.addNewItem(title: "\(game.homeTeam) - \(game.awayTeam) game", text: "\(game.homeTeam) - \(game.awayTeam) \nDate: \(game.date)", userLogin: name, userImage: image, userImgURL: url, completion: { (newItemDict) in })
+                    DataService.shared.addNewItem(title: "\(game.homeTeam) - \(game.awayTeam) game", text: "\(game.homeTeam) - \(game.awayTeam) \nDate: \(game.date)", imageURL: "", latitude: "", longitude: "", userLogin: name, userImage: image, userImgURL: url, completion: { (newItemDict) in })
                 })
                 game.selected = true
                 tableView.reloadData()

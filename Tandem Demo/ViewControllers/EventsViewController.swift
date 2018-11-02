@@ -98,7 +98,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 guard let image = userImage else { return }
                 guard let url = url else { return }
                 //MARK: - Add new item in ToDo list
-                DataService.shared.addNewItem(title: event.title, text: event.description + "\n Location: \(event.lat), \(event.long), \n Start: \(event.start),\n End: \(event.end).", userLogin: name, userImage: image, userImgURL: url, completion: { (newItemDict) in })
+                DataService.shared.addNewItem(title: event.title, text: event.description + "\n Start: \(event.start), \n End: \(event.end), \n Location: \(event.lat), \(event.long).", imageURL: "", latitude: event.lat, longitude: event.long, userLogin: name, userImage: image, userImgURL: url, completion: { (newItemDict) in })
             })
             event.selected = true
             tableView.reloadData()
