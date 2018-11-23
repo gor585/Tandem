@@ -118,6 +118,12 @@ class DataService {
         completion(image)
     }
     
+    //MARK: - Delete item image in Storage
+    func deleteItemImageInStorage(itemImage: String, completion: () -> Void) {
+        let imageStorage = Storage.storage().reference().child("images/item_images")
+        imageStorage.child("\(itemImage).jpg").delete(completion: nil)
+    }
+    
     //MARK: - Load color settings
     func loadColorThemeSetting(completion: @escaping (_ lightColorTheme: Bool?) -> Void) {
         guard let userName = Auth.auth().currentUser?.email else { return }
@@ -154,6 +160,7 @@ class DataService {
         if imageCache.object(forKey: currentUserName as NSString) != nil {
             userImage = imageCache.object(forKey: currentUserName as NSString)
             completion(currentUserName, userImage)
+            print("Image of \(currentUserName) loaded from cache")
         } else {
             loadUserImageFromStorage(completion: { (image) in
                 guard let image = image else { return }
@@ -329,22 +336,9 @@ class DataService {
             guard let userImgURLString = snapshotValue["UserImageURL"] else { return }
             guard let isDone = snapshotValue["IsDone"] else { return }
             guard let id = snapshotValue["ID"] else { return }
-            //Additional part for loading old items with no imageURL property
-            //guard let imageURL = snapshotValue["ImageURL"] else { return }
-            var imageURL = ""
-            if snapshotValue["ImageURL"] != nil {
-                imageURL = snapshotValue["ImageURL"]!
-            }
-            
-            //Additional part for loading coordinates
-//            guard let latitude = snapshotValue["Latutude"] else { return }
-//            guard let longitude = snapshotValue["Longitude"] else { return }
-            var lat = ""
-            var long = ""
-            if snapshotValue["Latitude"] != nil && snapshotValue["Longitude"] != nil {
-                lat = snapshotValue["Latitude"]!
-                long = snapshotValue["Longitude"]!
-            }
+            guard let imageURL = snapshotValue["ImageURL"] else { return }
+            guard let latitude = snapshotValue["Latitude"] else { return }
+            guard let longitude = snapshotValue["Longitude"] else { return }
             
             var userImage = UIImage()
             let userImgURL = URL(string: userImgURLString)
@@ -353,8 +347,9 @@ class DataService {
             if ImageCache.sharedCache.object(forKey: user as NSString) == nil {
                 do {
                     let imageData = try Data.init(contentsOf: userImgURL!)
-                    //Saving user image to cahe
+                    //Saving user image to cache
                     ImageCache.sharedCache.setObject(UIImage(data: imageData)!, forKey: user as NSString)
+                    print("\(user) image saved to Cache")
                 } catch {
                     print("Error retrieving data from \(userImgURL!)")
                 }
@@ -363,7 +358,7 @@ class DataService {
             //Setting user image to cache object
             userImage = ImageCache.sharedCache.object(forKey: user as NSString)!
             
-            let item = Item(title: title, image: userImage, imageURL: imageURL, text: text, latitude: lat, longitude: long, userLogin: user, userImage: userImage, userImgURL: userImgURLString)
+            let item = Item(title: title, image: userImage, imageURL: imageURL, text: text, latitude: latitude, longitude: longitude, userLogin: user, userImage: userImage, userImgURL: userImgURLString)
             item.date = date
             item.id = id
             
@@ -412,6 +407,13 @@ class DataService {
     func editItem(id: String, title: String, text: String, completion: () -> Void) {
         let itemsDatabase = databaseRef.child("Items")
         itemsDatabase.child(id).updateChildValues(["Title": title, "Text": text])
+        completion()
+    }
+    
+    //MARK: - Edit item location properties
+    func editItemLocationProperties(id: String, latitude: String, longitude: String, completion: () -> Void) {
+        let itemsDatabase = databaseRef.child("Items")
+        itemsDatabase.child(id).updateChildValues(["Latitude": latitude, "Longitude": longitude])
         completion()
     }
     

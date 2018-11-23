@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2505FE13219583CA00CE8B44 /* ItemCoordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2505FE12219583CA00CE8B44 /* ItemCoordinates.swift */; };
 		250829CC20F9FE1400590CB9 /* HideKeyboardTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250829CB20F9FE1400590CB9 /* HideKeyboardTap.swift */; };
 		251CE8BF20F754F1002D9845 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 251CE8BE20F754F1002D9845 /* GoogleService-Info.plist */; };
 		251CE8C120F78162002D9845 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CE8C020F78162002D9845 /* SettingsViewController.swift */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		0DEC5D17CC68153172A9D09A /* Pods-Tandem Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tandem Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tandem Demo/Pods-Tandem Demo.release.xcconfig"; sourceTree = "<group>"; };
+		2505FE12219583CA00CE8B44 /* ItemCoordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCoordinates.swift; sourceTree = "<group>"; };
 		250829CB20F9FE1400590CB9 /* HideKeyboardTap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardTap.swift; sourceTree = "<group>"; };
 		251CE8BE20F754F1002D9845 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		251CE8C020F78162002D9845 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				25BF18D120F294A300393B77 /* AddItem.swift */,
+				2505FE12219583CA00CE8B44 /* ItemCoordinates.swift */,
 				25E573EC20FE2A960058F007 /* EditItem.swift */,
 				25535A57213E797A0090030F /* ChangeCityName.swift */,
 				25FE857C2164BFEF00A621E2 /* LocationData.swift */,
@@ -436,6 +439,7 @@
 				2595D2C421888F1F00737830 /* GameCell.swift in Sources */,
 				25E0528520F20F4F00E4206C /* EventModel.swift in Sources */,
 				253944B4215B6D0A0057D8CF /* DataService.swift in Sources */,
+				2505FE13219583CA00CE8B44 /* ItemCoordinates.swift in Sources */,
 				25BF18C620F2727D00393B77 /* ItemModel.swift in Sources */,
 				25AE373E211C31B000B7FF61 /* ImageCache.swift in Sources */,
 				25AD8A76211EDBA900289501 /* ColorTheme.swift in Sources */,

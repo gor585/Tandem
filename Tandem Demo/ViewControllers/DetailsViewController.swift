@@ -201,6 +201,10 @@ class DetailsViewController: UIViewController {
         let actionDelete = UIAlertAction(title: "Delete", style: .destructive, handler: { (actionDelete) in
             self.delegate?.userDeletedItem(atIndex: self.selectedItem!)
             self.navigationController?.popViewController(animated: true)
+            
+            //Deleting item image from Storage
+            guard let imageTitle = self.cell?.title else { return }
+            DataService.shared.deleteItemImageInStorage(itemImage: imageTitle, completion: {})
         })
         let actionCancel = UIAlertAction(title: "Cancel", style: .default) { (actionCancel) in }
         
@@ -212,9 +216,15 @@ class DetailsViewController: UIViewController {
     @IBAction func confirmButtonPressed(_ sender: Any) {
         let alert = UIAlertController(title: "Apply changes", message: "Are you shure you want to apply changes to this item?", preferredStyle: .alert)
         let actionApply = UIAlertAction(title: "Apply", style: .default, handler: { (actionOk) in
-            guard let title = self.cell?.title else { return }
-            guard let id = self.cell?.id else { return }
-            guard let image = self.editPhotoView.image else { return }
+            guard let title = self.cell?.title else { print("no title"); return }
+            guard let id = self.cell?.id else { print("no id"); return }
+            
+            var image = UIImage()
+            if self.editPhotoView.image != nil {
+                image = self.editPhotoView.image!
+            } else {
+                image = UIImage(named: "camera-1")!
+            }
             
             if self.detailsImageView.image == nil {
                 DataService.shared.uploadItemImageToStorage(itemTitle: title, itemImage: image, completion: { (imageURL) in
@@ -296,7 +306,7 @@ extension DetailsViewController: UIImagePickerControllerDelegate, UINavigationCo
 }
 
 //MARK: - MapView & LocationData delegate methods
-extension DetailsViewController: MKMapViewDelegate, LocationData {
+extension DetailsViewController: MKMapViewDelegate, LocationData, ItemCoordinates {
     func getLocationData(lat: String, long: String) {
         guard let lat = Double(lat) else { return }
         guard let long = Double(long) else { return }
@@ -355,6 +365,27 @@ extension DetailsViewController: MKMapViewDelegate, LocationData {
                 }
             }
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMapEditing" {
+            guard let mapVC = segue.destination as? MapViewController else { return }
+            guard let id = cell?.id else { return }
+            mapVC.id = id 
+            guard let lat = cell?.latitude else { return }
+            guard let long = cell?.longitude else { return }
+            guard let latitude = Double(lat) else { return }
+            guard let longitude = Double(long) else { return }
+            mapVC.latitude = latitude
+            mapVC.longitude = longitude
+            mapVC.isInEditingMode = true
+            mapVC.delegate = self
+        }
+    }
+    
+    func itemCoordinates(latitude: String, longitude: String, address: String) {
+        guard let id = cell?.id else { return }
+        DataService.shared.editItemLocationProperties(id: id, latitude: latitude, longitude: longitude) {}
     }
 }
 

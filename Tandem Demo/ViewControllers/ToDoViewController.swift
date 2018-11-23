@@ -124,6 +124,9 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.currentUserItems = self.currentUserItems.filter {$0.id != item.id}
                 self.specifiedUserItemsDictionary.updateValue(self.allRetrievedItemsArray.filter {$0.userLogin == item.userLogin}, forKey: item.userLogin)
                 self.tableView.reloadData()
+                //Deleting item image from Storage
+                guard let imageTitle = item.title else { return }
+                DataService.shared.deleteItemImageInStorage(itemImage: imageTitle, completion: {})
             })
         }
         

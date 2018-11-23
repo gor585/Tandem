@@ -104,6 +104,7 @@ class FootballViewController: UIViewController, UITableViewDelegate, UITableView
             guard let scores = scores else { return }
             self.latestScoresDict = scores
             DispatchQueue.main.async {
+                //print("Got games data")
                 self.activityIndicator.stopAnimating()
                 self.activityIndicator.isHidden = true
                 self.switchLeague()

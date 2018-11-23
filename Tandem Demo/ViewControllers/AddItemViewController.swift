@@ -22,6 +22,10 @@ class AddItemViewController: UIViewController {
     
     var delegate: AddItem?
     var lightColorTheme: Bool = true
+    
+    var itemLatitude = ""
+    var itemLongitude = ""
+    var itemAddress = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,24 +86,61 @@ class AddItemViewController: UIViewController {
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         DataService.shared.getUserImg { (user, image, url) in
-            guard let userName = user, let userImage = image, let imageURL = url else { return }
-            
-            var lat = ""
-            var long = ""
+            guard let userName = user, let userImage = image, let userImageURL = url else { return }
+            //guard let title = self.titleTextField.text, let text = self.titleTextField.text, let image = self.photoImageView.image else { return }
             
             if self.photoImageView.image != nil {
                 DataService.shared.uploadItemImageToStorage(itemTitle: self.titleTextField.text!, itemImage: self.photoImageView.image!, completion: { (imageURLString) in
                     guard let imageURL = imageURLString else { return }
-                    self.delegate?.userAddedNewItem(title: self.titleTextField.text!, text: self.textTextField.text!, imageURL: imageURL, latitude: lat, longitude: long, userLogin: userName, userImage: userImage, userImgURL: imageURL)
+                    self.delegate?.userAddedNewItem(title: self.titleTextField.text!, text: self.textTextField.text!, imageURL: imageURL, latitude: self.itemLatitude, longitude: self.itemLongitude, userLogin: userName, userImage: userImage, userImgURL: userImageURL)
                 })
             } else {
-                self.delegate?.userAddedNewItem(title: self.titleTextField.text!, text: self.textTextField.text!, imageURL: "", latitude: lat, longitude: long, userLogin: userName, userImage: userImage, userImgURL: imageURL)
+                self.delegate?.userAddedNewItem(title: self.titleTextField.text!, text: self.textTextField.text!, imageURL: "", latitude: self.itemLatitude, longitude: self.itemLongitude, userLogin: userName, userImage: userImage, userImgURL: userImageURL)
             }
             
             self.navigationController?.popViewController(animated: true)
             self.activityIndicator.isHidden = true
             self.activityIndicator.stopAnimating()
         }
+    }
+}
+
+//MARK: - Item Coordinates
+extension AddItemViewController: ItemCoordinates {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMapMarker" {
+            guard let mapVC = segue.destination as? MapViewController else { return }
+            mapVC.delegate = self
+        }
+    }
+    
+    func itemCoordinates(latitude: String, longitude: String, address: String) {
+        itemLatitude = latitude
+        itemLongitude = longitude
+        setUpMapView(latitude: latitude, longitude: longitude)
+        itemAddress = address
+        textTextField.text = textTextField.text + "\n\n\(address)"
+    }
+    
+    //MARK: - MapView Setup
+    func setUpMapView(latitude: String, longitude: String) {
+        guard let latitude = Double(latitude) else { return }
+        guard let longitude = Double(longitude) else { return }
+        let itemCoordinateDisplay = CLLocationCoordinate2DMake(latitude, longitude)
+        
+        var span = MKCoordinateSpan()
+        span.latitudeDelta = 0.07
+        span.longitudeDelta = 0.07
+        let region = MKCoordinateRegion(center: itemCoordinateDisplay, span: span)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        mapView.addAnnotation(annotation)
+        mapView.showAnnotations([annotation], animated: true)
+        
+        mapView.showsUserLocation = true
+        mapView.centerCoordinate = itemCoordinateDisplay
+        mapView.setRegion(region, animated: true)
     }
 }
 
