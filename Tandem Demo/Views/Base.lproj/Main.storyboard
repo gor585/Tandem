@@ -1453,6 +1453,24 @@
                                     <constraint firstAttribute="height" constant="100" id="vgC-fh-RQh"/>
                                 </constraints>
                             </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWO-ES-Uar" userLabel="AddressLabel">
+                                <rect key="frame" x="16" y="124" width="382" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="bqG-0U-V2U"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSw-vm-mJR">
+                                <rect key="frame" x="15" y="199" width="384" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="mxv-gp-BTR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3CG-cw-ml8" userLabel="DetailsView">
                                 <rect key="frame" x="16" y="229" width="382" height="30"/>
                                 <subviews>
@@ -1650,13 +1668,17 @@
                             <constraint firstItem="rJk-5B-58x" firstAttribute="top" secondItem="QQm-9L-KBm" secondAttribute="bottom" constant="10" id="Awu-u5-Jtg"/>
                             <constraint firstItem="6Qr-8X-lGT" firstAttribute="leading" secondItem="Pxz-LI-nLT" secondAttribute="leading" constant="16" id="DNp-2H-qAj"/>
                             <constraint firstItem="Pxz-LI-nLT" firstAttribute="trailing" secondItem="OWV-1b-puC" secondAttribute="trailing" constant="16" id="IiO-0u-x0Q"/>
+                            <constraint firstItem="EWO-ES-Uar" firstAttribute="top" secondItem="e6a-XI-yei" secondAttribute="bottom" constant="10" id="KOZ-gd-oO9"/>
+                            <constraint firstItem="EWO-ES-Uar" firstAttribute="leading" secondItem="Pxz-LI-nLT" secondAttribute="leading" constant="16" id="KeD-OL-eix"/>
                             <constraint firstItem="Qab-u2-a8x" firstAttribute="centerY" secondItem="2kQ-xs-00I" secondAttribute="centerY" id="Ks4-YZ-ojs"/>
                             <constraint firstItem="ciH-iU-q1g" firstAttribute="top" secondItem="bH1-cd-36U" secondAttribute="bottom" constant="10" id="LgX-Ga-N1q"/>
                             <constraint firstItem="w3g-ma-bmd" firstAttribute="top" secondItem="vE0-x4-DZG" secondAttribute="bottom" constant="10" id="NqI-qy-WJV"/>
                             <constraint firstItem="QQm-9L-KBm" firstAttribute="leading" secondItem="Pxz-LI-nLT" secondAttribute="leading" constant="16" id="OW7-oC-VkP"/>
+                            <constraint firstItem="Pxz-LI-nLT" firstAttribute="trailing" secondItem="EWO-ES-Uar" secondAttribute="trailing" constant="16" id="Qpj-dd-ZDd"/>
                             <constraint firstItem="Pxz-LI-nLT" firstAttribute="trailing" secondItem="vE0-x4-DZG" secondAttribute="trailing" constant="16" id="UIx-Cu-bH1"/>
                             <constraint firstItem="en9-i0-WSM" firstAttribute="top" secondItem="3CG-cw-ml8" secondAttribute="bottom" constant="10" id="V3z-W8-awB"/>
                             <constraint firstItem="Pxz-LI-nLT" firstAttribute="trailing" secondItem="ZSA-De-cod" secondAttribute="trailing" constant="16" id="WQB-kY-fU7"/>
+                            <constraint firstItem="mSw-vm-mJR" firstAttribute="leading" secondItem="Pxz-LI-nLT" secondAttribute="leading" constant="15" id="XdE-cb-IJ3"/>
                             <constraint firstItem="Qab-u2-a8x" firstAttribute="centerX" secondItem="2kQ-xs-00I" secondAttribute="centerX" id="Y8Z-mI-CiT"/>
                             <constraint firstItem="Pxz-LI-nLT" firstAttribute="trailing" secondItem="oqR-5K-gml" secondAttribute="trailing" constant="16" id="YHD-pl-ryb"/>
                             <constraint firstItem="bH1-cd-36U" firstAttribute="top" secondItem="Pxz-LI-nLT" secondAttribute="top" constant="10" id="ZiT-xJ-LJ3"/>
@@ -1673,7 +1695,9 @@
                             <constraint firstItem="ciH-iU-q1g" firstAttribute="centerX" secondItem="2kQ-xs-00I" secondAttribute="centerX" id="gwU-2V-cjC"/>
                             <constraint firstItem="ZSA-De-cod" firstAttribute="leading" secondItem="Pxz-LI-nLT" secondAttribute="leading" constant="16" id="hWl-lu-5ak"/>
                             <constraint firstItem="rJk-5B-58x" firstAttribute="top" secondItem="ZSA-De-cod" secondAttribute="bottom" constant="10" id="jET-D2-Jpz"/>
+                            <constraint firstItem="mSw-vm-mJR" firstAttribute="top" secondItem="EWO-ES-Uar" secondAttribute="bottom" constant="5" id="jOS-Y1-BbA"/>
                             <constraint firstItem="yIF-Vs-8Iu" firstAttribute="top" secondItem="6Qr-8X-lGT" secondAttribute="bottom" constant="10" id="jxe-e4-3wV"/>
+                            <constraint firstItem="Pxz-LI-nLT" firstAttribute="trailing" secondItem="mSw-vm-mJR" secondAttribute="trailing" constant="15" id="mDW-Em-mll"/>
                             <constraint firstItem="Pxz-LI-nLT" firstAttribute="trailing" secondItem="e6a-XI-yei" secondAttribute="trailing" constant="16" id="mox-2b-4gL"/>
                             <constraint firstItem="3CG-cw-ml8" firstAttribute="top" secondItem="vKW-CA-I4a" secondAttribute="bottom" constant="5" id="n4T-Av-DbI"/>
                             <constraint firstItem="Pxz-LI-nLT" firstAttribute="trailing" secondItem="3CG-cw-ml8" secondAttribute="trailing" constant="16" id="oCY-9q-PF4"/>
@@ -1699,15 +1723,18 @@
                     <connections>
                         <outlet property="EditTextView" destination="ZSA-De-cod" id="cPM-E2-Of7"/>
                         <outlet property="activityIndicator" destination="Qab-u2-a8x" id="vbe-PX-noR"/>
+                        <outlet property="addressLabel" destination="EWO-ES-Uar" id="AMG-IX-mOD"/>
                         <outlet property="changeImageButton" destination="yIF-Vs-8Iu" id="pRB-09-C9D"/>
                         <outlet property="confirmButton" destination="w3g-ma-bmd" id="3EW-Qs-Kk6"/>
                         <outlet property="deleteButton" destination="Q87-2f-300" id="z5R-XC-Fcw"/>
                         <outlet property="detailsImageView" destination="oqR-5K-gml" id="2s8-JT-jHx"/>
                         <outlet property="detailsMapView" destination="en9-i0-WSM" id="dBE-za-9uR"/>
                         <outlet property="detailsMenuStackView" destination="I0z-jT-zrL" id="9ht-yC-hg4"/>
+                        <outlet property="detailsTandemImageView" destination="vKW-CA-I4a" id="CTq-Hp-4qI"/>
                         <outlet property="detailsTextView" destination="QQm-9L-KBm" id="FdC-U0-DGH"/>
                         <outlet property="detailsTitleLabel" destination="e6a-XI-yei" id="Zc9-tQ-EDB"/>
                         <outlet property="detailsView" destination="3CG-cw-ml8" id="5LT-2M-Plt"/>
+                        <outlet property="distanceLabel" destination="mSw-vm-mJR" id="osh-Yw-qCF"/>
                         <outlet property="editButton" destination="MsB-YD-afa" id="nvU-bk-fXe"/>
                         <outlet property="editImageView" destination="ciH-iU-q1g" id="CB6-yK-dx6"/>
                         <outlet property="editMapButton" destination="ldr-6o-s3w" id="6xe-aY-VIl"/>
@@ -1715,6 +1742,7 @@
                         <outlet property="editMenuStackView" destination="Rkc-T5-i8g" id="eAe-0U-ZKe"/>
                         <outlet property="editPhotoButton" destination="Csg-49-RXF" id="5oU-e4-av9"/>
                         <outlet property="editPhotoView" destination="OWV-1b-puC" id="HcY-4r-1Qi"/>
+                        <outlet property="editTandemImageView" destination="ciH-iU-q1g" id="IyB-hv-Kod"/>
                         <outlet property="editTextButton" destination="4LK-p5-ahy" id="kfk-tb-cEf"/>
                         <outlet property="editTitleTextField" destination="bH1-cd-36U" id="I03-bU-4RB"/>
                         <outlet property="editView" destination="6Qr-8X-lGT" id="U41-CW-isR"/>

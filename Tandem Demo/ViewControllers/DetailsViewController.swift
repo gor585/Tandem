@@ -22,6 +22,9 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var photoAlbumButton: UIButton!
     @IBOutlet weak var mapButton: UIButton!
     @IBOutlet weak var detailsMenuStackView: UIStackView!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var detailsTandemImageView: UIImageView!
     
     @IBOutlet weak var editTitleTextField: UITextField!
     @IBOutlet weak var editImageView: UIImageView!
@@ -36,6 +39,7 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var editMapButton: UIButton!
     @IBOutlet weak var editMenuStackView: UIStackView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var editTandemImageView: UIImageView!
     
     var delegate: EditItem?
     var cell: Item?
@@ -91,6 +95,9 @@ class DetailsViewController: UIViewController {
         detailsTextView.isHidden = false
         detailsImageView.isHidden = true
         detailsMapView.isHidden = true
+        detailsTandemImageView.alpha = 1
+        addressLabel.isHidden = true
+        distanceLabel.isHidden = true
     }
     
     @IBAction func photoAlbumSelected(_ sender: UIButton) {
@@ -104,6 +111,9 @@ class DetailsViewController: UIViewController {
         detailsTextView.isHidden = true
         detailsImageView.isHidden = false
         detailsMapView.isHidden = true
+        detailsTandemImageView.alpha = 1
+        addressLabel.isHidden = true
+        distanceLabel.isHidden = true
         
         //Loading image from Storage or Cache
         guard let imageURL = cell?.imageURL else { return }
@@ -147,6 +157,9 @@ class DetailsViewController: UIViewController {
         detailsTextView.isHidden = true
         detailsImageView.isHidden = true
         detailsMapView.isHidden = false
+        detailsTandemImageView.alpha = 0
+        addressLabel.isHidden = false
+        distanceLabel.isHidden = false
     }
     
     //MARK: - Edit Menu Selection
@@ -160,6 +173,10 @@ class DetailsViewController: UIViewController {
         changeImageButton.isHidden = true
         changeImageButton.isEnabled = false
         editMapView.isHidden = true
+        editTandemImageView.alpha = 1
+        detailsTandemImageView.alpha = 1
+        addressLabel.isHidden = true
+        distanceLabel.isHidden = true
     }
     
     @IBAction func editPhotoButtonSelected(_ sender: UIButton) {
@@ -172,6 +189,10 @@ class DetailsViewController: UIViewController {
         changeImageButton.isHidden = false
         changeImageButton.isEnabled = true
         editMapView.isHidden = true
+        editTandemImageView.alpha = 1
+        detailsTandemImageView.alpha = 1
+        addressLabel.isHidden = true
+        distanceLabel.isHidden = true
     }
     
     @IBAction func editMapButtonSelected(_ sender: UIButton) {
@@ -184,6 +205,10 @@ class DetailsViewController: UIViewController {
         changeImageButton.isHidden = true
         changeImageButton.isEnabled = false
         editMapView.isHidden = false
+        editTandemImageView.alpha = 0
+        detailsTandemImageView.alpha = 0
+        addressLabel.isHidden = false
+        distanceLabel.isHidden = false
     }
     
     //MARK: - New Image Selection
@@ -312,14 +337,15 @@ extension DetailsViewController: MKMapViewDelegate, LocationData, ItemCoordinate
         guard let long = Double(long) else { return }
         usersCurrentLatitude = lat
         usersCurrentLongitude = long
-        setUpMapView()
+        
+        guard let cellLat = cell?.latitude else { return }
+        guard let cellLong = cell?.longitude else { return }
+        guard let latitude = Double(cellLat) else { return }
+        guard let longitude = Double(cellLong) else { return }
+        setUpMapView(latitude: latitude, longitude: longitude)
     }
     
-    func setUpMapView() {
-        guard let lat = cell?.latitude else { return }
-        guard let long = cell?.longitude else { return }
-        guard let latitude = Double(lat) else { return }
-        guard let longitude = Double(long) else { return }
+    func setUpMapView(latitude: Double, longitude: Double) {
         let itemLocationDisplay = CLLocationCoordinate2DMake(latitude, longitude)
         
         var span = MKCoordinateSpan()
@@ -331,13 +357,12 @@ extension DetailsViewController: MKMapViewDelegate, LocationData, ItemCoordinate
         let annotation = MKPointAnnotation()
         annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         
-        //Get distance value from current location to event location
+        //MARK: - Get distance value from current location to event location
         let currentUsersLocation = CLLocation(latitude: usersCurrentLatitude, longitude: usersCurrentLongitude)
         let eventLocation = CLLocation(latitude: latitude, longitude: longitude)
         LocationService.shared.getDistance(currentLocation: currentUsersLocation, eventLocation: eventLocation) { (distance) in
             guard let distance = distance else { return }
-            self.detailsTextView.text = self.detailsTextView.text + "\n Distance: \(distance)"
-            self.EditTextView.text = self.EditTextView.text + "\n Distance: \(distance)"
+            self.distanceLabel.text = "Distance: \(distance) km"
         }
         
         detailsMapView.centerCoordinate = CLLocationCoordinate2DMake(latitude, longitude)
@@ -352,16 +377,15 @@ extension DetailsViewController: MKMapViewDelegate, LocationData, ItemCoordinate
         editMapView.showAnnotations([annotation], animated: true)
         editMapView.setRegion(region, animated: true)
         
+        //MARK: - Reverse geocoding for address
         LocationService.shared.reverseGeocoding(lat: latitude, long: longitude) { (address) in
             guard let addressDict = address else { print("no dict"); return }
             let address = addressDict["address"]
             DispatchQueue.main.async {
                 if address != nil && address != "" {
-                    self.detailsTextView.text = self.detailsTextView.text + "\n Addess: \(address!)"
-                    self.EditTextView.text = self.EditTextView.text + "\n Addess: \(address!)"
+                    self.addressLabel.text = "Location: \(address!)"
                 } else {
-                    self.detailsTextView.text = self.detailsTextView.text + "\n Addess: Location is unavailable"
-                    self.EditTextView.text = self.EditTextView.text + "\nAddess: Location is unavailable"
+                    self.addressLabel.text = "Location is unavailable"
                 }
             }
         }
@@ -386,6 +410,10 @@ extension DetailsViewController: MKMapViewDelegate, LocationData, ItemCoordinate
     func itemCoordinates(latitude: String, longitude: String, address: String) {
         guard let id = cell?.id else { return }
         DataService.shared.editItemLocationProperties(id: id, latitude: latitude, longitude: longitude) {}
+        //Update mapView
+        guard let newLatitude = Double(latitude) else { return }
+        guard let newLongitude = Double(longitude) else { return }
+        setUpMapView(latitude: newLatitude, longitude: newLongitude)
     }
 }
 
