@@ -31,6 +31,7 @@
 		25A13BB2217DE3C90088974E /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A13BB0217DE3C90088974E /* EventCell.swift */; };
 		25A13BB3217DE3C90088974E /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25A13BB1217DE3C90088974E /* EventCell.xib */; };
 		25A13BB5217DE7CC0088974E /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A13BB4217DE7CC0088974E /* EventService.swift */; };
+		25AA941721DCA90B00EE67E5 /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AA941621DCA90B00EE67E5 /* DesignableTextField.swift */; };
 		25AD8A76211EDBA900289501 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AD8A75211EDBA900289501 /* ColorTheme.swift */; };
 		25ADDC15215A2A30002EAB1B /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25ADDC14215A2A30002EAB1B /* AlertView.swift */; };
 		25AE373E211C31B000B7FF61 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE373D211C31B000B7FF61 /* ImageCache.swift */; };
@@ -82,6 +83,7 @@
 		25A13BB0217DE3C90088974E /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		25A13BB1217DE3C90088974E /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		25A13BB4217DE7CC0088974E /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
+		25AA941621DCA90B00EE67E5 /* DesignableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableTextField.swift; sourceTree = "<group>"; };
 		25AD8A75211EDBA900289501 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		25ADDC14215A2A30002EAB1B /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		25AE373D211C31B000B7FF61 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				25F6442020FF375100E7026D /* HideKeyboardReturn.swift */,
 				252F5CB8211DCEC900887D9C /* NotificationNames.swift */,
 				25ADDC14215A2A30002EAB1B /* AlertView.swift */,
+				25AA941621DCA90B00EE67E5 /* DesignableTextField.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				25E0528520F20F4F00E4206C /* EventModel.swift in Sources */,
 				253944B4215B6D0A0057D8CF /* DataService.swift in Sources */,
 				2505FE13219583CA00CE8B44 /* ItemCoordinates.swift in Sources */,
+				25AA941721DCA90B00EE67E5 /* DesignableTextField.swift in Sources */,
 				25BF18C620F2727D00393B77 /* ItemModel.swift in Sources */,
 				25AE373E211C31B000B7FF61 /* ImageCache.swift in Sources */,
 				25AD8A76211EDBA900289501 /* ColorTheme.swift in Sources */,
